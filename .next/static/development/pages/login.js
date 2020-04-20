@@ -13337,6 +13337,216 @@ function ContentType (type) {
 
 /***/ }),
 
+/***/ "./node_modules/cookie/index.js":
+/*!**************************************!*\
+  !*** ./node_modules/cookie/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * cookie
+ * Copyright(c) 2012-2014 Roman Shtylman
+ * Copyright(c) 2015 Douglas Christopher Wilson
+ * MIT Licensed
+ */
+
+
+
+/**
+ * Module exports.
+ * @public
+ */
+
+exports.parse = parse;
+exports.serialize = serialize;
+
+/**
+ * Module variables.
+ * @private
+ */
+
+var decode = decodeURIComponent;
+var encode = encodeURIComponent;
+var pairSplitRegExp = /; */;
+
+/**
+ * RegExp to match field-content in RFC 7230 sec 3.2
+ *
+ * field-content = field-vchar [ 1*( SP / HTAB ) field-vchar ]
+ * field-vchar   = VCHAR / obs-text
+ * obs-text      = %x80-FF
+ */
+
+var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
+
+/**
+ * Parse a cookie header.
+ *
+ * Parse the given cookie header string into an object
+ * The object has the various cookies as keys(names) => values
+ *
+ * @param {string} str
+ * @param {object} [options]
+ * @return {object}
+ * @public
+ */
+
+function parse(str, options) {
+  if (typeof str !== 'string') {
+    throw new TypeError('argument str must be a string');
+  }
+
+  var obj = {}
+  var opt = options || {};
+  var pairs = str.split(pairSplitRegExp);
+  var dec = opt.decode || decode;
+
+  for (var i = 0; i < pairs.length; i++) {
+    var pair = pairs[i];
+    var eq_idx = pair.indexOf('=');
+
+    // skip things that don't look like key=value
+    if (eq_idx < 0) {
+      continue;
+    }
+
+    var key = pair.substr(0, eq_idx).trim()
+    var val = pair.substr(++eq_idx, pair.length).trim();
+
+    // quoted values
+    if ('"' == val[0]) {
+      val = val.slice(1, -1);
+    }
+
+    // only assign once
+    if (undefined == obj[key]) {
+      obj[key] = tryDecode(val, dec);
+    }
+  }
+
+  return obj;
+}
+
+/**
+ * Serialize data into a cookie header.
+ *
+ * Serialize the a name value pair into a cookie string suitable for
+ * http headers. An optional options object specified cookie parameters.
+ *
+ * serialize('foo', 'bar', { httpOnly: true })
+ *   => "foo=bar; httpOnly"
+ *
+ * @param {string} name
+ * @param {string} val
+ * @param {object} [options]
+ * @return {string}
+ * @public
+ */
+
+function serialize(name, val, options) {
+  var opt = options || {};
+  var enc = opt.encode || encode;
+
+  if (typeof enc !== 'function') {
+    throw new TypeError('option encode is invalid');
+  }
+
+  if (!fieldContentRegExp.test(name)) {
+    throw new TypeError('argument name is invalid');
+  }
+
+  var value = enc(val);
+
+  if (value && !fieldContentRegExp.test(value)) {
+    throw new TypeError('argument val is invalid');
+  }
+
+  var str = name + '=' + value;
+
+  if (null != opt.maxAge) {
+    var maxAge = opt.maxAge - 0;
+    if (isNaN(maxAge)) throw new Error('maxAge should be a Number');
+    str += '; Max-Age=' + Math.floor(maxAge);
+  }
+
+  if (opt.domain) {
+    if (!fieldContentRegExp.test(opt.domain)) {
+      throw new TypeError('option domain is invalid');
+    }
+
+    str += '; Domain=' + opt.domain;
+  }
+
+  if (opt.path) {
+    if (!fieldContentRegExp.test(opt.path)) {
+      throw new TypeError('option path is invalid');
+    }
+
+    str += '; Path=' + opt.path;
+  }
+
+  if (opt.expires) {
+    if (typeof opt.expires.toUTCString !== 'function') {
+      throw new TypeError('option expires is invalid');
+    }
+
+    str += '; Expires=' + opt.expires.toUTCString();
+  }
+
+  if (opt.httpOnly) {
+    str += '; HttpOnly';
+  }
+
+  if (opt.secure) {
+    str += '; Secure';
+  }
+
+  if (opt.sameSite) {
+    var sameSite = typeof opt.sameSite === 'string'
+      ? opt.sameSite.toLowerCase() : opt.sameSite;
+
+    switch (sameSite) {
+      case true:
+        str += '; SameSite=Strict';
+        break;
+      case 'lax':
+        str += '; SameSite=Lax';
+        break;
+      case 'strict':
+        str += '; SameSite=Strict';
+        break;
+      case 'none':
+        str += '; SameSite=None';
+        break;
+      default:
+        throw new TypeError('option sameSite is invalid');
+    }
+  }
+
+  return str;
+}
+
+/**
+ * Try decoding a string using a decoding function.
+ *
+ * @param {string} str
+ * @param {function} decode
+ * @private
+ */
+
+function tryDecode(str, decode) {
+  try {
+    return decode(str);
+  } catch (e) {
+    return str;
+  }
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/core-util-is/lib/util.js":
 /*!***********************************************!*\
   !*** ./node_modules/core-util-is/lib/util.js ***!
@@ -14544,6 +14754,121 @@ module.exports = Function.prototype.bind || implementation;
 var bind = __webpack_require__(/*! function-bind */ "./node_modules/function-bind/index.js");
 
 module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
+
+
+/***/ }),
+
+/***/ "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var reactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */
+var REACT_STATICS = {
+  childContextTypes: true,
+  contextType: true,
+  contextTypes: true,
+  defaultProps: true,
+  displayName: true,
+  getDefaultProps: true,
+  getDerivedStateFromError: true,
+  getDerivedStateFromProps: true,
+  mixins: true,
+  propTypes: true,
+  type: true
+};
+var KNOWN_STATICS = {
+  name: true,
+  length: true,
+  prototype: true,
+  caller: true,
+  callee: true,
+  arguments: true,
+  arity: true
+};
+var FORWARD_REF_STATICS = {
+  '$$typeof': true,
+  render: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true
+};
+var MEMO_STATICS = {
+  '$$typeof': true,
+  compare: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true,
+  type: true
+};
+var TYPE_STATICS = {};
+TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
+TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
+
+function getStatics(component) {
+  // React v16.11 and below
+  if (reactIs.isMemo(component)) {
+    return MEMO_STATICS;
+  } // React v16.12 and above
+
+
+  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
+}
+
+var defineProperty = Object.defineProperty;
+var getOwnPropertyNames = Object.getOwnPropertyNames;
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var getPrototypeOf = Object.getPrototypeOf;
+var objectPrototype = Object.prototype;
+function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+  if (typeof sourceComponent !== 'string') {
+    // don't hoist over string (html) components
+    if (objectPrototype) {
+      var inheritedComponent = getPrototypeOf(sourceComponent);
+
+      if (inheritedComponent && inheritedComponent !== objectPrototype) {
+        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+      }
+    }
+
+    var keys = getOwnPropertyNames(sourceComponent);
+
+    if (getOwnPropertySymbols) {
+      keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+    }
+
+    var targetStatics = getStatics(targetComponent);
+    var sourceStatics = getStatics(sourceComponent);
+
+    for (var i = 0; i < keys.length; ++i) {
+      var key = keys[i];
+
+      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
+        var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+
+        try {
+          // Avoid failures from read-only properties
+          defineProperty(targetComponent, key, descriptor);
+        } catch (e) {}
+      }
+    }
+  }
+
+  return targetComponent;
+}
+
+module.exports = hoistNonReactStatics;
 
 
 /***/ }),
@@ -23306,6 +23631,284 @@ module.exports = exports['default'];
 
 /***/ }),
 
+/***/ "./node_modules/react-cookie/es6/Cookies.js":
+/*!**************************************************!*\
+  !*** ./node_modules/react-cookie/es6/Cookies.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (universal_cookie__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+/***/ }),
+
+/***/ "./node_modules/react-cookie/es6/CookiesContext.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/react-cookie/es6/CookiesContext.js ***!
+  \*********************************************************/
+/*! exports provided: Provider, Consumer, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return Provider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Consumer", function() { return Consumer; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Cookies__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cookies */ "./node_modules/react-cookie/es6/Cookies.js");
+
+
+var CookiesContext = react__WEBPACK_IMPORTED_MODULE_0__["createContext"](new _Cookies__WEBPACK_IMPORTED_MODULE_1__["default"]());
+var Provider = CookiesContext.Provider, Consumer = CookiesContext.Consumer;
+/* harmony default export */ __webpack_exports__["default"] = (CookiesContext);
+
+
+/***/ }),
+
+/***/ "./node_modules/react-cookie/es6/CookiesProvider.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/react-cookie/es6/CookiesProvider.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
+/* harmony import */ var _CookiesContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CookiesContext */ "./node_modules/react-cookie/es6/CookiesContext.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var CookiesProvider = /** @class */ (function (_super) {
+    __extends(CookiesProvider, _super);
+    function CookiesProvider(props) {
+        var _this = _super.call(this, props) || this;
+        if (props.cookies) {
+            _this.cookies = props.cookies;
+        }
+        else {
+            _this.cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_1__["default"]();
+        }
+        return _this;
+    }
+    CookiesProvider.prototype.render = function () {
+        return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_CookiesContext__WEBPACK_IMPORTED_MODULE_2__["Provider"], { value: this.cookies }, this.props.children);
+    };
+    return CookiesProvider;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
+/* harmony default export */ __webpack_exports__["default"] = (CookiesProvider);
+
+
+/***/ }),
+
+/***/ "./node_modules/react-cookie/es6/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/react-cookie/es6/index.js ***!
+  \************************************************/
+/*! exports provided: Cookies, CookiesProvider, withCookies, useCookies */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Cookies__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cookies */ "./node_modules/react-cookie/es6/Cookies.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Cookies", function() { return _Cookies__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _CookiesProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CookiesProvider */ "./node_modules/react-cookie/es6/CookiesProvider.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CookiesProvider", function() { return _CookiesProvider__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _withCookies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./withCookies */ "./node_modules/react-cookie/es6/withCookies.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "withCookies", function() { return _withCookies__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _useCookies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useCookies */ "./node_modules/react-cookie/es6/useCookies.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useCookies", function() { return _useCookies__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/react-cookie/es6/useCookies.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/react-cookie/es6/useCookies.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return useCookies; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _CookiesContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CookiesContext */ "./node_modules/react-cookie/es6/CookiesContext.js");
+
+
+function useCookies(dependencies) {
+    var cookies = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_CookiesContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+    if (!cookies) {
+        throw new Error('Missing <CookiesProvider>');
+    }
+    var initialCookies = cookies.getAll();
+    var _a = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(initialCookies), allCookies = _a[0], setCookies = _a[1];
+    var previousCookiesRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(allCookies);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+        function onChange() {
+            var newCookies = cookies.getAll();
+            if (shouldUpdate(dependencies || null, newCookies, previousCookiesRef.current)) {
+                setCookies(newCookies);
+            }
+            previousCookiesRef.current = newCookies;
+        }
+        cookies.addChangeListener(onChange);
+        return function () {
+            cookies.removeChangeListener(onChange);
+        };
+    }, [cookies]);
+    var setCookie = Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(function () { return cookies.set.bind(cookies); }, [cookies]);
+    var removeCookie = Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(function () { return cookies.remove.bind(cookies); }, [cookies]);
+    return [allCookies, setCookie, removeCookie];
+}
+function shouldUpdate(dependencies, newCookies, oldCookies) {
+    if (!dependencies) {
+        return true;
+    }
+    for (var _i = 0, dependencies_1 = dependencies; _i < dependencies_1.length; _i++) {
+        var dependency = dependencies_1[_i];
+        if (newCookies[dependency] !== oldCookies[dependency]) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/react-cookie/es6/withCookies.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-cookie/es6/withCookies.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return withCookies; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _CookiesContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CookiesContext */ "./node_modules/react-cookie/es6/CookiesContext.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (undefined && undefined.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+
+
+// Only way to make function modules work with both TypeScript and Rollup
+var hoistStatics = __webpack_require__(/*! hoist-non-react-statics */ "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js");
+function withCookies(WrappedComponent) {
+    // @ts-ignore
+    var name = WrappedComponent.displayName || WrappedComponent.name;
+    var CookieWrapper = /** @class */ (function (_super) {
+        __extends(CookieWrapper, _super);
+        function CookieWrapper() {
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.onChange = function () {
+                // Make sure to update children with new values
+                _this.forceUpdate();
+            };
+            return _this;
+        }
+        CookieWrapper.prototype.listen = function () {
+            this.props.cookies.addChangeListener(this.onChange);
+        };
+        CookieWrapper.prototype.unlisten = function (cookies) {
+            (cookies || this.props.cookies).removeChangeListener(this.onChange);
+        };
+        CookieWrapper.prototype.componentDidMount = function () {
+            this.listen();
+        };
+        CookieWrapper.prototype.componentDidUpdate = function (prevProps) {
+            if (prevProps.cookies !== this.props.cookies) {
+                this.unlisten(prevProps.cookies);
+                this.listen();
+            }
+        };
+        CookieWrapper.prototype.componentWillUnmount = function () {
+            this.unlisten();
+        };
+        CookieWrapper.prototype.render = function () {
+            var _a = this.props, forwardedRef = _a.forwardedRef, cookies = _a.cookies, restProps = __rest(_a, ["forwardedRef", "cookies"]);
+            var allCookies = cookies.getAll();
+            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](WrappedComponent, __assign({}, restProps, { ref: forwardedRef, cookies: cookies, allCookies: allCookies })));
+        };
+        CookieWrapper.displayName = "withCookies(" + name + ")";
+        CookieWrapper.WrappedComponent = WrappedComponent;
+        return CookieWrapper;
+    }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
+    var ForwardedComponent = react__WEBPACK_IMPORTED_MODULE_0__["forwardRef"](function (props, ref) {
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_CookiesContext__WEBPACK_IMPORTED_MODULE_1__["Consumer"], null, function (cookies) { return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CookieWrapper, __assign({ cookies: cookies }, props, { forwardedRef: ref }))); }));
+    });
+    ForwardedComponent.displayName = CookieWrapper.displayName;
+    ForwardedComponent.WrappedComponent = CookieWrapper.WrappedComponent;
+    return hoistStatics(ForwardedComponent, WrappedComponent);
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/react-dom/index.js":
 /*!***********************************************************************************************!*\
   !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_2adc2403d89adc16ead0 ***!
@@ -23875,7 +24478,7 @@ util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inh
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 10);
+var debugUtil = __webpack_require__(/*! util */ 11);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -25764,7 +26367,7 @@ Writable.prototype._destroy = function (err, cb) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 11);
+var util = __webpack_require__(/*! util */ 12);
 
 function copyBuffer(src, target, offset) {
   src.copy(target, offset);
@@ -37055,6 +37658,186 @@ module.exports = function (buf) {
 
 /***/ }),
 
+/***/ "./node_modules/universal-cookie/es6/Cookies.js":
+/*!******************************************************!*\
+  !*** ./node_modules/universal-cookie/es6/Cookies.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cookie */ "./node_modules/cookie/index.js");
+/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cookie__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./node_modules/universal-cookie/es6/utils.js");
+
+
+// We can't please Rollup and TypeScript at the same time
+// Only way to make both of them work
+var objectAssign = __webpack_require__(/*! object-assign */ "./node_modules/next/dist/build/polyfills/object-assign.js");
+var Cookies = /** @class */ (function () {
+    function Cookies(cookies, options) {
+        var _this = this;
+        this.changeListeners = [];
+        this.HAS_DOCUMENT_COOKIE = false;
+        this.cookies = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["parseCookies"])(cookies, options);
+        new Promise(function () {
+            _this.HAS_DOCUMENT_COOKIE = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["hasDocumentCookie"])();
+        }).catch(function () { });
+    }
+    Cookies.prototype._updateBrowserValues = function (parseOptions) {
+        if (!this.HAS_DOCUMENT_COOKIE) {
+            return;
+        }
+        this.cookies = cookie__WEBPACK_IMPORTED_MODULE_0__["parse"](document.cookie, parseOptions);
+    };
+    Cookies.prototype._emitChange = function (params) {
+        for (var i = 0; i < this.changeListeners.length; ++i) {
+            this.changeListeners[i](params);
+        }
+    };
+    Cookies.prototype.get = function (name, options, parseOptions) {
+        if (options === void 0) { options = {}; }
+        this._updateBrowserValues(parseOptions);
+        return Object(_utils__WEBPACK_IMPORTED_MODULE_1__["readCookie"])(this.cookies[name], options);
+    };
+    Cookies.prototype.getAll = function (options, parseOptions) {
+        if (options === void 0) { options = {}; }
+        this._updateBrowserValues(parseOptions);
+        var result = {};
+        for (var name_1 in this.cookies) {
+            result[name_1] = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["readCookie"])(this.cookies[name_1], options);
+        }
+        return result;
+    };
+    Cookies.prototype.set = function (name, value, options) {
+        var _a;
+        if (typeof value === 'object') {
+            value = JSON.stringify(value);
+        }
+        this.cookies = objectAssign({}, this.cookies, (_a = {}, _a[name] = value, _a));
+        if (this.HAS_DOCUMENT_COOKIE) {
+            document.cookie = cookie__WEBPACK_IMPORTED_MODULE_0__["serialize"](name, value, options);
+        }
+        this._emitChange({ name: name, value: value, options: options });
+    };
+    Cookies.prototype.remove = function (name, options) {
+        var finalOptions = (options = objectAssign({}, options, {
+            expires: new Date(1970, 1, 1, 0, 0, 1),
+            maxAge: 0
+        }));
+        this.cookies = objectAssign({}, this.cookies);
+        delete this.cookies[name];
+        if (this.HAS_DOCUMENT_COOKIE) {
+            document.cookie = cookie__WEBPACK_IMPORTED_MODULE_0__["serialize"](name, '', finalOptions);
+        }
+        this._emitChange({ name: name, value: undefined, options: options });
+    };
+    Cookies.prototype.addChangeListener = function (callback) {
+        this.changeListeners.push(callback);
+    };
+    Cookies.prototype.removeChangeListener = function (callback) {
+        var idx = this.changeListeners.indexOf(callback);
+        if (idx >= 0) {
+            this.changeListeners.splice(idx, 1);
+        }
+    };
+    return Cookies;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (Cookies);
+
+
+/***/ }),
+
+/***/ "./node_modules/universal-cookie/es6/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/universal-cookie/es6/index.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Cookies__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cookies */ "./node_modules/universal-cookie/es6/Cookies.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (_Cookies__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+/***/ }),
+
+/***/ "./node_modules/universal-cookie/es6/utils.js":
+/*!****************************************************!*\
+  !*** ./node_modules/universal-cookie/es6/utils.js ***!
+  \****************************************************/
+/*! exports provided: hasDocumentCookie, cleanCookies, parseCookies, isParsingCookie, readCookie */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasDocumentCookie", function() { return hasDocumentCookie; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cleanCookies", function() { return cleanCookies; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseCookies", function() { return parseCookies; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isParsingCookie", function() { return isParsingCookie; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readCookie", function() { return readCookie; });
+/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cookie */ "./node_modules/cookie/index.js");
+/* harmony import */ var cookie__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cookie__WEBPACK_IMPORTED_MODULE_0__);
+
+function hasDocumentCookie() {
+    // Can we get/set cookies on document.cookie?
+    return typeof document === 'object' && typeof document.cookie === 'string';
+}
+function cleanCookies() {
+    document.cookie.split(';').forEach(function (c) {
+        document.cookie = c
+            .replace(/^ +/, '')
+            .replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/');
+    });
+}
+function parseCookies(cookies, options) {
+    if (typeof cookies === 'string') {
+        return cookie__WEBPACK_IMPORTED_MODULE_0__["parse"](cookies, options);
+    }
+    else if (typeof cookies === 'object' && cookies !== null) {
+        return cookies;
+    }
+    else {
+        return {};
+    }
+}
+function isParsingCookie(value, doNotParse) {
+    if (typeof doNotParse === 'undefined') {
+        // We guess if the cookie start with { or [, it has been serialized
+        doNotParse =
+            !value || (value[0] !== '{' && value[0] !== '[' && value[0] !== '"');
+    }
+    return !doNotParse;
+}
+function readCookie(value, options) {
+    if (options === void 0) { options = {}; }
+    var cleanValue = cleanupCookieValue(value);
+    if (isParsingCookie(cleanValue, options.doNotParse)) {
+        try {
+            return JSON.parse(cleanValue);
+        }
+        catch (e) {
+            // At least we tried
+        }
+    }
+    // Ignore clean value if we failed the deserialization
+    // It is not relevant anymore to trim those values
+    return value;
+}
+function cleanupCookieValue(value) {
+    // express prepend j: before serializing a cookie
+    if (value && value[0] === 'j' && value[1] === ':') {
+        return value.substr(2);
+    }
+    return value;
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/unpipe/index.js":
 /*!**************************************!*\
   !*** ./node_modules/unpipe/index.js ***!
@@ -37302,6 +38085,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/layout */ "./components/layout.js");
 /* harmony import */ var _api_login__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../api/login */ "./api/login.js");
 /* harmony import */ var _api_login__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_api_login__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var react_cookie__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-cookie */ "./node_modules/react-cookie/es6/index.js");
 
 
 
@@ -37321,6 +38105,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
+
+var cookies = new react_cookie__WEBPACK_IMPORTED_MODULE_12__["Cookies"]();
 
 var Login = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(Login, _Component);
@@ -37352,7 +38138,8 @@ var Login = /*#__PURE__*/function (_Component) {
     _this.state = {
       correo: "",
       clave: "",
-      error: ""
+      error: "",
+      token: cookies.get('token') || null
     };
     _this.handleChange = _this.handleChange.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
     _this.handleSubmit = _this.handleSubmit.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
@@ -37377,7 +38164,7 @@ var Login = /*#__PURE__*/function (_Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      var _correo, _clave, url, body, response, data, error;
+      var _correo, _clave, url, body, response, data, token, error;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function handleSubmit$(_context) {
         while (1) {
@@ -37411,6 +38198,11 @@ var Login = /*#__PURE__*/function (_Component) {
               console.log("Hillipoyas" + JSON.stringify(data)); //console.log("status"+data.status)
 
               if (data.status === 200) {
+                token = data.access_token;
+                cookies.set('token', token);
+                this.setState({
+                  token: token
+                });
                 console.log("Login succesfully"); //   const { access_token } = await response.json();
                 //   login({ access_token });
               } else {
@@ -37471,10 +38263,12 @@ var Login = /*#__PURE__*/function (_Component) {
         type: "submit",
         className: "jsx-923656326"
       }, "Login"), __jsx("p", {
+        className: "jsx-923656326" + " " + "token ".concat(!this.state.token && "show")
+      }, this.state.token && "Token: ".concat(this.state.token)), __jsx("p", {
         className: "jsx-923656326" + " " + "error ".concat(this.state.error && "show")
       }, this.state.error && "Error: ".concat(this.state.error)))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_7___default.a, {
         id: "923656326"
-      }, ".login.jsx-923656326{max-width:340px;margin:0 auto;padding:1rem;border:1px solid #ccc;border-radius:4px;}form.jsx-923656326{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:column;-ms-flex-flow:column;flex-flow:column;}label.jsx-923656326{font-weight:600;}input.jsx-923656326{padding:8px;margin:0.3rem 0 1rem;border:1px solid #ccc;border-radius:4px;}.error.jsx-923656326{margin:0.5rem 0 0;display:none;color:brown;}.error.show.jsx-923656326{display:block;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcUmlhbm9cXERvY3VtZW50c1xcZ29jYXJcXGluY2FzZXdlYlxccGFnZXNcXGxvZ2luLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTJHb0IsQUFHNkIsQUFPSCxBQUlHLEFBR0osQUFNTSxBQUtKLFlBVk8sRUFXdkIsRUF6QmdCLEFBV2hCLEVBU2UsWUFuQkEsQ0FvQkQsRUFOVSxVQWJBLEFBb0J4QixZQU5vQixVQWJBLFFBY3BCLENBVm1CLFNBSG5CLHNEQUlBIiwiZmlsZSI6IkM6XFxVc2Vyc1xcUmlhbm9cXERvY3VtZW50c1xcZ29jYXJcXGluY2FzZXdlYlxccGFnZXNcXGxvZ2luLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQ29tcG9uZW50IH0gZnJvbSBcInJlYWN0XCI7XHJcbmltcG9ydCBmZXRjaCBmcm9tIFwiaXNvbW9ycGhpYy11bmZldGNoXCI7XHJcbmltcG9ydCBMYXlvdXQgZnJvbSBcIi4uL2NvbXBvbmVudHMvbGF5b3V0XCI7XHJcbmltcG9ydCB7IGxvZ2luIH0gZnJvbSBcIi4uL2FwaS9sb2dpblwiO1xyXG5jbGFzcyBMb2dpbiBleHRlbmRzIENvbXBvbmVudCB7XHJcbiAgc3RhdGljIGdldEluaXRpYWxQcm9wcyAoeyByZXEgfSkge1xyXG4gICAgY29uc3QgcHJvdG9jb2wgPSBwcm9jZXNzLmVudi5OT0RFX0VOViA9PT0gJ3Byb2R1Y3Rpb24nID8gJ2h0dHBzJyA6ICdodHRwJ1xyXG5cclxuICAgIGNvbnN0IGFwaVVybCA9ICdodHRwOi8vbG9jYWxob3N0OjgwODAvYXV0aC9sb2dpbidcclxuXHJcbiAgICByZXR1cm4geyBhcGlVcmwgfVxyXG4gIH1cclxuXHJcbiAgY29uc3RydWN0b3IocHJvcHMpIHtcclxuICAgIHN1cGVyKHByb3BzKTtcclxuICAgIGNvbnN0IHsgIHNlbmQgfSA9IHJlcXVpcmUoJ21pY3JvJylcclxuXHJcbiAgICB0aGlzLnN0YXRlID0geyBjb3JyZW86IFwiXCIsIGNsYXZlOlwiXCIsIGVycm9yOiBcIlwiIH07XHJcbiAgICB0aGlzLmhhbmRsZUNoYW5nZSA9IHRoaXMuaGFuZGxlQ2hhbmdlLmJpbmQodGhpcyk7XHJcbiAgICB0aGlzLmhhbmRsZVN1Ym1pdCA9IHRoaXMuaGFuZGxlU3VibWl0LmJpbmQodGhpcyk7XHJcbiAgICB0aGlzLmhhbmRsZUNoYW5nZVBhc3N3b3JkID0gdGhpcy5oYW5kbGVDaGFuZ2VQYXNzd29yZC5iaW5kKHRoaXMpO1xyXG4gIH1cclxuXHJcbiAgaGFuZGxlQ2hhbmdlKGV2ZW50KSB7XHJcbiAgICB0aGlzLnNldFN0YXRlKHsgY29ycmVvOiBldmVudC50YXJnZXQudmFsdWUgfSk7XHJcbiAgfVxyXG4gIFxyXG5oYW5kbGVDaGFuZ2VQYXNzd29yZChldmVudClcclxue1xyXG4gIHRoaXMuc2V0U3RhdGUoeyBjbGF2ZTogZXZlbnQudGFyZ2V0LnZhbHVlIH0pO1xyXG59XHJcblxyXG4gIGFzeW5jIGhhbmRsZVN1Ym1pdChldmVudCkge1xyXG4gICAgZXZlbnQucHJldmVudERlZmF1bHQoKTtcclxuICAgXHJcbiAgICB0cnkge1xyXG4gICAgICBjb25zdCBfY29ycmVvID0gdGhpcy5zdGF0ZS5jb3JyZW87XHJcbiAgICAgIGNvbnN0IF9jbGF2ZSA9IHRoaXMuc3RhdGUuY2xhdmU7XHJcbiAgICAgIGNvbnN0IHVybCA9IHRoaXMucHJvcHMuYXBpVXJsO1xyXG4gICAgIGNvbnN0IGJvZHkgPSB7IGNvcnJlbzogX2NvcnJlbyxjbGF2ZTogX2NsYXZlIH07XHJcbiAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2godXJsLCB7XHJcbiAgICAgICAgbWV0aG9kOiBcIlBPU1RcIixcclxuICAgICAgICBoZWFkZXJzOiB7IFxyXG4gICAgICAgICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbicgfSxcclxuICAgICAgICBib2R5OiBKU09OLnN0cmluZ2lmeShib2R5KSxcclxuICAgICAgfSk7XHJcblxyXG4gICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuanNvbigpO1xyXG4gICAgICBjb25zb2xlLmxvZyhcIkhpbGxpcG95YXNcIiArIEpTT04uc3RyaW5naWZ5KGRhdGEpKTtcclxuICAgIC8vY29uc29sZS5sb2coXCJzdGF0dXNcIitkYXRhLnN0YXR1cylcclxuICAgICAgaWYgKGRhdGEuc3RhdHVzID09PSAyMDApIHtcclxuICAgICAgIGNvbnNvbGUubG9nKFwiTG9naW4gc3VjY2VzZnVsbHlcIilcclxuICAgICAgIFxyXG4gICAgIC8vICAgY29uc3QgeyBhY2Nlc3NfdG9rZW4gfSA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcclxuICAgICAvLyAgIGxvZ2luKHsgYWNjZXNzX3Rva2VuIH0pO1xyXG4gICAgICB9IGVsc2Uge1xyXG4gICAgICAgIGNvbnNvbGUubG9nKFwiTG9naW4gZmFpbGVkLlwiKTtcclxuICAgICAgICBcclxuICAgICAgICAvLyBodHRwczovL2dpdGh1Yi5jb20vZGV2ZWxvcGl0L3VuZmV0Y2gjY2F2ZWF0c1xyXG4gICAgICAgIGxldCBlcnJvciA9IG5ldyBFcnJvcihkYXRhLm1lc3NhZ2UpO1xyXG4gICAgICAgIGVycm9yLmRhdGEgPSBkYXRhO1xyXG4gICAgICAgIHRoaXMuc2V0U3RhdGUoeyBcclxuICAgICAgICAgIGVycm9yOiBkYXRhLm1lc3NhZ2VcclxuICAgICAgICB9KVxyXG4gICAgICAvLyAgcmV0dXJuIFByb21pc2UucmVqZWN0KGVycm9yKTtcclxuICAgICAgfVxyXG4gICAgfSBjYXRjaCAoZXJyb3IpIHtcclxuICAgICAgY29uc29sZS5lcnJvcihcclxuICAgICAgICBcIllvdSBoYXZlIGFuIGVycm9yIGluIHlvdXIgY29kZSBvciB0aGVyZSBhcmUgTmV0d29yayBpc3N1ZXMuXCIsXHJcbiAgICAgICAgZXJyb3JcclxuICAgICAgKTtcclxuICAgICBcclxuICAgICAgdGhyb3cgbmV3IEVycm9yKGVycm9yKTtcclxuXHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICByZW5kZXIoKSB7XHJcbiAgICByZXR1cm4gKFxyXG4gICAgICA8TGF5b3V0PlxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibG9naW5cIj5cclxuICAgICAgICAgIDxmb3JtIG9uU3VibWl0PXt0aGlzLmhhbmRsZVN1Ym1pdH0+XHJcbiAgICAgICAgICAgIDxsYWJlbCBodG1sRm9yPVwiY29ycmVvXCI+dXNlcm5hbWU8L2xhYmVsPlxyXG5cclxuICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxyXG4gICAgICAgICAgICAgIGlkPVwiY29ycmVvXCJcclxuICAgICAgICAgICAgICBuYW1lPVwiY29ycmVvXCJcclxuICAgICAgICAgICAgICB2YWx1ZT17dGhpcy5zdGF0ZS5jb3JyZW99XHJcbiAgICAgICAgICAgICAgb25DaGFuZ2U9e3RoaXMuaGFuZGxlQ2hhbmdlfVxyXG4gICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICAgPGxhYmVsIGh0bWxGb3I9XCJjbGF2ZVwiPnBhc3N3b3JkPC9sYWJlbD5cclxuICAgICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxyXG4gICAgICAgICAgICAgIGlkPVwiY2xhdmVcIlxyXG4gICAgICAgICAgICAgIG5hbWU9XCJjbGF2ZVwiXHJcbiAgICAgICAgICAgICAgdmFsdWU9e3RoaXMuc3RhdGUuY2xhdmV9XHJcbiAgICAgICAgICAgICAgb25DaGFuZ2U9e3RoaXMuaGFuZGxlQ2hhbmdlUGFzc3dvcmR9XHJcbiAgICAgICAgICAgIC8+XHJcblxyXG4gICAgICAgICAgICA8YnV0dG9uIHR5cGU9XCJzdWJtaXRcIj5Mb2dpbjwvYnV0dG9uPlxyXG5cclxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPXtgZXJyb3IgJHt0aGlzLnN0YXRlLmVycm9yICYmIFwic2hvd1wifWB9PlxyXG4gICAgICAgICAgICAgIHt0aGlzLnN0YXRlLmVycm9yICYmIGBFcnJvcjogJHt0aGlzLnN0YXRlLmVycm9yfWB9XHJcbiAgICAgICAgICAgIDwvcD5cclxuICAgICAgICAgIDwvZm9ybT5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8c3R5bGUganN4PntgXHJcbiAgICAgICAgICAubG9naW4ge1xyXG4gICAgICAgICAgICBtYXgtd2lkdGg6IDM0MHB4O1xyXG4gICAgICAgICAgICBtYXJnaW46IDAgYXV0bztcclxuICAgICAgICAgICAgcGFkZGluZzogMXJlbTtcclxuICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcclxuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgZm9ybSB7XHJcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgICAgIGZsZXgtZmxvdzogY29sdW1uO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgbGFiZWwge1xyXG4gICAgICAgICAgICBmb250LXdlaWdodDogNjAwO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgaW5wdXQge1xyXG4gICAgICAgICAgICBwYWRkaW5nOiA4cHg7XHJcbiAgICAgICAgICAgIG1hcmdpbjogMC4zcmVtIDAgMXJlbTtcclxuICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcclxuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgLmVycm9yIHtcclxuICAgICAgICAgICAgbWFyZ2luOiAwLjVyZW0gMCAwO1xyXG4gICAgICAgICAgICBkaXNwbGF5OiBub25lO1xyXG4gICAgICAgICAgICBjb2xvcjogYnJvd247XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICAuZXJyb3Iuc2hvdyB7XHJcbiAgICAgICAgICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgIGB9PC9zdHlsZT5cclxuICAgICAgPC9MYXlvdXQ+XHJcbiAgICApO1xyXG4gIH1cclxufVxyXG5cclxuZXhwb3J0IGRlZmF1bHQgTG9naW47XHJcbiJdfQ== */\n/*@ sourceURL=C:\\\\Users\\\\Riano\\\\Documents\\\\gocar\\\\incaseweb\\\\pages\\\\login.js */"));
+      }, ".login.jsx-923656326{max-width:340px;margin:0 auto;padding:1rem;border:1px solid #ccc;border-radius:4px;}form.jsx-923656326{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:column;-ms-flex-flow:column;flex-flow:column;}label.jsx-923656326{font-weight:600;}input.jsx-923656326{padding:8px;margin:0.3rem 0 1rem;border:1px solid #ccc;border-radius:4px;}.error.jsx-923656326{margin:0.5rem 0 0;display:none;color:brown;}.error.show.jsx-923656326{display:block;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcUmlhbm9cXERvY3VtZW50c1xcZ29jYXJcXGluY2FzZXdlYlxccGFnZXNcXGxvZ2luLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXdIb0IsQUFHNkIsQUFPSCxBQUlHLEFBR0osQUFNTSxBQUtKLFlBVk8sRUFXdkIsRUF6QmdCLEFBV2hCLEVBU2UsWUFuQkEsQ0FvQkQsRUFOVSxVQWJBLEFBb0J4QixZQU5vQixVQWJBLFFBY3BCLENBVm1CLFNBSG5CLHNEQUlBIiwiZmlsZSI6IkM6XFxVc2Vyc1xcUmlhbm9cXERvY3VtZW50c1xcZ29jYXJcXGluY2FzZXdlYlxccGFnZXNcXGxvZ2luLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQ29tcG9uZW50IH0gZnJvbSBcInJlYWN0XCI7XHJcbmltcG9ydCBmZXRjaCBmcm9tIFwiaXNvbW9ycGhpYy11bmZldGNoXCI7XHJcbmltcG9ydCBMYXlvdXQgZnJvbSBcIi4uL2NvbXBvbmVudHMvbGF5b3V0XCI7XHJcbmltcG9ydCB7IGxvZ2luIH0gZnJvbSBcIi4uL2FwaS9sb2dpblwiO1xyXG5pbXBvcnQgeyBDb29raWVzIH0gZnJvbSAncmVhY3QtY29va2llJztcclxuXHJcbmNvbnN0IGNvb2tpZXMgPSBuZXcgQ29va2llcygpO1xyXG5jbGFzcyBMb2dpbiBleHRlbmRzIENvbXBvbmVudCB7XHJcbiAgc3RhdGljIGdldEluaXRpYWxQcm9wcyAoeyByZXEgfSkge1xyXG4gICAgY29uc3QgcHJvdG9jb2wgPSBwcm9jZXNzLmVudi5OT0RFX0VOViA9PT0gJ3Byb2R1Y3Rpb24nID8gJ2h0dHBzJyA6ICdodHRwJ1xyXG5cclxuICAgIGNvbnN0IGFwaVVybCA9ICdodHRwOi8vbG9jYWxob3N0OjgwODAvYXV0aC9sb2dpbidcclxuXHJcbiAgICByZXR1cm4geyBhcGlVcmwgfVxyXG4gIH1cclxuXHJcbiAgY29uc3RydWN0b3IocHJvcHMpIHtcclxuICAgIHN1cGVyKHByb3BzKTtcclxuICAgIGNvbnN0IHsgIHNlbmQgfSA9IHJlcXVpcmUoJ21pY3JvJylcclxuXHJcbiAgICB0aGlzLnN0YXRlID0geyBjb3JyZW86IFwiXCIsIGNsYXZlOlwiXCIsIGVycm9yOiBcIlwiLCAgIHRva2VuOiBjb29raWVzLmdldCgndG9rZW4nKSB8fCBudWxsIH07XHJcbiAgICB0aGlzLmhhbmRsZUNoYW5nZSA9IHRoaXMuaGFuZGxlQ2hhbmdlLmJpbmQodGhpcyk7XHJcbiAgICB0aGlzLmhhbmRsZVN1Ym1pdCA9IHRoaXMuaGFuZGxlU3VibWl0LmJpbmQodGhpcyk7XHJcbiAgICB0aGlzLmhhbmRsZUNoYW5nZVBhc3N3b3JkID0gdGhpcy5oYW5kbGVDaGFuZ2VQYXNzd29yZC5iaW5kKHRoaXMpO1xyXG4gIH1cclxuXHJcbiAgaGFuZGxlQ2hhbmdlKGV2ZW50KSB7XHJcbiAgICB0aGlzLnNldFN0YXRlKHsgY29ycmVvOiBldmVudC50YXJnZXQudmFsdWUgfSk7XHJcbiAgfVxyXG4gIFxyXG5oYW5kbGVDaGFuZ2VQYXNzd29yZChldmVudClcclxue1xyXG4gIHRoaXMuc2V0U3RhdGUoeyBjbGF2ZTogZXZlbnQudGFyZ2V0LnZhbHVlIH0pO1xyXG59XHJcblxyXG4gIGFzeW5jIGhhbmRsZVN1Ym1pdChldmVudCkge1xyXG4gICAgZXZlbnQucHJldmVudERlZmF1bHQoKTtcclxuICAgXHJcbiAgICB0cnkge1xyXG4gICAgICBjb25zdCBfY29ycmVvID0gdGhpcy5zdGF0ZS5jb3JyZW87XHJcbiAgICAgIGNvbnN0IF9jbGF2ZSA9IHRoaXMuc3RhdGUuY2xhdmU7XHJcbiAgICAgIGNvbnN0IHVybCA9IHRoaXMucHJvcHMuYXBpVXJsO1xyXG4gICAgIGNvbnN0IGJvZHkgPSB7IGNvcnJlbzogX2NvcnJlbyxjbGF2ZTogX2NsYXZlIH07XHJcbiAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2godXJsLCB7XHJcbiAgICAgICAgbWV0aG9kOiBcIlBPU1RcIixcclxuICAgICAgICBoZWFkZXJzOiB7IFxyXG4gICAgICAgICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbicgfSxcclxuICAgICAgICBib2R5OiBKU09OLnN0cmluZ2lmeShib2R5KSxcclxuICAgICAgfSk7XHJcblxyXG4gICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuanNvbigpO1xyXG4gICAgXHJcbiAgICAgIGNvbnNvbGUubG9nKFwiSGlsbGlwb3lhc1wiICsgSlNPTi5zdHJpbmdpZnkoZGF0YSkpO1xyXG4gICAgLy9jb25zb2xlLmxvZyhcInN0YXR1c1wiK2RhdGEuc3RhdHVzKVxyXG4gICAgICBpZiAoZGF0YS5zdGF0dXMgPT09IDIwMCkge1xyXG4gICAgICAgIGNvbnN0IHRva2VuID0gZGF0YS5hY2Nlc3NfdG9rZW47XHJcbiAgICAgICBjb29raWVzLnNldCgndG9rZW4nLCB0b2tlbik7XHJcbiAgICAgICB0aGlzLnNldFN0YXRlKHtcclxuICAgICAgICAgdG9rZW46IHRva2VuXHJcbiAgICAgICB9KVxyXG4gICAgICAgY29uc29sZS5sb2coXCJMb2dpbiBzdWNjZXNmdWxseVwiKSAgICAgICBcclxuXHJcbiAgICAgLy8gICBjb25zdCB7IGFjY2Vzc190b2tlbiB9ID0gYXdhaXQgcmVzcG9uc2UuanNvbigpO1xyXG4gICAgIC8vICAgbG9naW4oeyBhY2Nlc3NfdG9rZW4gfSk7XHJcbiAgICAgIH0gZWxzZSB7XHJcbiAgICAgICAgY29uc29sZS5sb2coXCJMb2dpbiBmYWlsZWQuXCIpO1xyXG4gICAgICAgIFxyXG4gICAgICAgIC8vIGh0dHBzOi8vZ2l0aHViLmNvbS9kZXZlbG9waXQvdW5mZXRjaCNjYXZlYXRzXHJcbiAgICAgICAgbGV0IGVycm9yID0gbmV3IEVycm9yKGRhdGEubWVzc2FnZSk7XHJcbiAgICAgICAgZXJyb3IuZGF0YSA9IGRhdGE7XHJcbiAgICAgICAgdGhpcy5zZXRTdGF0ZSh7IFxyXG4gICAgICAgICAgZXJyb3I6IGRhdGEubWVzc2FnZVxyXG4gICAgICAgIH0pXHJcbiAgICAgIC8vICByZXR1cm4gUHJvbWlzZS5yZWplY3QoZXJyb3IpO1xyXG4gICAgICB9XHJcbiAgICB9IGNhdGNoIChlcnJvcikge1xyXG4gICAgICBjb25zb2xlLmVycm9yKFxyXG4gICAgICAgIFwiWW91IGhhdmUgYW4gZXJyb3IgaW4geW91ciBjb2RlIG9yIHRoZXJlIGFyZSBOZXR3b3JrIGlzc3Vlcy5cIixcclxuICAgICAgICBlcnJvclxyXG4gICAgICApO1xyXG4gICAgIFxyXG4gICAgICB0aHJvdyBuZXcgRXJyb3IoZXJyb3IpO1xyXG5cclxuICAgIH1cclxuICB9XHJcblxyXG4gIHJlbmRlcigpIHtcclxuICAgIHJldHVybiAoXHJcbiAgICAgIDxMYXlvdXQ+XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJsb2dpblwiPlxyXG4gICAgICAgICAgPGZvcm0gb25TdWJtaXQ9e3RoaXMuaGFuZGxlU3VibWl0fT5cclxuICAgICAgICAgICAgPGxhYmVsIGh0bWxGb3I9XCJjb3JyZW9cIj51c2VybmFtZTwvbGFiZWw+XHJcblxyXG4gICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICB0eXBlPVwidGV4dFwiXHJcbiAgICAgICAgICAgICAgaWQ9XCJjb3JyZW9cIlxyXG4gICAgICAgICAgICAgIG5hbWU9XCJjb3JyZW9cIlxyXG4gICAgICAgICAgICAgIHZhbHVlPXt0aGlzLnN0YXRlLmNvcnJlb31cclxuICAgICAgICAgICAgICBvbkNoYW5nZT17dGhpcy5oYW5kbGVDaGFuZ2V9XHJcbiAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICAgICA8bGFiZWwgaHRtbEZvcj1cImNsYXZlXCI+cGFzc3dvcmQ8L2xhYmVsPlxyXG4gICAgICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICB0eXBlPVwidGV4dFwiXHJcbiAgICAgICAgICAgICAgaWQ9XCJjbGF2ZVwiXHJcbiAgICAgICAgICAgICAgbmFtZT1cImNsYXZlXCJcclxuICAgICAgICAgICAgICB2YWx1ZT17dGhpcy5zdGF0ZS5jbGF2ZX1cclxuICAgICAgICAgICAgICBvbkNoYW5nZT17dGhpcy5oYW5kbGVDaGFuZ2VQYXNzd29yZH1cclxuICAgICAgICAgICAgLz5cclxuXHJcbiAgICAgICAgICAgIDxidXR0b24gdHlwZT1cInN1Ym1pdFwiPkxvZ2luPC9idXR0b24+XHJcblxyXG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9e2B0b2tlbiAkeyF0aGlzLnN0YXRlLnRva2VuICYmIFwic2hvd1wifWB9PlxyXG4gICAgICAgICAgICAgIHt0aGlzLnN0YXRlLnRva2VuICYmIGBUb2tlbjogJHt0aGlzLnN0YXRlLnRva2VufWB9XHJcbiAgICAgICAgICAgIDwvcD5cclxuICAgICAgICAgICAgIFxyXG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9e2BlcnJvciAke3RoaXMuc3RhdGUuZXJyb3IgJiYgXCJzaG93XCJ9YH0+XHJcbiAgICAgICAgICAgICAge3RoaXMuc3RhdGUuZXJyb3IgJiYgYEVycm9yOiAke3RoaXMuc3RhdGUuZXJyb3J9YH1cclxuICAgICAgICAgICAgPC9wPlxyXG4gICAgICAgICAgPC9mb3JtPlxyXG4gICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDxzdHlsZSBqc3g+e2BcclxuICAgICAgICAgIC5sb2dpbiB7XHJcbiAgICAgICAgICAgIG1heC13aWR0aDogMzQwcHg7XHJcbiAgICAgICAgICAgIG1hcmdpbjogMCBhdXRvO1xyXG4gICAgICAgICAgICBwYWRkaW5nOiAxcmVtO1xyXG4gICAgICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjY2NjO1xyXG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICBmb3JtIHtcclxuICAgICAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICAgICAgZmxleC1mbG93OiBjb2x1bW47XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICBsYWJlbCB7XHJcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiA2MDA7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICBpbnB1dCB7XHJcbiAgICAgICAgICAgIHBhZGRpbmc6IDhweDtcclxuICAgICAgICAgICAgbWFyZ2luOiAwLjNyZW0gMCAxcmVtO1xyXG4gICAgICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjY2NjO1xyXG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICAuZXJyb3Ige1xyXG4gICAgICAgICAgICBtYXJnaW46IDAuNXJlbSAwIDA7XHJcbiAgICAgICAgICAgIGRpc3BsYXk6IG5vbmU7XHJcbiAgICAgICAgICAgIGNvbG9yOiBicm93bjtcclxuICAgICAgICAgIH1cclxuICAgICAgICAgIC5lcnJvci5zaG93IHtcclxuICAgICAgICAgICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgYH08L3N0eWxlPlxyXG4gICAgICA8L0xheW91dD5cclxuICAgICk7XHJcbiAgfVxyXG59XHJcblxyXG5leHBvcnQgZGVmYXVsdCBMb2dpbjtcclxuIl19 */\n/*@ sourceURL=C:\\\\Users\\\\Riano\\\\Documents\\\\gocar\\\\incaseweb\\\\pages\\\\login.js */"));
     }
   }]);
 
@@ -37482,29 +38276,6 @@ var Login = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Login);
-
-/***/ }),
-
-/***/ 1:
-/*!*********************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Clogin.js ***!
-  \*********************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Clogin.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Clogin.js!./");
-
-
-/***/ }),
-
-/***/ 10:
-/*!**********************!*\
-  !*** util (ignored) ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* (ignored) */
 
 /***/ }),
 
@@ -37519,6 +38290,29 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Flogin&
 
 /***/ }),
 
+/***/ 12:
+/*!**********************!*\
+  !*** util (ignored) ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 2:
+/*!*********************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Clogin.js ***!
+  \*********************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Clogin.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Clogin.js!./");
+
+
+/***/ }),
+
 /***/ "dll-reference dll_2adc2403d89adc16ead0":
 /*!*******************************************!*\
   !*** external "dll_2adc2403d89adc16ead0" ***!
@@ -37530,5 +38324,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js","styles"]]]);
+},[[2,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=login.js.map

@@ -2,6 +2,9 @@ import { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import Layout from "../components/layout";
 import { login } from "../api/login";
+import { Cookies } from 'react-cookie';
+
+const cookies = new Cookies();
 class Login extends Component {
   static getInitialProps ({ req }) {
     const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http'
@@ -15,7 +18,7 @@ class Login extends Component {
     super(props);
     const {  send } = require('micro')
 
-    this.state = { correo: "", clave:"", error: "" };
+    this.state = { correo: "", clave:"", error: "",   token: cookies.get('token') || null };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
@@ -46,11 +49,17 @@ handleChangePassword(event)
       });
 
       const data = await response.json();
+    
       console.log("Hillipoyas" + JSON.stringify(data));
     //console.log("status"+data.status)
       if (data.status === 200) {
-       console.log("Login succesfully")
-       
+        const token = data.access_token;
+       cookies.set('token', token);
+       this.setState({
+         token: token
+       })
+       console.log("Login succesfully")       
+
      //   const { access_token } = await response.json();
      //   login({ access_token });
       } else {
@@ -100,6 +109,10 @@ handleChangePassword(event)
 
             <button type="submit">Login</button>
 
+            <p className={`token ${!this.state.token && "show"}`}>
+              {this.state.token && `Token: ${this.state.token}`}
+            </p>
+             
             <p className={`error ${this.state.error && "show"}`}>
               {this.state.error && `Error: ${this.state.error}`}
             </p>
