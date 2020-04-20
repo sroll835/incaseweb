@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { Cookies } from 'react-cookie';
+import { Cookies } from "react-cookie";
 import Layout from "../components/layout";
 import { auth } from "../utils/auth";
-import Router from 'next/router'
+import Router from "next/router";
 // set up cookies
 const cookies = new Cookies();
-const Index = props => (
+const Index = (props) => (
   <Layout>
     <br />
     <Link href="/index">
@@ -19,13 +19,12 @@ Index.getInitialProps = async (ctx) => {
   // back to the main page. You can do that
   // with Router from 'next/router
   const auth_token = await auth(ctx);
-  if(auth_token === null)
-  { 
-    Router.push('/login')
-   }
-  
+  if (auth_token === null) {
+    Router.push("/login");
+  }
+
   // Must return an object
-  return { auth_token }
-}
+  return { auth_token };
+};
 
 export default Index;

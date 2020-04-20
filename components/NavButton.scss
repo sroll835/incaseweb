@@ -1,3 +1,5 @@
+// components/NavButton.scss
+
 .NavButton {
   display: flex;
   flex-direction: column;
@@ -9,11 +11,11 @@
   cursor: pointer;
 
   .Icon {
-    font-size: 20px;
+    font-size: 23px;
   }
 
   .Label {
-    font-size: 12px;
+    font-size: 15px;
     text-transform: capitalize;
   }
 }

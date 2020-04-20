@@ -1,3 +1,5 @@
+// components/NavBar.js
+
 import "./NavBar.scss";
 import NavButton from "./NavButton";
 

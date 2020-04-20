@@ -1,3 +1,5 @@
+// components/NavButton.js
+
 import Link from "next/link";
 import { withRouter } from "next/router";
 import { faBook } from "@fortawesome/free-solid-svg-icons";

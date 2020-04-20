@@ -88,7 +88,11 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 4);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -133,6 +137,7 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
   render() {
     return __jsx("div", {
       className: "Header"
+<<<<<<< HEAD
     }, __jsx(react_burger_menu__WEBPACK_IMPORTED_MODULE_1__["slide"], {
       customBurgerIcon: __jsx("img", {
         src: __webpack_require__(/*! ./image/menu1.png */ "./components/image/menu1.png")
@@ -150,6 +155,9 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
       className: "bm-item menu-item",
       href: "/perfil"
     }, "Perfil")));
+=======
+    });
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
   }
 
 }
@@ -196,6 +204,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavButton */ "./components/NavButton.js");
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+<<<<<<< HEAD
+=======
+// components/NavBar.js
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 
 
 
@@ -223,6 +235,7 @@ const NavBar = props => __jsx("div", {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./components/NavBarSimple.js":
 /*!************************************!*\
   !*** ./components/NavBarSimple.js ***!
@@ -248,6 +261,8 @@ const NavBarSimple = () => __jsx("div", {
 
 /***/ }),
 
+=======
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 /***/ "./components/NavButton.js":
 /*!*********************************!*\
   !*** ./components/NavButton.js ***!
@@ -267,6 +282,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavButton_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_NavButton_scss__WEBPACK_IMPORTED_MODULE_3__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+<<<<<<< HEAD
+=======
+// components/NavButton.js
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 
 
 
@@ -296,6 +315,7 @@ const NavButton = props => __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./components/image/menu1.png":
 /*!************************************!*\
   !*** ./components/image/menu1.png ***!
@@ -307,6 +327,8 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADg
 
 /***/ }),
 
+=======
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 /***/ "./components/index.scss":
 /*!*******************************!*\
   !*** ./components/index.scss ***!
@@ -333,12 +355,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
 /* harmony import */ var _NavBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NavBar */ "./components/NavBar.js");
+<<<<<<< HEAD
 /* harmony import */ var _NavBarSimple__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavBarSimple */ "./components/NavBarSimple.js");
 /* harmony import */ var _Layout_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Layout.scss */ "./components/Layout.scss");
 /* harmony import */ var _Layout_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_Layout_scss__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./index.scss */ "./components/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _config_buttons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../config/buttons */ "./config/buttons.js");
+=======
+/* harmony import */ var _Layout_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Layout.scss */ "./components/Layout.scss");
+/* harmony import */ var _Layout_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_Layout_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./components/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _config_buttons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../config/buttons */ "./config/buttons.js");
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -348,9 +378,15 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+<<<<<<< HEAD
 
 const Layout = props => {
   const appTitle = "WHATABYTE";
+=======
+const Layout = props => {
+  console.log(props);
+  const appTitle = `> WHATABYTE`;
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
   return __jsx("div", {
     className: "Layout"
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("title", null, "WHATABYTE"), __jsx("meta", {
@@ -362,7 +398,13 @@ const Layout = props => {
     appTitle: appTitle
   }), __jsx("div", {
     className: "Content"
+<<<<<<< HEAD
   }, props.children), __jsx(_NavBarSimple__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+=======
+  }, props.children), __jsx(_NavBar__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    navButtons: _config_buttons__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }));
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Layout);
@@ -385,16 +427,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__);
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+<<<<<<< HEAD
+=======
+// config/buttons.js
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 
 
 
 const navButtons = [{
+<<<<<<< HEAD
   label: "Explore",
   path: "/explore",
+=======
+  label: "Explorar",
+  path: "/explorar",
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
   icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faCompass"]
   })
 }, {
+<<<<<<< HEAD
   label: "Near Me",
   path: "/nearme",
   icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
@@ -409,6 +461,16 @@ const navButtons = [{
 }, {
   label: "Profile",
   path: "/profile",
+=======
+  label: "Mis cursos",
+  path: "/mis_cursos",
+  icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faBook"]
+  })
+}, {
+  label: "Perfil",
+  path: "/perfil",
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
   icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faUser"]
   })
@@ -2133,7 +2195,11 @@ Index.getInitialProps = async ctx => {
   const auth_token = await Object(_utils_auth__WEBPACK_IMPORTED_MODULE_4__["auth"])(ctx);
 
   if (auth_token === null) {
+<<<<<<< HEAD
     next_router__WEBPACK_IMPORTED_MODULE_5___default.a.push('/login');
+=======
+    next_router__WEBPACK_IMPORTED_MODULE_5___default.a.push("/login");
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
   } // Must return an object
 
 
@@ -2256,14 +2322,22 @@ const logout = () => {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 4:
+=======
+/***/ 3:
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\Riano\Documents\gocar\incaseweb\pages\index.js */"./pages/index.js");
+=======
+module.exports = __webpack_require__(/*! C:\Users\Sebastian\Desktop\incaseweb\pages\index.js */"./pages/index.js");
+>>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 
 
 /***/ }),
