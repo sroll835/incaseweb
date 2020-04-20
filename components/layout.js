@@ -9,8 +9,8 @@ import "./index.scss";
 import navButtons from "../config/buttons";
 
 const Layout = (props) => {
+  console.log(props);
   const appTitle = `> WHATABYTE`;
-
   return (
     <div className="Layout">
       <Head>
