@@ -19,8 +19,9 @@ class Header extends Component {
   }
   render() {
     return (
-      <div className="Header">
-        <Menu customBurgerIcon={<img src={require("./image/menu1.png")} />}>
+      <div className="Header" >
+        <Menu customBurgerIcon={<img src={require("./image/menu1.png")}  />}>
+         
           <a id="home" className="menu-item" href="/">
             Home
           </a>
@@ -31,6 +32,7 @@ class Header extends Component {
             Perfil
           </a>
         </Menu>
+        
       </div>
     );
   }

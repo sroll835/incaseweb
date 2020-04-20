@@ -1,13 +1,13 @@
 import { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import Layout from "../components/layout";
-import { login } from "../api/login";
-import { Cookies } from 'react-cookie';
 
+import { Cookies } from 'react-cookie';
+import Router from 'next/router'
 const cookies = new Cookies();
 class Login extends Component {
-  static getInitialProps ({ req }) {
-    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http'
+  static getInitialProps () {
+      
 
     const apiUrl = 'http://localhost:8080/auth/login'
 
@@ -16,7 +16,7 @@ class Login extends Component {
 
   constructor(props) {
     super(props);
-    const {  send } = require('micro')
+    
 
     this.state = { correo: "", clave:"", error: "",   token: cookies.get('token') || null };
     this.handleChange = this.handleChange.bind(this);
@@ -60,6 +60,8 @@ handleChangePassword(event)
        })
        console.log("Login succesfully")       
 
+       Router.push('/index')
+
      //   const { access_token } = await response.json();
      //   login({ access_token });
       } else {
@@ -87,6 +89,7 @@ handleChangePassword(event)
   render() {
     return (
       <Layout>
+        <h3>Ingrese con su usuario y contrasena : </h3>
         <div className="login">
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="correo">username</label>

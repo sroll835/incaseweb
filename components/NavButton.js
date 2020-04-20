@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { withRouter } from "next/router";
-
+import { faBook } from "@fortawesome/free-solid-svg-icons";
 import "./NavButton.scss";
 
 const NavButton = (props) => (
