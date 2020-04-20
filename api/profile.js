@@ -5,10 +5,10 @@ const profile = async (req, res) => {
   if (!("authorization" in req.headers)) {
     throw createError(401, "Authorization header missing");
   }
-
+  console.log("Profileeeee")
   const auth = await req.headers.authorization;
   const { token } = JSON.parse(auth);
-  const url = `http://localhost:3001/usuarios/${token}`;
+  const url = `http://localhost:8080/usuarios/${token}`;
 
   try {
     const response = await fetch(url);

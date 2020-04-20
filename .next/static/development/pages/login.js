@@ -18,7 +18,7 @@ var _require = __webpack_require__(/*! micro */ "./node_modules/micro/lib/index.
 var fetch = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/next/dist/build/polyfills/fetch/index.js");
 
 var login = function login(req, res) {
-  var _await$json, username, url, response, _await$response$json, id;
+  var _await$json, correo, _await$json2, clave, url, response, _await$response$json, id;
 
   return _regeneratorRuntime.async(function login$(_context) {
     while (1) {
@@ -29,50 +29,57 @@ var login = function login(req, res) {
 
         case 2:
           _await$json = _context.sent;
-          username = _await$json.username;
-          url = "http://localhost:3001/usuarios/".concat(username);
-          _context.prev = 5;
-          _context.next = 8;
+          correo = _await$json.correo;
+          _context.next = 6;
+          return _regeneratorRuntime.awrap(json(req));
+
+        case 6:
+          _await$json2 = _context.sent;
+          clave = _await$json2.clave;
+          url = "http://localhost:8080/auth/login";
+          _context.prev = 9;
+          console.log("hoola guardanapos");
+          _context.next = 13;
           return _regeneratorRuntime.awrap(fetch(url));
 
-        case 8:
+        case 13:
           response = _context.sent;
 
           if (!response.ok) {
-            _context.next = 17;
+            _context.next = 22;
             break;
           }
 
-          _context.next = 12;
+          _context.next = 17;
           return _regeneratorRuntime.awrap(response.json());
 
-        case 12:
+        case 17:
           _await$response$json = _context.sent;
           id = _await$response$json.id;
           send(res, 200, {
-            token: id
+            access_token: id
           });
-          _context.next = 18;
-          break;
-
-        case 17:
-          send(res, response.status, response.statusText);
-
-        case 18:
           _context.next = 23;
           break;
 
-        case 20:
-          _context.prev = 20;
-          _context.t0 = _context["catch"](5);
-          throw createError(_context.t0.statusCode, _context.t0.statusText);
+        case 22:
+          send(res, response.status, response.statusText);
 
         case 23:
+          _context.next = 28;
+          break;
+
+        case 25:
+          _context.prev = 25;
+          _context.t0 = _context["catch"](9);
+          throw createError(_context.t0.statusCode, _context.t0.statusText);
+
+        case 28:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[5, 20]], Promise);
+  }, null, null, [[9, 25]], Promise);
 };
 
 module.exports = function (req, res) {
@@ -108,7 +115,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "C:\\Users\\Sebastian\\Desktop\\incaseweb\\components\\Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
 
 function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, result); }; }
@@ -144,59 +150,23 @@ var Header = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return __jsx("div", {
-        className: "Header",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 22,
-          columnNumber: 7
-        }
+        className: "Header"
       }, __jsx(react_burger_menu__WEBPACK_IMPORTED_MODULE_6__["slide"], {
         customBurgerIcon: __jsx("img", {
-          src: __webpack_require__(/*! ./image/menu1.png */ "./components/image/menu1.png"),
-          __self: this,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 23,
-            columnNumber: 33
-          }
-        }),
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 23,
-          columnNumber: 9
-        }
+          src: __webpack_require__(/*! ./image/menu1.png */ "./components/image/menu1.png")
+        })
       }, __jsx("a", {
         id: "home",
         className: "menu-item",
-        href: "/",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 24,
-          columnNumber: 11
-        }
+        href: "/"
       }, "Home"), __jsx("a", {
         id: "mis cursos",
         className: "menu-item",
-        href: "/mis cursos",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 27,
-          columnNumber: 11
-        }
+        href: "/mis cursos"
       }, "Mis cursos"), __jsx("a", {
         id: "perfil",
         className: "bm-item menu-item",
-        href: "/perfil",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 30,
-          columnNumber: 11
-        }
+        href: "/perfil"
       }, "Perfil")));
     }
   }]);
@@ -222,9 +192,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavBar_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavBar.scss */ "./components/NavBar.scss");
 /* harmony import */ var _NavBar_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_NavBar_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _NavButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavButton */ "./components/NavButton.js");
-var _this = undefined,
-    _jsxFileName = "C:\\Users\\Sebastian\\Desktop\\incaseweb\\components\\NavBar.js";
-
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -232,25 +199,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var NavBar = function NavBar(props) {
   return __jsx("div", {
-    className: "NavBar",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 5,
-      columnNumber: 3
-    }
+    className: "NavBar"
   }, props.navButtons.map(function (button) {
     return __jsx(_NavButton__WEBPACK_IMPORTED_MODULE_2__["default"], {
       key: button.path,
       path: button.path,
       label: button.label,
-      icon: button.icon,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 7,
-        columnNumber: 7
-      }
+      icon: button.icon
     });
   }));
 };
@@ -272,22 +227,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _NavBar_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavBar.scss */ "./components/NavBar.scss");
 /* harmony import */ var _NavBar_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_NavBar_scss__WEBPACK_IMPORTED_MODULE_1__);
-var _this = undefined,
-    _jsxFileName = "C:\\Users\\Sebastian\\Desktop\\incaseweb\\components\\NavBarSimple.js";
-
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 var NavBarSimple = function NavBarSimple() {
   return __jsx("div", {
-    className: "NavBar",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 3,
-      columnNumber: 28
-    }
+    className: "NavBar"
   });
 };
 
@@ -312,9 +258,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _NavButton_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NavButton.scss */ "./components/NavButton.scss");
 /* harmony import */ var _NavButton_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_NavButton_scss__WEBPACK_IMPORTED_MODULE_3__);
-var _this = undefined,
-    _jsxFileName = "C:\\Users\\Sebastian\\Desktop\\incaseweb\\components\\NavButton.js";
-
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -323,37 +266,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var NavButton = function NavButton(props) {
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: props.path,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7,
-      columnNumber: 3
-    }
+    href: props.path
   }, __jsx("div", {
-    className: "NavButton ".concat(props.router.pathname === props.path ? "active" : ""),
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8,
-      columnNumber: 5
-    }
+    className: "NavButton ".concat(props.router.pathname === props.path ? "active" : "")
   }, __jsx("div", {
-    className: "Icon",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 7
-    }
+    className: "Icon"
   }, props.icon), __jsx("span", {
-    className: "Label",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14,
-      columnNumber: 7
-    }
+    className: "Label"
   }, props.label)));
 };
 
@@ -436,7 +355,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-var _jsxFileName = "C:\\Users\\Sebastian\\Desktop\\incaseweb\\config\\buttons.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -445,49 +363,25 @@ var navButtons = [{
   label: "Explore",
   path: "/explore",
   icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faCompass"],
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14,
-      columnNumber: 11
-    }
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faCompass"]
   })
 }, {
   label: "Near Me",
   path: "/nearme",
   icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faMapMarkerAlt"],
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19,
-      columnNumber: 11
-    }
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faMapMarkerAlt"]
   })
 }, {
   label: "My Cart",
   path: "/mycart",
   icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faShoppingCart"],
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24,
-      columnNumber: 11
-    }
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faShoppingCart"]
   })
 }, {
   label: "Profile",
   path: "/profile",
   icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faUser"],
-    __self: undefined,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 11
-    }
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faUser"]
   })
 }];
 /* harmony default export */ __webpack_exports__["default"] = (navButtons);
@@ -18239,10 +18133,10 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Clogin.js!./":
-/*!***********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Clogin.js ***!
-  \***********************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Clogin.js!./":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Clogin.js ***!
+  \*****************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23981,7 +23875,7 @@ util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inh
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 11);
+var debugUtil = __webpack_require__(/*! util */ 10);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -25870,7 +25764,7 @@ Writable.prototype._destroy = function (err, cb) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 12);
+var util = __webpack_require__(/*! util */ 11);
 
 function copyBuffer(src, target, offset) {
   src.copy(target, offset);
@@ -37437,8 +37331,8 @@ var Login = /*#__PURE__*/function (_Component) {
     key: "getInitialProps",
     value: function getInitialProps(_ref) {
       var req = _ref.req;
-      var protocol = false ? undefined : "http";
-      var apiUrl = true ? "".concat(protocol, "://").concat(window.location.host, "/api/login.js") : undefined;
+      var protocol = false ? undefined : 'http';
+      var apiUrl = 'http://localhost:8080/auth/login';
       return {
         apiUrl: apiUrl
       };
@@ -37451,12 +37345,18 @@ var Login = /*#__PURE__*/function (_Component) {
     Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Login);
 
     _this = _super.call(this, props);
+
+    var _require = __webpack_require__(/*! micro */ "./node_modules/micro/lib/index.js"),
+        send = _require.send;
+
     _this.state = {
-      username: "",
+      correo: "",
+      clave: "",
       error: ""
     };
     _this.handleChange = _this.handleChange.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
     _this.handleSubmit = _this.handleSubmit.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
+    _this.handleChangePassword = _this.handleChangePassword.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__["default"])(_this));
     return _this;
   }
 
@@ -37464,76 +37364,80 @@ var Login = /*#__PURE__*/function (_Component) {
     key: "handleChange",
     value: function handleChange(event) {
       this.setState({
-        username: event.target.value
+        correo: event.target.value
+      });
+    }
+  }, {
+    key: "handleChangePassword",
+    value: function handleChangePassword(event) {
+      this.setState({
+        clave: event.target.value
       });
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      var username, url, response, _await$response$json, token, error;
+      var _correo, _clave, url, body, response, data, error;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function handleSubmit$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               event.preventDefault();
-              username = this.state.username;
+              _context.prev = 1;
+              _correo = this.state.correo;
+              _clave = this.state.clave;
               url = this.props.apiUrl;
-              _context.prev = 3;
-              _context.next = 6;
+              body = {
+                correo: _correo,
+                clave: _clave
+              };
+              _context.next = 8;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()(url, {
                 method: "POST",
                 headers: {
-                  "Content-Type": "application/json"
+                  'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                  username: username
-                })
+                body: JSON.stringify(body)
               }));
 
-            case 6:
+            case 8:
               response = _context.sent;
-
-              if (!response.ok) {
-                _context.next = 15;
-                break;
-              }
-
-              _context.next = 10;
+              _context.next = 11;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(response.json());
 
-            case 10:
-              _await$response$json = _context.sent;
-              token = _await$response$json.token;
-              Object(_api_login__WEBPACK_IMPORTED_MODULE_11__["login"])({
-                token: token
-              });
-              _context.next = 19;
+            case 11:
+              data = _context.sent;
+              console.log("Hillipoyas" + JSON.stringify(data)); //console.log("status"+data.status)
+
+              if (data.status === 200) {
+                console.log("Login succesfully"); //   const { access_token } = await response.json();
+                //   login({ access_token });
+              } else {
+                console.log("Login failed."); // https://github.com/developit/unfetch#caveats
+
+                error = new Error(data.message);
+                error.data = data;
+                this.setState({
+                  error: data.message
+                }); //  return Promise.reject(error);
+              }
+
+              _context.next = 20;
               break;
 
-            case 15:
-              console.log("Login failed."); // https://github.com/developit/unfetch#caveats
-
-              error = new Error(response.statusText);
-              error.response = response;
-              return _context.abrupt("return", Promise.reject(error));
-
-            case 19:
-              _context.next = 25;
-              break;
-
-            case 21:
-              _context.prev = 21;
-              _context.t0 = _context["catch"](3);
+            case 16:
+              _context.prev = 16;
+              _context.t0 = _context["catch"](1);
               console.error("You have an error in your code or there are Network issues.", _context.t0);
               throw new Error(_context.t0);
 
-            case 25:
+            case 20:
             case "end":
               return _context.stop();
           }
         }
-      }, null, this, [[3, 21]], Promise);
+      }, null, this, [[1, 16]], Promise);
     }
   }, {
     key: "render",
@@ -37544,14 +37448,24 @@ var Login = /*#__PURE__*/function (_Component) {
         onSubmit: this.handleSubmit,
         className: "jsx-923656326"
       }, __jsx("label", {
-        htmlFor: "username",
+        htmlFor: "correo",
         className: "jsx-923656326"
       }, "username"), __jsx("input", {
         type: "text",
-        id: "username",
-        name: "username",
-        value: this.state.username,
+        id: "correo",
+        name: "correo",
+        value: this.state.correo,
         onChange: this.handleChange,
+        className: "jsx-923656326"
+      }), __jsx("label", {
+        htmlFor: "clave",
+        className: "jsx-923656326"
+      }, "password"), __jsx("input", {
+        type: "text",
+        id: "clave",
+        name: "clave",
+        value: this.state.clave,
+        onChange: this.handleChangePassword,
         className: "jsx-923656326"
       }), __jsx("button", {
         type: "submit",
@@ -37560,7 +37474,7 @@ var Login = /*#__PURE__*/function (_Component) {
         className: "jsx-923656326" + " " + "error ".concat(this.state.error && "show")
       }, this.state.error && "Error: ".concat(this.state.error)))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_7___default.a, {
         id: "923656326"
-      }, ".login.jsx-923656326{max-width:340px;margin:0 auto;padding:1rem;border:1px solid #ccc;border-radius:4px;}form.jsx-923656326{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:column;-ms-flex-flow:column;flex-flow:column;}label.jsx-923656326{font-weight:600;}input.jsx-923656326{padding:8px;margin:0.3rem 0 1rem;border:1px solid #ccc;border-radius:4px;}.error.jsx-923656326{margin:0.5rem 0 0;display:none;color:brown;}.error.show.jsx-923656326{display:block;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcU2ViYXN0aWFuXFxEZXNrdG9wXFxpbmNhc2V3ZWJcXHBhZ2VzXFxsb2dpbi5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFnRm9CLEFBRzZCLEFBT0gsQUFJRyxBQUdKLEFBTU0sQUFLSixZQVZPLEVBV3ZCLEVBekJnQixBQVdoQixFQVNlLFlBbkJBLENBb0JELEVBTlUsVUFiQSxBQW9CeEIsWUFOb0IsVUFiQSxRQWNwQixDQVZtQixTQUhuQixzREFJQSIsImZpbGUiOiJDOlxcVXNlcnNcXFNlYmFzdGlhblxcRGVza3RvcFxcaW5jYXNld2ViXFxwYWdlc1xcbG9naW4uanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBDb21wb25lbnQgfSBmcm9tIFwicmVhY3RcIjtcclxuaW1wb3J0IGZldGNoIGZyb20gXCJpc29tb3JwaGljLXVuZmV0Y2hcIjtcclxuaW1wb3J0IExheW91dCBmcm9tIFwiLi4vY29tcG9uZW50cy9sYXlvdXRcIjtcclxuaW1wb3J0IHsgbG9naW4gfSBmcm9tIFwiLi4vYXBpL2xvZ2luXCI7XHJcblxyXG5jbGFzcyBMb2dpbiBleHRlbmRzIENvbXBvbmVudCB7XHJcbiAgc3RhdGljIGdldEluaXRpYWxQcm9wcyh7IHJlcSB9KSB7XHJcbiAgICBjb25zdCBwcm90b2NvbCA9IHByb2Nlc3MuZW52Lk5PREVfRU5WID09PSBcInByb2R1Y3Rpb25cIiA/IFwiaHR0cHNcIiA6IFwiaHR0cFwiO1xyXG5cclxuICAgIGNvbnN0IGFwaVVybCA9IHByb2Nlc3MuYnJvd3NlclxyXG4gICAgICA/IGAke3Byb3RvY29sfTovLyR7d2luZG93LmxvY2F0aW9uLmhvc3R9L2FwaS9sb2dpbi5qc2BcclxuICAgICAgOiBgJHtwcm90b2NvbH06Ly8ke3JlcS5oZWFkZXJzLmhvc3R9L2FwaS9sb2dpbi5qc2A7XHJcblxyXG4gICAgcmV0dXJuIHsgYXBpVXJsIH07XHJcbiAgfVxyXG5cclxuICBjb25zdHJ1Y3Rvcihwcm9wcykge1xyXG4gICAgc3VwZXIocHJvcHMpO1xyXG5cclxuICAgIHRoaXMuc3RhdGUgPSB7IHVzZXJuYW1lOiBcIlwiLCBlcnJvcjogXCJcIiB9O1xyXG4gICAgdGhpcy5oYW5kbGVDaGFuZ2UgPSB0aGlzLmhhbmRsZUNoYW5nZS5iaW5kKHRoaXMpO1xyXG4gICAgdGhpcy5oYW5kbGVTdWJtaXQgPSB0aGlzLmhhbmRsZVN1Ym1pdC5iaW5kKHRoaXMpO1xyXG4gIH1cclxuXHJcbiAgaGFuZGxlQ2hhbmdlKGV2ZW50KSB7XHJcbiAgICB0aGlzLnNldFN0YXRlKHsgdXNlcm5hbWU6IGV2ZW50LnRhcmdldC52YWx1ZSB9KTtcclxuICB9XHJcblxyXG4gIGFzeW5jIGhhbmRsZVN1Ym1pdChldmVudCkge1xyXG4gICAgZXZlbnQucHJldmVudERlZmF1bHQoKTtcclxuICAgIGNvbnN0IHVzZXJuYW1lID0gdGhpcy5zdGF0ZS51c2VybmFtZTtcclxuICAgIGNvbnN0IHVybCA9IHRoaXMucHJvcHMuYXBpVXJsO1xyXG5cclxuICAgIHRyeSB7XHJcbiAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2godXJsLCB7XHJcbiAgICAgICAgbWV0aG9kOiBcIlBPU1RcIixcclxuICAgICAgICBoZWFkZXJzOiB7IFwiQ29udGVudC1UeXBlXCI6IFwiYXBwbGljYXRpb24vanNvblwiIH0sXHJcbiAgICAgICAgYm9keTogSlNPTi5zdHJpbmdpZnkoeyB1c2VybmFtZSB9KSxcclxuICAgICAgfSk7XHJcbiAgICAgIGlmIChyZXNwb25zZS5vaykge1xyXG4gICAgICAgIGNvbnN0IHsgdG9rZW4gfSA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcclxuICAgICAgICBsb2dpbih7IHRva2VuIH0pO1xyXG4gICAgICB9IGVsc2Uge1xyXG4gICAgICAgIGNvbnNvbGUubG9nKFwiTG9naW4gZmFpbGVkLlwiKTtcclxuICAgICAgICAvLyBodHRwczovL2dpdGh1Yi5jb20vZGV2ZWxvcGl0L3VuZmV0Y2gjY2F2ZWF0c1xyXG4gICAgICAgIGxldCBlcnJvciA9IG5ldyBFcnJvcihyZXNwb25zZS5zdGF0dXNUZXh0KTtcclxuICAgICAgICBlcnJvci5yZXNwb25zZSA9IHJlc3BvbnNlO1xyXG4gICAgICAgIHJldHVybiBQcm9taXNlLnJlamVjdChlcnJvcik7XHJcbiAgICAgIH1cclxuICAgIH0gY2F0Y2ggKGVycm9yKSB7XHJcbiAgICAgIGNvbnNvbGUuZXJyb3IoXHJcbiAgICAgICAgXCJZb3UgaGF2ZSBhbiBlcnJvciBpbiB5b3VyIGNvZGUgb3IgdGhlcmUgYXJlIE5ldHdvcmsgaXNzdWVzLlwiLFxyXG4gICAgICAgIGVycm9yXHJcbiAgICAgICk7XHJcbiAgICAgIHRocm93IG5ldyBFcnJvcihlcnJvcik7XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICByZW5kZXIoKSB7XHJcbiAgICByZXR1cm4gKFxyXG4gICAgICA8TGF5b3V0PlxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibG9naW5cIj5cclxuICAgICAgICAgIDxmb3JtIG9uU3VibWl0PXt0aGlzLmhhbmRsZVN1Ym1pdH0+XHJcbiAgICAgICAgICAgIDxsYWJlbCBodG1sRm9yPVwidXNlcm5hbWVcIj51c2VybmFtZTwvbGFiZWw+XHJcblxyXG4gICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICB0eXBlPVwidGV4dFwiXHJcbiAgICAgICAgICAgICAgaWQ9XCJ1c2VybmFtZVwiXHJcbiAgICAgICAgICAgICAgbmFtZT1cInVzZXJuYW1lXCJcclxuICAgICAgICAgICAgICB2YWx1ZT17dGhpcy5zdGF0ZS51c2VybmFtZX1cclxuICAgICAgICAgICAgICBvbkNoYW5nZT17dGhpcy5oYW5kbGVDaGFuZ2V9XHJcbiAgICAgICAgICAgIC8+XHJcblxyXG4gICAgICAgICAgICA8YnV0dG9uIHR5cGU9XCJzdWJtaXRcIj5Mb2dpbjwvYnV0dG9uPlxyXG5cclxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPXtgZXJyb3IgJHt0aGlzLnN0YXRlLmVycm9yICYmIFwic2hvd1wifWB9PlxyXG4gICAgICAgICAgICAgIHt0aGlzLnN0YXRlLmVycm9yICYmIGBFcnJvcjogJHt0aGlzLnN0YXRlLmVycm9yfWB9XHJcbiAgICAgICAgICAgIDwvcD5cclxuICAgICAgICAgIDwvZm9ybT5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8c3R5bGUganN4PntgXHJcbiAgICAgICAgICAubG9naW4ge1xyXG4gICAgICAgICAgICBtYXgtd2lkdGg6IDM0MHB4O1xyXG4gICAgICAgICAgICBtYXJnaW46IDAgYXV0bztcclxuICAgICAgICAgICAgcGFkZGluZzogMXJlbTtcclxuICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcclxuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgZm9ybSB7XHJcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgICAgIGZsZXgtZmxvdzogY29sdW1uO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgbGFiZWwge1xyXG4gICAgICAgICAgICBmb250LXdlaWdodDogNjAwO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgaW5wdXQge1xyXG4gICAgICAgICAgICBwYWRkaW5nOiA4cHg7XHJcbiAgICAgICAgICAgIG1hcmdpbjogMC4zcmVtIDAgMXJlbTtcclxuICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcclxuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgLmVycm9yIHtcclxuICAgICAgICAgICAgbWFyZ2luOiAwLjVyZW0gMCAwO1xyXG4gICAgICAgICAgICBkaXNwbGF5OiBub25lO1xyXG4gICAgICAgICAgICBjb2xvcjogYnJvd247XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICAuZXJyb3Iuc2hvdyB7XHJcbiAgICAgICAgICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgIGB9PC9zdHlsZT5cclxuICAgICAgPC9MYXlvdXQ+XHJcbiAgICApO1xyXG4gIH1cclxufVxyXG5cclxuZXhwb3J0IGRlZmF1bHQgTG9naW47XHJcbiJdfQ== */\n/*@ sourceURL=C:\\\\Users\\\\Sebastian\\\\Desktop\\\\incaseweb\\\\pages\\\\login.js */"));
+      }, ".login.jsx-923656326{max-width:340px;margin:0 auto;padding:1rem;border:1px solid #ccc;border-radius:4px;}form.jsx-923656326{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:column;-ms-flex-flow:column;flex-flow:column;}label.jsx-923656326{font-weight:600;}input.jsx-923656326{padding:8px;margin:0.3rem 0 1rem;border:1px solid #ccc;border-radius:4px;}.error.jsx-923656326{margin:0.5rem 0 0;display:none;color:brown;}.error.show.jsx-923656326{display:block;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcUmlhbm9cXERvY3VtZW50c1xcZ29jYXJcXGluY2FzZXdlYlxccGFnZXNcXGxvZ2luLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTJHb0IsQUFHNkIsQUFPSCxBQUlHLEFBR0osQUFNTSxBQUtKLFlBVk8sRUFXdkIsRUF6QmdCLEFBV2hCLEVBU2UsWUFuQkEsQ0FvQkQsRUFOVSxVQWJBLEFBb0J4QixZQU5vQixVQWJBLFFBY3BCLENBVm1CLFNBSG5CLHNEQUlBIiwiZmlsZSI6IkM6XFxVc2Vyc1xcUmlhbm9cXERvY3VtZW50c1xcZ29jYXJcXGluY2FzZXdlYlxccGFnZXNcXGxvZ2luLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQ29tcG9uZW50IH0gZnJvbSBcInJlYWN0XCI7XHJcbmltcG9ydCBmZXRjaCBmcm9tIFwiaXNvbW9ycGhpYy11bmZldGNoXCI7XHJcbmltcG9ydCBMYXlvdXQgZnJvbSBcIi4uL2NvbXBvbmVudHMvbGF5b3V0XCI7XHJcbmltcG9ydCB7IGxvZ2luIH0gZnJvbSBcIi4uL2FwaS9sb2dpblwiO1xyXG5jbGFzcyBMb2dpbiBleHRlbmRzIENvbXBvbmVudCB7XHJcbiAgc3RhdGljIGdldEluaXRpYWxQcm9wcyAoeyByZXEgfSkge1xyXG4gICAgY29uc3QgcHJvdG9jb2wgPSBwcm9jZXNzLmVudi5OT0RFX0VOViA9PT0gJ3Byb2R1Y3Rpb24nID8gJ2h0dHBzJyA6ICdodHRwJ1xyXG5cclxuICAgIGNvbnN0IGFwaVVybCA9ICdodHRwOi8vbG9jYWxob3N0OjgwODAvYXV0aC9sb2dpbidcclxuXHJcbiAgICByZXR1cm4geyBhcGlVcmwgfVxyXG4gIH1cclxuXHJcbiAgY29uc3RydWN0b3IocHJvcHMpIHtcclxuICAgIHN1cGVyKHByb3BzKTtcclxuICAgIGNvbnN0IHsgIHNlbmQgfSA9IHJlcXVpcmUoJ21pY3JvJylcclxuXHJcbiAgICB0aGlzLnN0YXRlID0geyBjb3JyZW86IFwiXCIsIGNsYXZlOlwiXCIsIGVycm9yOiBcIlwiIH07XHJcbiAgICB0aGlzLmhhbmRsZUNoYW5nZSA9IHRoaXMuaGFuZGxlQ2hhbmdlLmJpbmQodGhpcyk7XHJcbiAgICB0aGlzLmhhbmRsZVN1Ym1pdCA9IHRoaXMuaGFuZGxlU3VibWl0LmJpbmQodGhpcyk7XHJcbiAgICB0aGlzLmhhbmRsZUNoYW5nZVBhc3N3b3JkID0gdGhpcy5oYW5kbGVDaGFuZ2VQYXNzd29yZC5iaW5kKHRoaXMpO1xyXG4gIH1cclxuXHJcbiAgaGFuZGxlQ2hhbmdlKGV2ZW50KSB7XHJcbiAgICB0aGlzLnNldFN0YXRlKHsgY29ycmVvOiBldmVudC50YXJnZXQudmFsdWUgfSk7XHJcbiAgfVxyXG4gIFxyXG5oYW5kbGVDaGFuZ2VQYXNzd29yZChldmVudClcclxue1xyXG4gIHRoaXMuc2V0U3RhdGUoeyBjbGF2ZTogZXZlbnQudGFyZ2V0LnZhbHVlIH0pO1xyXG59XHJcblxyXG4gIGFzeW5jIGhhbmRsZVN1Ym1pdChldmVudCkge1xyXG4gICAgZXZlbnQucHJldmVudERlZmF1bHQoKTtcclxuICAgXHJcbiAgICB0cnkge1xyXG4gICAgICBjb25zdCBfY29ycmVvID0gdGhpcy5zdGF0ZS5jb3JyZW87XHJcbiAgICAgIGNvbnN0IF9jbGF2ZSA9IHRoaXMuc3RhdGUuY2xhdmU7XHJcbiAgICAgIGNvbnN0IHVybCA9IHRoaXMucHJvcHMuYXBpVXJsO1xyXG4gICAgIGNvbnN0IGJvZHkgPSB7IGNvcnJlbzogX2NvcnJlbyxjbGF2ZTogX2NsYXZlIH07XHJcbiAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2godXJsLCB7XHJcbiAgICAgICAgbWV0aG9kOiBcIlBPU1RcIixcclxuICAgICAgICBoZWFkZXJzOiB7IFxyXG4gICAgICAgICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbicgfSxcclxuICAgICAgICBib2R5OiBKU09OLnN0cmluZ2lmeShib2R5KSxcclxuICAgICAgfSk7XHJcblxyXG4gICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuanNvbigpO1xyXG4gICAgICBjb25zb2xlLmxvZyhcIkhpbGxpcG95YXNcIiArIEpTT04uc3RyaW5naWZ5KGRhdGEpKTtcclxuICAgIC8vY29uc29sZS5sb2coXCJzdGF0dXNcIitkYXRhLnN0YXR1cylcclxuICAgICAgaWYgKGRhdGEuc3RhdHVzID09PSAyMDApIHtcclxuICAgICAgIGNvbnNvbGUubG9nKFwiTG9naW4gc3VjY2VzZnVsbHlcIilcclxuICAgICAgIFxyXG4gICAgIC8vICAgY29uc3QgeyBhY2Nlc3NfdG9rZW4gfSA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcclxuICAgICAvLyAgIGxvZ2luKHsgYWNjZXNzX3Rva2VuIH0pO1xyXG4gICAgICB9IGVsc2Uge1xyXG4gICAgICAgIGNvbnNvbGUubG9nKFwiTG9naW4gZmFpbGVkLlwiKTtcclxuICAgICAgICBcclxuICAgICAgICAvLyBodHRwczovL2dpdGh1Yi5jb20vZGV2ZWxvcGl0L3VuZmV0Y2gjY2F2ZWF0c1xyXG4gICAgICAgIGxldCBlcnJvciA9IG5ldyBFcnJvcihkYXRhLm1lc3NhZ2UpO1xyXG4gICAgICAgIGVycm9yLmRhdGEgPSBkYXRhO1xyXG4gICAgICAgIHRoaXMuc2V0U3RhdGUoeyBcclxuICAgICAgICAgIGVycm9yOiBkYXRhLm1lc3NhZ2VcclxuICAgICAgICB9KVxyXG4gICAgICAvLyAgcmV0dXJuIFByb21pc2UucmVqZWN0KGVycm9yKTtcclxuICAgICAgfVxyXG4gICAgfSBjYXRjaCAoZXJyb3IpIHtcclxuICAgICAgY29uc29sZS5lcnJvcihcclxuICAgICAgICBcIllvdSBoYXZlIGFuIGVycm9yIGluIHlvdXIgY29kZSBvciB0aGVyZSBhcmUgTmV0d29yayBpc3N1ZXMuXCIsXHJcbiAgICAgICAgZXJyb3JcclxuICAgICAgKTtcclxuICAgICBcclxuICAgICAgdGhyb3cgbmV3IEVycm9yKGVycm9yKTtcclxuXHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICByZW5kZXIoKSB7XHJcbiAgICByZXR1cm4gKFxyXG4gICAgICA8TGF5b3V0PlxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibG9naW5cIj5cclxuICAgICAgICAgIDxmb3JtIG9uU3VibWl0PXt0aGlzLmhhbmRsZVN1Ym1pdH0+XHJcbiAgICAgICAgICAgIDxsYWJlbCBodG1sRm9yPVwiY29ycmVvXCI+dXNlcm5hbWU8L2xhYmVsPlxyXG5cclxuICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxyXG4gICAgICAgICAgICAgIGlkPVwiY29ycmVvXCJcclxuICAgICAgICAgICAgICBuYW1lPVwiY29ycmVvXCJcclxuICAgICAgICAgICAgICB2YWx1ZT17dGhpcy5zdGF0ZS5jb3JyZW99XHJcbiAgICAgICAgICAgICAgb25DaGFuZ2U9e3RoaXMuaGFuZGxlQ2hhbmdlfVxyXG4gICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICAgPGxhYmVsIGh0bWxGb3I9XCJjbGF2ZVwiPnBhc3N3b3JkPC9sYWJlbD5cclxuICAgICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxyXG4gICAgICAgICAgICAgIGlkPVwiY2xhdmVcIlxyXG4gICAgICAgICAgICAgIG5hbWU9XCJjbGF2ZVwiXHJcbiAgICAgICAgICAgICAgdmFsdWU9e3RoaXMuc3RhdGUuY2xhdmV9XHJcbiAgICAgICAgICAgICAgb25DaGFuZ2U9e3RoaXMuaGFuZGxlQ2hhbmdlUGFzc3dvcmR9XHJcbiAgICAgICAgICAgIC8+XHJcblxyXG4gICAgICAgICAgICA8YnV0dG9uIHR5cGU9XCJzdWJtaXRcIj5Mb2dpbjwvYnV0dG9uPlxyXG5cclxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPXtgZXJyb3IgJHt0aGlzLnN0YXRlLmVycm9yICYmIFwic2hvd1wifWB9PlxyXG4gICAgICAgICAgICAgIHt0aGlzLnN0YXRlLmVycm9yICYmIGBFcnJvcjogJHt0aGlzLnN0YXRlLmVycm9yfWB9XHJcbiAgICAgICAgICAgIDwvcD5cclxuICAgICAgICAgIDwvZm9ybT5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8c3R5bGUganN4PntgXHJcbiAgICAgICAgICAubG9naW4ge1xyXG4gICAgICAgICAgICBtYXgtd2lkdGg6IDM0MHB4O1xyXG4gICAgICAgICAgICBtYXJnaW46IDAgYXV0bztcclxuICAgICAgICAgICAgcGFkZGluZzogMXJlbTtcclxuICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcclxuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgZm9ybSB7XHJcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgICAgIGZsZXgtZmxvdzogY29sdW1uO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgbGFiZWwge1xyXG4gICAgICAgICAgICBmb250LXdlaWdodDogNjAwO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgaW5wdXQge1xyXG4gICAgICAgICAgICBwYWRkaW5nOiA4cHg7XHJcbiAgICAgICAgICAgIG1hcmdpbjogMC4zcmVtIDAgMXJlbTtcclxuICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcclxuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgLmVycm9yIHtcclxuICAgICAgICAgICAgbWFyZ2luOiAwLjVyZW0gMCAwO1xyXG4gICAgICAgICAgICBkaXNwbGF5OiBub25lO1xyXG4gICAgICAgICAgICBjb2xvcjogYnJvd247XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICAuZXJyb3Iuc2hvdyB7XHJcbiAgICAgICAgICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgIGB9PC9zdHlsZT5cclxuICAgICAgPC9MYXlvdXQ+XHJcbiAgICApO1xyXG4gIH1cclxufVxyXG5cclxuZXhwb3J0IGRlZmF1bHQgTG9naW47XHJcbiJdfQ== */\n/*@ sourceURL=C:\\\\Users\\\\Riano\\\\Documents\\\\gocar\\\\incaseweb\\\\pages\\\\login.js */"));
     }
   }]);
 
@@ -37571,19 +37485,19 @@ var Login = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
-/***/ 10:
-/*!***************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Clogin.js ***!
-  \***************************************************************************************************************************************/
+/***/ 1:
+/*!*********************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Clogin.js ***!
+  \*********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Clogin.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Clogin.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Clogin.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Clogin.js!./");
 
 
 /***/ }),
 
-/***/ 11:
+/***/ 10:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -37594,7 +37508,7 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Flogin&
 
 /***/ }),
 
-/***/ 12:
+/***/ 11:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -37616,5 +37530,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[10,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=login.js.map

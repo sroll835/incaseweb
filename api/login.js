@@ -2,14 +2,16 @@ const { json, send, createError, run } = require("micro");
 const fetch = require("isomorphic-unfetch");
 
 const login = async (req, res) => {
-  const { username } = await json(req);
-  const url = `http://localhost:3001/usuarios/${username}`;
+  const { correo } = await json(req);
+  const { clave } = await json(req);
+  const url = `http://localhost:8080/auth/login`;
 
   try {
+    console.log("hoola guardanapos")
     const response = await fetch(url);
     if (response.ok) {
       const { id } = await response.json();
-      send(res, 200, { token: id });
+      send(res, 200, { access_token: id });
     } else {
       send(res, response.status, response.statusText);
     }

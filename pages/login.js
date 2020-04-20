@@ -2,57 +2,76 @@ import { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import Layout from "../components/layout";
 import { login } from "../api/login";
-
 class Login extends Component {
-  static getInitialProps({ req }) {
-    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  static getInitialProps ({ req }) {
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http'
 
-    const apiUrl = process.browser
-      ? `${protocol}://${window.location.host}/api/login.js`
-      : `${protocol}://${req.headers.host}/api/login.js`;
+    const apiUrl = 'http://localhost:8080/auth/login'
 
-    return { apiUrl };
+    return { apiUrl }
   }
 
   constructor(props) {
     super(props);
+    const {  send } = require('micro')
 
-    this.state = { username: "", error: "" };
+    this.state = { correo: "", clave:"", error: "" };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangePassword = this.handleChangePassword.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ username: event.target.value });
+    this.setState({ correo: event.target.value });
   }
+  
+handleChangePassword(event)
+{
+  this.setState({ clave: event.target.value });
+}
 
   async handleSubmit(event) {
     event.preventDefault();
-    const username = this.state.username;
-    const url = this.props.apiUrl;
-
+   
     try {
+      const _correo = this.state.correo;
+      const _clave = this.state.clave;
+      const url = this.props.apiUrl;
+     const body = { correo: _correo,clave: _clave };
       const response = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username }),
+        headers: { 
+        'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
       });
-      if (response.ok) {
-        const { token } = await response.json();
-        login({ token });
+
+      const data = await response.json();
+      console.log("Hillipoyas" + JSON.stringify(data));
+    //console.log("status"+data.status)
+      if (data.status === 200) {
+       console.log("Login succesfully")
+       
+     //   const { access_token } = await response.json();
+     //   login({ access_token });
       } else {
         console.log("Login failed.");
+        
         // https://github.com/developit/unfetch#caveats
-        let error = new Error(response.statusText);
-        error.response = response;
-        return Promise.reject(error);
+        let error = new Error(data.message);
+        error.data = data;
+        this.setState({ 
+          error: data.message
+        })
+      //  return Promise.reject(error);
       }
     } catch (error) {
       console.error(
         "You have an error in your code or there are Network issues.",
         error
       );
+     
       throw new Error(error);
+
     }
   }
 
@@ -61,14 +80,22 @@ class Login extends Component {
       <Layout>
         <div className="login">
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor="username">username</label>
+            <label htmlFor="correo">username</label>
 
             <input
               type="text"
-              id="username"
-              name="username"
-              value={this.state.username}
+              id="correo"
+              name="correo"
+              value={this.state.correo}
               onChange={this.handleChange}
+            />
+             <label htmlFor="clave">password</label>
+               <input
+              type="text"
+              id="clave"
+              name="clave"
+              value={this.state.clave}
+              onChange={this.handleChangePassword}
             />
 
             <button type="submit">Login</button>

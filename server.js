@@ -25,7 +25,7 @@ app.prepare().then(() => {
         break;
 
       case "/api/login.js":
-        proxy.web(req, res, { target }, (error) => {
+        proxy.web(req, res, { target }, error => {
           console.log("Error!", error);
         });
         break;
@@ -35,16 +35,14 @@ app.prepare().then(() => {
         break;
 
       case "/api/profile.js":
-        proxy.web(req, res, { target }, (error) =>
-          console.log("Error!", error)
-        );
+        proxy.web(req, res, { target }, error => console.log("Error!", error));
         break;
 
       default:
         handle(req, res, parsedUrl);
         break;
     }
-  }).listen(3000, (err) => {
+  }).listen(3000, err => {
     if (err) throw err;
     console.log("> Ready on http://localhost:3000");
   });
