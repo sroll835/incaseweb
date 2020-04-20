@@ -2,7 +2,6 @@ import Head from "next/head";
 
 import Header from "./Header";
 import NavBar from "./NavBar";
-import NavBarSimple from "./NavBarSimple";
 
 import "./Layout.scss";
 import "./index.scss";
@@ -10,7 +9,7 @@ import "./index.scss";
 import navButtons from "../config/buttons";
 
 const Layout = (props) => {
-  const appTitle = "WHATABYTE";
+  const appTitle = `> WHATABYTE`;
 
   return (
     <div className="Layout">
@@ -22,7 +21,7 @@ const Layout = (props) => {
 
       <Header appTitle={appTitle} />
       <div className="Content">{props.children}</div>
-      <NavBarSimple />
+      <NavBar navButtons={navButtons} />
     </div>
   );
 };

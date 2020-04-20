@@ -18,21 +18,7 @@ class Header extends Component {
     super(props);
   }
   render() {
-    return (
-      <div className="Header">
-        <Menu customBurgerIcon={<img src={require("./image/menu1.png")} />}>
-          <a id="home" className="menu-item" href="/">
-            Home
-          </a>
-          <a id="mis cursos" className="menu-item" href="/mis cursos">
-            Mis cursos
-          </a>
-          <a id="perfil" className="bm-item menu-item" href="/perfil">
-            Perfil
-          </a>
-        </Menu>
-      </div>
-    );
+    return <div className="Header"></div>;
   }
 }
 

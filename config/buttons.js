@@ -1,31 +1,23 @@
+// config/buttons.js
+
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCompass,
-  faMapMarkerAlt,
-  faUser,
-  faShoppingCart,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCompass, faBook, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const navButtons = [
   {
-    label: "Explore",
-    path: "/explore",
+    label: "Explorar",
+    path: "/explorar",
     icon: <FontAwesomeIcon icon={faCompass} />,
   },
   {
-    label: "Near Me",
-    path: "/nearme",
-    icon: <FontAwesomeIcon icon={faMapMarkerAlt} />,
+    label: "Mis cursos",
+    path: "/mis_cursos",
+    icon: <FontAwesomeIcon icon={faBook} />,
   },
   {
-    label: "My Cart",
-    path: "/mycart",
-    icon: <FontAwesomeIcon icon={faShoppingCart} />,
-  },
-  {
-    label: "Profile",
-    path: "/profile",
+    label: "Perfil",
+    path: "/perfil",
     icon: <FontAwesomeIcon icon={faUser} />,
   },
 ];

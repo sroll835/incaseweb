@@ -89,7 +89,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 30px;
+  height: 60px;
   width: 100%;
   padding: 5px 0;
   background: #ffffff;
@@ -114,10 +114,10 @@
   cursor: pointer;
 }
 .NavButton .Icon {
-  font-size: 20px;
+  font-size: 23px;
 }
 .NavButton .Label {
-  font-size: 12px;
+  font-size: 15px;
   text-transform: capitalize;
 }
 .Layout {
