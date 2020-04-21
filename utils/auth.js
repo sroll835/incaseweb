@@ -4,11 +4,11 @@ import cookie from "js-cookie";
 
 export const auth = (ctx) => {
   const { token } = nextCookie(ctx);
-  console.log("token" + token);
+console.log("token" + token)
   if (ctx.req && !token) {
     ctx.res.writeHead(302, { Location: "/login" });
     ctx.res.end();
-    console.log("Esrribi algo");
+    console.log("Esrribi algo")
     return;
   }
 
