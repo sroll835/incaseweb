@@ -88,11 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 4);
-=======
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -112,9 +108,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_burger_menu__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_burger_menu__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Button */ "@material-ui/core/Button");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+var __jsx = react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement;
 
 
 
@@ -129,35 +127,32 @@ const style = {
 };
 
 
-class Header extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
+
+class Header extends react__WEBPACK_IMPORTED_MODULE_4__["Component"] {
   constructor(props) {
     super(props);
   }
 
   render() {
+    console.log("Header props" + JSON.stringify(this.props));
+
+    if (this.props.candoAction) {
+      return __jsx("div", {
+        className: "Header"
+      }, "Whatabyte", __jsx("div", {
+        style: {
+          float: 'right',
+          margin: 10
+        }
+      }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        variant: "contained",
+        color: "secondary"
+      }, "Secondary")));
+    }
+
     return __jsx("div", {
       className: "Header"
-<<<<<<< HEAD
-    }, __jsx(react_burger_menu__WEBPACK_IMPORTED_MODULE_1__["slide"], {
-      customBurgerIcon: __jsx("img", {
-        src: __webpack_require__(/*! ./image/menu1.png */ "./components/image/menu1.png")
-      })
-    }, __jsx("a", {
-      id: "home",
-      className: "menu-item",
-      href: "/"
-    }, "Home"), __jsx("a", {
-      id: "mis cursos",
-      className: "menu-item",
-      href: "/mis cursos"
-    }, "Mis cursos"), __jsx("a", {
-      id: "perfil",
-      className: "bm-item menu-item",
-      href: "/perfil"
-    }, "Perfil")));
-=======
-    });
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
+    }, " Whatabyte");
   }
 
 }
@@ -204,21 +199,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavButton */ "./components/NavButton.js");
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-<<<<<<< HEAD
-=======
 // components/NavBar.js
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 
 
 
 const NavBar = props => __jsx("div", {
   className: "NavBar"
-}, props.navButtons.map(button => __jsx(_NavButton__WEBPACK_IMPORTED_MODULE_2__["default"], {
-  key: button.path,
-  path: button.path,
-  label: button.label,
-  icon: button.icon
-})));
+}, props.navButtons.map(button => {
+  if (button.path === '/perfil') {
+    return __jsx(_NavButton__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      key: button.path,
+      path: button.path + '/' + props.userid,
+      label: button.label,
+      icon: button.icon
+    });
+  }
+
+  return __jsx(_NavButton__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    key: button.path,
+    path: button.path,
+    label: button.label,
+    icon: button.icon
+  });
+}));
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBar);
 
@@ -235,34 +238,6 @@ const NavBar = props => __jsx("div", {
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ "./components/NavBarSimple.js":
-/*!************************************!*\
-  !*** ./components/NavBarSimple.js ***!
-  \************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _NavBar_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavBar.scss */ "./components/NavBar.scss");
-/* harmony import */ var _NavBar_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_NavBar_scss__WEBPACK_IMPORTED_MODULE_1__);
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-const NavBarSimple = () => __jsx("div", {
-  className: "NavBar"
-});
-
-/* harmony default export */ __webpack_exports__["default"] = (NavBarSimple);
-
-/***/ }),
-
-=======
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 /***/ "./components/NavButton.js":
 /*!*********************************!*\
   !*** ./components/NavButton.js ***!
@@ -278,14 +253,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _NavButton_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NavButton.scss */ "./components/NavButton.scss");
-/* harmony import */ var _NavButton_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_NavButton_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _NavButton_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavButton.scss */ "./components/NavButton.scss");
+/* harmony import */ var _NavButton_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_NavButton_scss__WEBPACK_IMPORTED_MODULE_4__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-<<<<<<< HEAD
-=======
 // components/NavButton.js
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
+
 
 
 
@@ -315,20 +290,6 @@ const NavButton = props => __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ "./components/image/menu1.png":
-/*!************************************!*\
-  !*** ./components/image/menu1.png ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAA5klEQVRIS+3WLVIDQRCG4bf3AJDgsOA4BwiKcAAMxSFAUVwjB+BnPQUxcI5YMPzY3Zh1vBiiO8wuqDz666qumeqeQd1Sa3XhcBbqnToOtQZO+Bt1qA2wmSULNRXwnqV6eKuAc6DLkgU64CIA1B3gABhlVStqgKeIeM2Ca4QawBkwATayghW1wANwjXqVjWUPl6F+ANtZS4U+qyzR01cFTLNUD9PlJZ8CxwPupBa4B26z4BrLZbcL7A+87J4j4gX1SO2yiSnQqYehzoG9rKVC8395MmdZqodH1PHPF6PNDvUXWvVGHX0Dj0mvKa/I0CgAAAAASUVORK5CYII="
-
-/***/ }),
-
-=======
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 /***/ "./components/index.scss":
 /*!*******************************!*\
   !*** ./components/index.scss ***!
@@ -355,20 +316,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
 /* harmony import */ var _NavBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NavBar */ "./components/NavBar.js");
-<<<<<<< HEAD
-/* harmony import */ var _NavBarSimple__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavBarSimple */ "./components/NavBarSimple.js");
-/* harmony import */ var _Layout_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Layout.scss */ "./components/Layout.scss");
-/* harmony import */ var _Layout_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_Layout_scss__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./index.scss */ "./components/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _config_buttons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../config/buttons */ "./config/buttons.js");
-=======
 /* harmony import */ var _Layout_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Layout.scss */ "./components/Layout.scss");
 /* harmony import */ var _Layout_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_Layout_scss__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./components/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _config_buttons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../config/buttons */ "./config/buttons.js");
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -378,15 +330,12 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-<<<<<<< HEAD
+const Layout = props => {
+  let candoAction = true;
+  props.auth ? candoAction : !candoAction; //console.log("can" + candoAction)
 
-const Layout = props => {
-  const appTitle = "WHATABYTE";
-=======
-const Layout = props => {
-  console.log(props);
-  const appTitle = `> WHATABYTE`;
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
+  const appTitle = `> WHATABYTE`; //console.log("lAYOTU :" + JSON.stringify(props));
+
   return __jsx("div", {
     className: "Layout"
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("title", null, "WHATABYTE"), __jsx("meta", {
@@ -395,16 +344,14 @@ const Layout = props => {
   }), __jsx("meta", {
     charSet: "utf-8"
   })), __jsx(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    appTitle: appTitle
+    appTitle: appTitle,
+    candoAction: candoAction
   }), __jsx("div", {
     className: "Content"
-<<<<<<< HEAD
-  }, props.children), __jsx(_NavBarSimple__WEBPACK_IMPORTED_MODULE_4__["default"], null));
-=======
   }, props.children), __jsx(_NavBar__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    navButtons: _config_buttons__WEBPACK_IMPORTED_MODULE_6__["default"]
+    navButtons: _config_buttons__WEBPACK_IMPORTED_MODULE_6__["default"],
+    userid: props.userid
   }));
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Layout);
@@ -427,41 +374,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__);
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-<<<<<<< HEAD
-=======
 // config/buttons.js
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 
 
 
 const navButtons = [{
-<<<<<<< HEAD
-  label: "Explore",
-  path: "/explore",
-=======
   label: "Explorar",
   path: "/explorar",
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
   icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faCompass"]
   })
 }, {
-<<<<<<< HEAD
-  label: "Near Me",
-  path: "/nearme",
-  icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faMapMarkerAlt"]
-  })
-}, {
-  label: "My Cart",
-  path: "/mycart",
-  icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faShoppingCart"]
-  })
-}, {
-  label: "Profile",
-  path: "/profile",
-=======
   label: "Mis cursos",
   path: "/mis_cursos",
   icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
@@ -470,7 +393,6 @@ const navButtons = [{
 }, {
   label: "Perfil",
   path: "/perfil",
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
   icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faUser"]
   })
@@ -2173,8 +2095,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/auth */ "./utils/auth.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_6__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -2183,9 +2108,15 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const cookies = new react_cookie__WEBPACK_IMPORTED_MODULE_2__["Cookies"]();
 
-const Index = props => __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_3__["default"], null, __jsx("br", null), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-  href: "/index"
-}, __jsx("a", null, " Welcome to WHATABYTE! Start Exploring Now")));
+function Index(props) {
+  console.log("mis props" + JSON.stringify(props));
+  return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    auth: props.auth,
+    userid: props.user_id
+  }, __jsx("br", null), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/index"
+  }, __jsx("a", null, " Welcome to WHATABYTE! Start Exploring Now")));
+}
 
 Index.getInitialProps = async ctx => {
   // Must validate JWT
@@ -2195,20 +2126,17 @@ Index.getInitialProps = async ctx => {
   const auth_token = await Object(_utils_auth__WEBPACK_IMPORTED_MODULE_4__["auth"])(ctx);
 
   if (auth_token === null) {
-<<<<<<< HEAD
-    next_router__WEBPACK_IMPORTED_MODULE_5___default.a.push('/login');
-=======
+    console.log("No tengo token ");
     next_router__WEBPACK_IMPORTED_MODULE_5___default.a.push("/login");
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
   } // Must return an object
 
 
   return {
-    auth_token
+    auth: auth_token
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Index);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["connect"])(state => state)(Index));
 
 /***/ }),
 
@@ -2322,22 +2250,14 @@ const logout = () => {
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ 4:
-=======
-/***/ 3:
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\Riano\Documents\gocar\incaseweb\pages\index.js */"./pages/index.js");
-=======
-module.exports = __webpack_require__(/*! C:\Users\Sebastian\Desktop\incaseweb\pages\index.js */"./pages/index.js");
->>>>>>> 13e62fbfd5e246e1868f57d849a6ce8167f0b33f
 
 
 /***/ }),
@@ -2361,6 +2281,17 @@ module.exports = require("@fortawesome/free-solid-svg-icons");
 /***/ (function(module, exports) {
 
 module.exports = require("@fortawesome/react-fontawesome");
+
+/***/ }),
+
+/***/ "@material-ui/core/Button":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/Button" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Button");
 
 /***/ }),
 
@@ -2471,6 +2402,17 @@ module.exports = require("react-cookie");
 /***/ (function(module, exports) {
 
 module.exports = require("react-is");
+
+/***/ }),
+
+/***/ "react-redux":
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
 
 /***/ }),
 

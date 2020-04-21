@@ -6,12 +6,12 @@ import Layout from "../components/layout";
 import { login } from "../api/login";
 import { Cookies } from "react-cookie";
 import Router from "next/router";
-
+import {connect} from "react-redux";
 const appTitle = `> WHATABYTE`;
 const cookies = new Cookies();
 class Login extends Component {
-  static getInitialProps({ req }) {
-    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  static getInitialProps({ store,req }) {
+    console.log("la store:"+store)
 
     const apiUrl = "http://localhost:8080/auth/login";
 
@@ -28,6 +28,7 @@ class Login extends Component {
       error: "",
       token: cookies.get("token") || null,
     };
+    
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
@@ -67,6 +68,8 @@ class Login extends Component {
         this.setState({
           token: token,
         });
+        const action = { type: 'ADD_USER_ID' ,payload: data.user_id }
+        this.props.dispatch(action);
         console.log("Login succesfully");
         Router.push("/");
         //   const { access_token } = await response.json();
@@ -93,6 +96,7 @@ class Login extends Component {
   }
 
   render() {
+    console.log("login" + JSON.stringify(this.props))
     return (
       <div className="Layout">
         <Head>
@@ -103,6 +107,12 @@ class Login extends Component {
 
         <Header appTitle={appTitle} />
         <div className="Content">
+          <div>
+          <h3>Bienvenido a {appTitle} , Porfavor digite su usuario y contrasena :  </h3>
+
+           
+          </div>
+       
           <div className="login">
             <form onSubmit={this.handleSubmit}>
               <label htmlFor="correo">username</label>
@@ -170,4 +180,7 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default  connect(
+  (state) => state,
+ 
+)(Login);

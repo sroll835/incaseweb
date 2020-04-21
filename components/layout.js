@@ -9,19 +9,24 @@ import "./index.scss";
 import navButtons from "../config/buttons";
 
 const Layout = (props) => {
-  console.log(props);
+  
+  let candoAction = true;
+  
+  props.auth ? candoAction : !candoAction;
+  //console.log("can" + candoAction)
   const appTitle = `> WHATABYTE`;
+  //console.log("lAYOTU :" + JSON.stringify(props));
   return (
     <div className="Layout">
-      <Head>
+      <Head >
         <title>WHATABYTE</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
       </Head>
 
-      <Header appTitle={appTitle} />
+      <Header appTitle={appTitle} candoAction={candoAction}  />
       <div className="Content">{props.children}</div>
-      <NavBar navButtons={navButtons} />
+      <NavBar navButtons={navButtons} userid={props.userid} />
     </div>
   );
 };
