@@ -6,7 +6,7 @@ import NavButton from "./NavButton";
 const NavBar = (props) => (
   <div className="NavBar">
     {props.navButtons.map((button) => {
-      if(button.path === '/perfil'){
+      if(button.path === '/usuarios'){
        return(
       
       <NavButton

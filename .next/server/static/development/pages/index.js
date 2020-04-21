@@ -88,11 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-<<<<<<< HEAD
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
-=======
 /******/ 	return __webpack_require__(__webpack_require__.s = 3);
->>>>>>> 565d896f08845a2f9e31f1c1c0ba2c31e423a33d
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -156,11 +152,7 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_4__["Component"] {
 
     return __jsx("div", {
       className: "Header"
-<<<<<<< HEAD
     }, " Whatabyte");
-=======
-    });
->>>>>>> 565d896f08845a2f9e31f1c1c0ba2c31e423a33d
   }
 
 }
@@ -214,7 +206,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 const NavBar = props => __jsx("div", {
   className: "NavBar"
 }, props.navButtons.map(button => {
-  if (button.path === '/perfil') {
+  if (button.path === '/usuarios') {
     return __jsx(_NavButton__WEBPACK_IMPORTED_MODULE_2__["default"], {
       key: button.path,
       path: button.path + '/' + props.userid,
@@ -339,16 +331,11 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const Layout = props => {
-<<<<<<< HEAD
   let candoAction = true;
   props.auth ? candoAction : !candoAction; //console.log("can" + candoAction)
 
   const appTitle = `> WHATABYTE`; //console.log("lAYOTU :" + JSON.stringify(props));
 
-=======
-  console.log(props);
-  const appTitle = `> WHATABYTE`;
->>>>>>> 565d896f08845a2f9e31f1c1c0ba2c31e423a33d
   return __jsx("div", {
     className: "Layout"
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("title", null, "WHATABYTE"), __jsx("meta", {
@@ -405,7 +392,7 @@ const navButtons = [{
   })
 }, {
   label: "Perfil",
-  path: "/perfil",
+  path: "/usuarios",
   icon: __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faUser"]
   })
@@ -2139,10 +2126,7 @@ Index.getInitialProps = async ctx => {
   const auth_token = await Object(_utils_auth__WEBPACK_IMPORTED_MODULE_4__["auth"])(ctx);
 
   if (auth_token === null) {
-<<<<<<< HEAD
     console.log("No tengo token ");
-=======
->>>>>>> 565d896f08845a2f9e31f1c1c0ba2c31e423a33d
     next_router__WEBPACK_IMPORTED_MODULE_5___default.a.push("/login");
   } // Must return an object
 
@@ -2266,22 +2250,14 @@ const logout = () => {
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ 4:
-=======
 /***/ 3:
->>>>>>> 565d896f08845a2f9e31f1c1c0ba2c31e423a33d
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\Riano\Documents\gocar\incaseweb\pages\index.js */"./pages/index.js");
-=======
-module.exports = __webpack_require__(/*! C:\Users\Sebastian\Desktop\incaseweb\pages\index.js */"./pages/index.js");
->>>>>>> 565d896f08845a2f9e31f1c1c0ba2c31e423a33d
 
 
 /***/ }),
