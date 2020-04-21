@@ -5,6 +5,8 @@ import App from "next/app";
 import React from "react";
 import { Provider } from 'react-redux'
 import store from '../store/ConfigureStore'
+import {  persistStore} from "redux-persist";
+import { PersistGate } from 'redux-persist/integration/react'
 class IncaseWeb extends App {
 
    
@@ -20,11 +22,14 @@ class IncaseWeb extends App {
 }*/
     render() {
         const {Component, pageProps} = this.props;
+        const persistor = persistStore(store); 
   //console.log("hello _app,js")
         //console.log(this.props.data); <PersistGate persistor={store.__persistor} loading={<div>Loading</div>}>
         return (
                <Provider  store={store}>
+                     <PersistGate loading={null} persistor={persistor}>
                  <Component {...pageProps} />
+                 </PersistGate>
                </Provider>
                
          

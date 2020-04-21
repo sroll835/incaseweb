@@ -409,8 +409,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _store_ConfigureStore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/ConfigureStore */ "./store/ConfigureStore.js");
+/* harmony import */ var redux_persist__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux-persist */ "redux-persist");
+/* harmony import */ var redux_persist__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(redux_persist__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var redux_persist_integration_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux-persist/integration/react */ "redux-persist/integration/react");
+/* harmony import */ var redux_persist_integration_react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(redux_persist_integration_react__WEBPACK_IMPORTED_MODULE_5__);
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 // import App from 'next/app'
+
+
 
 
 
@@ -431,12 +437,16 @@ class IncaseWeb extends next_app__WEBPACK_IMPORTED_MODULE_0___default.a {
     const {
       Component,
       pageProps
-    } = this.props; //console.log("hello _app,js")
+    } = this.props;
+    const persistor = Object(redux_persist__WEBPACK_IMPORTED_MODULE_4__["persistStore"])(_store_ConfigureStore__WEBPACK_IMPORTED_MODULE_3__["default"]); //console.log("hello _app,js")
     //console.log(this.props.data); <PersistGate persistor={store.__persistor} loading={<div>Loading</div>}>
 
     return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
       store: _store_ConfigureStore__WEBPACK_IMPORTED_MODULE_3__["default"]
-    }, __jsx(Component, pageProps));
+    }, __jsx(redux_persist_integration_react__WEBPACK_IMPORTED_MODULE_5__["PersistGate"], {
+      loading: null,
+      persistor: persistor
+    }, __jsx(Component, pageProps)));
   }
 
 } // Only uncomment this method if you have blocking data requirements for  </PersistGate>
@@ -468,9 +478,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "redux");
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _reducers_UserReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers/UserReducer */ "./store/reducers/UserReducer.js");
+/* harmony import */ var redux_persist__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux-persist */ "redux-persist");
+/* harmony import */ var redux_persist__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(redux_persist__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var redux_persist_lib_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-persist/lib/storage */ "redux-persist/lib/storage");
+/* harmony import */ var redux_persist_lib_storage__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(redux_persist_lib_storage__WEBPACK_IMPORTED_MODULE_3__);
 
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_UserReducer__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+ // defaults to localStorage for web
+
+const persistConfig = {
+  key: 'root',
+  storage: (redux_persist_lib_storage__WEBPACK_IMPORTED_MODULE_3___default())
+};
+const persistedReducer = Object(redux_persist__WEBPACK_IMPORTED_MODULE_2__["persistReducer"])(persistConfig, _reducers_UserReducer__WEBPACK_IMPORTED_MODULE_1__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(persistedReducer));
 
 /***/ }),
 
@@ -556,6 +578,39 @@ module.exports = require("react-redux");
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
+
+/***/ }),
+
+/***/ "redux-persist":
+/*!********************************!*\
+  !*** external "redux-persist" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-persist");
+
+/***/ }),
+
+/***/ "redux-persist/integration/react":
+/*!**************************************************!*\
+  !*** external "redux-persist/integration/react" ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-persist/integration/react");
+
+/***/ }),
+
+/***/ "redux-persist/lib/storage":
+/*!********************************************!*\
+  !*** external "redux-persist/lib/storage" ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-persist/lib/storage");
 
 /***/ }),
 
