@@ -85,7 +85,7 @@ var Header = /*#__PURE__*/function (_Component) {
           onClick: this.handleLogout,
           variant: "contained",
           color: "secondary"
-        }, "Secondary")));
+        }, "Cerrar Sesion")));
       }
 
       return __jsx("div", {
@@ -41779,7 +41779,7 @@ var logout = function logout() {
 
 /***/ }),
 
-/***/ 14:
+/***/ 12:
 /*!****************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Cindex.js ***!
   \****************************************************************************************************************************************/
@@ -41802,5 +41802,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[14,"static/runtime/webpack.js","styles"]]]);
+},[[12,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map

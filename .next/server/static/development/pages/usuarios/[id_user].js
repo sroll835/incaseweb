@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -155,7 +155,7 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_5__["Component"] {
         onClick: this.handleLogout,
         variant: "contained",
         color: "secondary"
-      }, "Secondary")));
+      }, "Cerrar Sesion")));
     }
 
     return __jsx("div", {
@@ -2234,7 +2234,7 @@ const logout = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*******************************************!*\
   !*** multi ./pages/usuarios/[id_user].js ***!
   \*******************************************/

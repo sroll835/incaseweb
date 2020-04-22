@@ -7,7 +7,9 @@ import { login } from "../api/login";
 import { Cookies } from "react-cookie";
 import Router from "next/router";
 import {connect} from "react-redux";
-const appTitle = `> WHATABYTE`;
+import Button from "@material-ui/core/Button";
+import { green, purple } from '@material-ui/core/colors';
+const appTitle = `WHATABYTE`;
 const cookies = new Cookies();
 class Login extends Component {
   static getInitialProps({ store,req }) {
@@ -65,9 +67,6 @@ class Login extends Component {
       if (data.status === 200) {
         const token = data.access_token;
         cookies.set("token", token);
-        this.setState({
-          token: token,
-        });
         const action = { type: 'ADD_USER_ID' ,payload: data.user_id }
         this.props.dispatch(action);
         console.log("Login succesfully");
@@ -114,7 +113,7 @@ class Login extends Component {
           </div>
        
           <div className="login">
-            <form onSubmit={this.handleSubmit}>
+            <form>
               <label htmlFor="correo">username</label>
 
               <input
@@ -132,12 +131,12 @@ class Login extends Component {
                 value={this.state.clave}
                 onChange={this.handleChangePassword}
               />
+              
+              <Button variant="contained" color="primary" onClick={this.handleSubmit}>
+  Iniciar Sesion
+</Button>
 
-              <button type="submit">Login</button>
-
-              <p className={`token ${!this.state.token && "show"}`}>
-                {this.state.token && `Token: ${this.state.token}`}
-              </p>
+          
 
               <p className={`error ${this.state.error && "show"}`}>
                 {this.state.error && `Error: ${this.state.error}`}

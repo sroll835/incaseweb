@@ -32,7 +32,7 @@ class Header extends Component {
       Whatabyte
       <div  style={{  float:'right', margin: 10 }}>
       <Button onClick={this.handleLogout} variant="contained" color="secondary">
-        Secondary
+        Cerrar Sesion
       </Button>
       </div>
    
