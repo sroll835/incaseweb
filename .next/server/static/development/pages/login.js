@@ -156,11 +156,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_burger_menu__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_burger_menu__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Button */ "@material-ui/core/Button");
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-var __jsx = react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement;
+/* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/auth */ "./utils/auth.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Button */ "@material-ui/core/Button");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
+
 
 
 
@@ -176,9 +178,14 @@ const style = {
 
 
 
-class Header extends react__WEBPACK_IMPORTED_MODULE_4__["Component"] {
+class Header extends react__WEBPACK_IMPORTED_MODULE_5__["Component"] {
   constructor(props) {
     super(props);
+  }
+
+  handleLogout() {
+    console.log("entrando a hacer logof");
+    Object(_utils_auth__WEBPACK_IMPORTED_MODULE_3__["logout"])();
   }
 
   render() {
@@ -192,7 +199,8 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_4__["Component"] {
           float: 'right',
           margin: 10
         }
-      }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        onClick: this.handleLogout,
         variant: "contained",
         color: "secondary"
       }, "Secondary")));
@@ -2322,6 +2330,116 @@ class Login extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
 
 /***/ }),
 
+/***/ "./utils/auth.js":
+/*!***********************!*\
+  !*** ./utils/auth.js ***!
+  \***********************/
+/*! exports provided: auth, withAuthSync, logout */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "auth", function() { return auth; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "withAuthSync", function() { return withAuthSync; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next-cookies */ "next-cookies");
+/* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_cookies__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! js-cookie */ "js-cookie");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_3__);
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+const auth = ctx => {
+  const {
+    token
+  } = next_cookies__WEBPACK_IMPORTED_MODULE_2___default()(ctx);
+  console.log("token" + token);
+
+  if (ctx.req && !token) {
+    ctx.res.writeHead(302, {
+      Location: "/login"
+    });
+    ctx.res.end();
+    console.log("Esrribi algo");
+    return;
+  }
+
+  if (!token) {
+    next_router__WEBPACK_IMPORTED_MODULE_1___default.a.push("/login");
+  }
+
+  return token;
+}; // Gets the display name of a JSX component for dev tools
+
+const getDisplayName = Component => Component.displayName || Component.name || "Component";
+
+const withAuthSync = WrappedComponent => {
+  var _class, _temp;
+
+  return _temp = _class = class extends Component {
+    static async getInitialProps(ctx) {
+      const token = auth(ctx);
+      const componentProps = WrappedComponent.getInitialProps && (await WrappedComponent.getInitialProps(ctx));
+      return _objectSpread({}, componentProps, {
+        token
+      });
+    } // New: We bind our methods
+
+
+    constructor(props) {
+      super(props);
+      this.syncLogout = this.syncLogout.bind(this);
+    } // New: Add event listener when a restricted Page Component mounts
+
+
+    componentDidMount() {
+      window.addEventListener("storage", this.syncLogout);
+    } // New: Remove event listener when the Component unmount and
+    // delete all data
+
+
+    componentWillUnmount() {
+      window.removeEventListener("storage", this.syncLogout);
+      window.localStorage.removeItem("logout");
+    } // New: Method to redirect the user when the event is called
+
+
+    syncLogout(event) {
+      if (event.key === "logout") {
+        console.log("logged out from storage!");
+        next_router__WEBPACK_IMPORTED_MODULE_1___default.a.push("/login");
+      }
+    }
+
+    render() {
+      return __jsx(WrappedComponent, this.props);
+    }
+
+  }, _defineProperty(_class, "displayName", `withAuthSync(${getDisplayName(WrappedComponent)})`), _temp;
+};
+const logout = () => {
+  js_cookie__WEBPACK_IMPORTED_MODULE_3___default.a.remove("token"); // To trigger the event listener we save some random data into the `logout` key
+
+  window.localStorage.setItem("logout", Date.now()); // new
+
+  next_router__WEBPACK_IMPORTED_MODULE_1___default.a.push("/login");
+};
+
+/***/ }),
+
 /***/ 5:
 /*!******************************!*\
   !*** multi ./pages/login.js ***!
@@ -2378,6 +2496,17 @@ module.exports = require("isomorphic-unfetch");
 
 /***/ }),
 
+/***/ "js-cookie":
+/*!****************************!*\
+  !*** external "js-cookie" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("js-cookie");
+
+/***/ }),
+
 /***/ "micro":
 /*!************************!*\
   !*** external "micro" ***!
@@ -2386,6 +2515,17 @@ module.exports = require("isomorphic-unfetch");
 /***/ (function(module, exports) {
 
 module.exports = require("micro");
+
+/***/ }),
+
+/***/ "next-cookies":
+/*!*******************************!*\
+  !*** external "next-cookies" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next-cookies");
 
 /***/ }),
 

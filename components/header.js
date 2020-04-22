@@ -1,7 +1,7 @@
 import "./Header.scss";
 import { slide as Menu } from "react-burger-menu";
 import Link from "next/link";
-
+import { logout } from "../utils/auth";
 const style = {
   background: "linear-gradient(45deg, #66bb6a 30%, #a5d6a7 90%)",
   borderRadius: 3,
@@ -19,6 +19,11 @@ class Header extends Component {
     super(props);
     
   }
+
+  handleLogout(){ 
+   console.log("entrando a hacer logof");
+   logout();
+   }
   render() {
     console.log("Header props" + JSON.stringify(this.props))
     if(this.props.candoAction){
@@ -26,7 +31,7 @@ class Header extends Component {
       return <div className="Header">
       Whatabyte
       <div  style={{  float:'right', margin: 10 }}>
-      <Button variant="contained" color="secondary">
+      <Button onClick={this.handleLogout} variant="contained" color="secondary">
         Secondary
       </Button>
       </div>
