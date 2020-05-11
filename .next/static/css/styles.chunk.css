@@ -102,7 +102,7 @@
   text-decoration: none;
 }
 .NavBar .active {
-  color: "blue";
+  color: #fa4141;
 }
 .NavButton {
   display: flex;
