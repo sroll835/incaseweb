@@ -142,6 +142,8 @@
 }
 .Layout .Content a {
   color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
 }
 * {
   box-sizing: border-box;
