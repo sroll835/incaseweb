@@ -29,7 +29,11 @@
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
+<<<<<<< HEAD
             injectCss(link, link.href.split("?")[0] + "?unix=1588642533261");
+=======
+            injectCss(link, link.href.split("?")[0] + "?unix=1589377439877");
+>>>>>>> e5b6e3db6941ae41843a155b48b0a5c051ced8fc
           });
       }
     }
@@ -66,7 +70,11 @@
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
+<<<<<<< HEAD
             injectCss(link, link.href.split("?")[0] + "?unix=1588642533247");
+=======
+            injectCss(link, link.href.split("?")[0] + "?unix=1589377439865");
+>>>>>>> e5b6e3db6941ae41843a155b48b0a5c051ced8fc
           });
       }
     }
@@ -103,7 +111,11 @@
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
+<<<<<<< HEAD
             injectCss(link, link.href.split("?")[0] + "?unix=1588642533251");
+=======
+            injectCss(link, link.href.split("?")[0] + "?unix=1589377439857");
+>>>>>>> e5b6e3db6941ae41843a155b48b0a5c051ced8fc
           });
       }
     }
@@ -140,7 +152,11 @@
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
+<<<<<<< HEAD
             injectCss(link, link.href.split("?")[0] + "?unix=1588642532321");
+=======
+            injectCss(link, link.href.split("?")[0] + "?unix=1589377438435");
+>>>>>>> e5b6e3db6941ae41843a155b48b0a5c051ced8fc
           });
       }
     }
@@ -177,7 +193,11 @@
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
+<<<<<<< HEAD
             injectCss(link, link.href.split("?")[0] + "?unix=1588642531877");
+=======
+            injectCss(link, link.href.split("?")[0] + "?unix=1589377437961");
+>>>>>>> e5b6e3db6941ae41843a155b48b0a5c051ced8fc
           });
       }
     }

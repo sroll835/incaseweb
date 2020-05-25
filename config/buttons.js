@@ -17,7 +17,7 @@ const navButtons = [
   },
   {
     label: "Perfil",
-    path: "/perfil",
+    path: "/usuarios",
     icon: <FontAwesomeIcon icon={faUser} />,
   },
 ];

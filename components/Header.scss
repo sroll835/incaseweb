@@ -79,8 +79,8 @@
 }
 .Header {
   // display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+ // align-items: center;
 
   height: 50px;
   width: 100%;
@@ -95,8 +95,8 @@
 
   background: linear-gradient(
     45deg,
-    rgb(254, 107, 139) 30%,
-    rgb(255, 142, 83) 90%
+    #68B2A0 90%,
+    #CDE0C9 30%
   );
 
   cursor: pointer;

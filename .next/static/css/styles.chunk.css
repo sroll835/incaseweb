@@ -73,8 +73,7 @@
 }
 
 .Header {
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
   height: 50px;
   width: 100%;
   font-family: "Share Tech Mono", monospace;
@@ -82,7 +81,7 @@
   font-weight: bold;
   color: #fff;
   text-transform: uppercase;
-  background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
+  background: linear-gradient(45deg, #68B2A0 90%, #CDE0C9 30%);
   cursor: pointer;
 }
 .NavBar {
@@ -92,10 +91,10 @@
   height: 60px;
   width: 100%;
   padding: 5px 0;
-  background: #ffffff;
+  background: #68B2A0;
   font-family: "Merriweather Sans", sans-serif;
   font-size: 22px;
-  color: #a1a1a1;
+  color: #ffffff;
   box-shadow: 0px -2px 15px rgba(50, 50, 50, 0.45);
 }
 .NavBar a {
@@ -143,6 +142,8 @@
 }
 .Layout .Content a {
   color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
 }
 * {
   box-sizing: border-box;
