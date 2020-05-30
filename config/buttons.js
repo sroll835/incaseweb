@@ -12,7 +12,7 @@ const navButtons = [
   },
   {
     label: "Mis cursos",
-    path: "/mis_cursos",
+    path: "/cursos",
     icon: <FontAwesomeIcon icon={faBook} />,
   },
   {

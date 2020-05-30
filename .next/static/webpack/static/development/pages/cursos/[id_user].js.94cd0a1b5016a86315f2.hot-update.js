@@ -1,0 +1,306 @@
+webpackHotUpdate("static\\development\\pages\\cursos\\[id_user].js",{
+
+/***/ "./node_modules/@material-ui/core/esm/Card/Card.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Card/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/CardActions/CardActions.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/CardActions/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/CardContent/CardContent.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/CardContent/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Collapse/Collapse.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Collapse/StrictModeCollapse.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Collapse/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Fade/Fade.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Fade/StrictModeFade.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Fade/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Grow/Grow.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Grow/StrictModeGrow.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Grow/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Paper/Paper.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Paper/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Slide/Slide.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Slide/StrictModeSlide.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Slide/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/SvgIcon/SvgIcon.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/SvgIcon/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Typography/Typography.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Typography/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Zoom/StrictModeZoom.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Zoom/Zoom.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/Zoom/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/styles/createMuiStrictModeTheme.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/styles/createStyles.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/styles/cssUtils.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/styles/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/styles/makeStyles.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/styles/responsiveFontSizes.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/styles/styled.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/styles/useTheme.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/styles/withTheme.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/transitions/utils.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/utils/createSvgIcon.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/utils/debounce.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/utils/deprecatedPropType.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/utils/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/utils/isMuiElement.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/utils/ownerDocument.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/utils/ownerWindow.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/utils/requirePropFactory.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/utils/unstable_useId.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/utils/unsupportedProp.js":
+false,
+
+/***/ "./node_modules/@material-ui/core/esm/utils/useControlled.js":
+false,
+
+/***/ "./node_modules/@material-ui/react-transition-group/lib/esm/CSSTransition.js":
+false,
+
+/***/ "./node_modules/@material-ui/react-transition-group/lib/esm/ReplaceTransition.js":
+false,
+
+/***/ "./node_modules/@material-ui/react-transition-group/lib/esm/Transition.js":
+false,
+
+/***/ "./node_modules/@material-ui/react-transition-group/lib/esm/TransitionGroup.js":
+false,
+
+/***/ "./node_modules/@material-ui/react-transition-group/lib/esm/TransitionGroupContext.js":
+false,
+
+/***/ "./node_modules/@material-ui/react-transition-group/lib/esm/config.js":
+false,
+
+/***/ "./node_modules/@material-ui/react-transition-group/lib/esm/index.js":
+false,
+
+/***/ "./node_modules/@material-ui/react-transition-group/lib/esm/utils/ChildMapping.js":
+false,
+
+/***/ "./node_modules/@material-ui/react-transition-group/lib/esm/utils/PropTypes.js":
+false,
+
+/***/ "./node_modules/dom-helpers/class/addClass.js":
+false,
+
+/***/ "./node_modules/dom-helpers/class/hasClass.js":
+false,
+
+/***/ "./node_modules/dom-helpers/class/removeClass.js":
+false,
+
+/***/ "./pages/cursos/[id_user].js":
+/*!***********************************!*\
+  !*** ./pages/cursos/[id_user].js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/layout */ "./components/layout.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/next/dist/build/polyfills/fetch/index.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _API_helpersAPI__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../API/helpersAPI */ "./API/helpersAPI.js");
+
+
+
+
+
+
+var _jsxFileName = "C:\\Users\\Riano\\Documents\\gocar\\incaseweb\\pages\\cursos\\[id_user].js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
+
+function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+
+
+
+
+var useStyles = makeStyles({
+  root: {
+    minWidth: 275
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)'
+  },
+  title: {
+    fontSize: 14
+  },
+  pos: {
+    marginBottom: 12
+  }
+});
+
+var UserCursos = /*#__PURE__*/function (_Component) {
+  Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(UserCursos, _Component);
+
+  var _super = _createSuper(UserCursos);
+
+  function UserCursos(props) {
+    var _this;
+
+    Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, UserCursos);
+
+    _this = _super.call(this, props);
+    console.log("User props " + JSON.stringify(_this.props)); //const classes = useStyles();
+
+    return _this;
+  }
+
+  Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(UserCursos, [{
+    key: "render",
+    value: function render() {
+      return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33,
+          columnNumber: 7
+        }
+      }, "jsjsjssj");
+    }
+  }]);
+
+  return UserCursos;
+}(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
+
+UserCursos.getInitialProps = function _callee(_ref) {
+  var query, id_usuario, userwithcursos, cursos;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          query = _ref.query;
+          console.log(query);
+          id_usuario = query.id_user.split('_')[1];
+          _context.next = 5;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(Object(_API_helpersAPI__WEBPACK_IMPORTED_MODULE_9__["getUserwithCursosByUserId"])(id_usuario));
+
+        case 5:
+          userwithcursos = _context.sent;
+          cursos = userwithcursos[0].cursos; //console.log("Hola " + userwithcursos[0].cursos);
+
+          return _context.abrupt("return", {
+            queryby: query.id_user,
+            cursos_usuario: cursos
+          });
+
+        case 8:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, null, null, null, Promise);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (UserCursos);
+
+/***/ })
+
+})
+//# sourceMappingURL=[id_user].js.94cd0a1b5016a86315f2.hot-update.js.map

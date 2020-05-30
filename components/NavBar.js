@@ -18,6 +18,20 @@ const NavBar = (props) => (
       />
 
     )}
+    if(button.path === '/cursos'){
+      return(
+     
+     <NavButton
+       key={button.path}
+       path={button.path + '/'+ props.userid}
+       label={button.label}
+       icon={button.icon}
+
+     />
+
+   )}
+
+
     return(
       <NavButton
         key={button.path}

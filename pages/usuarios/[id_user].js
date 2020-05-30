@@ -18,7 +18,7 @@ class UserProfile extends Component {
 
 UserProfile.getInitialProps = async ({ query }) => {
   console.log(query);
-
+   
   return { queryby: query.id_user };
 };
 export default UserProfile;

@@ -28,9 +28,10 @@ Index.getInitialProps = async (ctx) => {
     console.log("No tengo token ")
     Router.push("/login");
   }
-
+  
+  
   // Must return an object
-  return { auth : auth_token };
+  return { auth : auth_token  };
 };
 
  export default  connect(
