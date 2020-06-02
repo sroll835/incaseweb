@@ -1,24 +1,35 @@
 import Layout from "../../components/layout";
-
 import React, { Component } from "react";
+import fetch from "isomorphic-unfetch";
 
 class UserProfile extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      nombre: this.props.dataUsuario[0].nombre,
+      apellido: this.props.dataUsuario[0].apellido,
+      correo: this.props.dataUsuario[0].correo,
+      clave: this.props.dataUsuario[0].clave,
+    };
   }
 
   render() {
+    console.log(JSON.stringify(this.props) + "hola amigos");
     return (
       <Layout>
-        <h1>hola soy el usuario: {this.props.queryby}</h1>
+        <h1>hola soy el usuario: {this.state.nombre}</h1>
       </Layout>
     );
   }
 }
 
 UserProfile.getInitialProps = async ({ query }) => {
-  console.log(query);
-
-  return { queryby: query.id_user };
+  var usuario = query.id_user.split("_")[1];
+  const res = await fetch("http://localhost:8080/usuarios/" + usuario);
+  const resJSON = await res.json();
+  console.log(resJSON);
+  return { dataUsuario: resJSON };
 };
+
 export default UserProfile;

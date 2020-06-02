@@ -20,16 +20,13 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-<<<<<<< HEAD
-    "/index": [
+    "/login": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-=======
->>>>>>> e5b6e3db6941ae41843a155b48b0a5c051ced8fc
-    "/login": [
+    "/usuarios/[id_user]": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",

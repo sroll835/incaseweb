@@ -413,7 +413,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_persist__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(redux_persist__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var redux_persist_integration_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux-persist/integration/react */ "redux-persist/integration/react");
 /* harmony import */ var redux_persist_integration_react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(redux_persist_integration_react__WEBPACK_IMPORTED_MODULE_5__);
+var _jsxFileName = "C:\\Users\\Sebastian\\Desktop\\incaseweb\\pages\\_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 // import App from 'next/app'
 
 
@@ -442,11 +446,30 @@ class IncaseWeb extends next_app__WEBPACK_IMPORTED_MODULE_0___default.a {
     //console.log(this.props.data); <PersistGate persistor={store.__persistor} loading={<div>Loading</div>}>
 
     return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
-      store: _store_ConfigureStore__WEBPACK_IMPORTED_MODULE_3__["default"]
+      store: _store_ConfigureStore__WEBPACK_IMPORTED_MODULE_3__["default"],
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29,
+        columnNumber: 16
+      }
     }, __jsx(redux_persist_integration_react__WEBPACK_IMPORTED_MODULE_5__["PersistGate"], {
       loading: null,
-      persistor: persistor
-    }, __jsx(Component, pageProps)));
+      persistor: persistor,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 30,
+        columnNumber: 22
+      }
+    }, __jsx(Component, _extends({}, pageProps, {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 31,
+        columnNumber: 18
+      }
+    }))));
   }
 
 } // Only uncomment this method if you have blocking data requirements for  </PersistGate>
