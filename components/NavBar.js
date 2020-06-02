@@ -3,9 +3,12 @@
 import "./NavBar.scss";
 import NavButton from "./NavButton";
 
+
 const NavBar = (props) => (
+
   <div className="NavBar">
     {props.navButtons.map((button) => {
+      //console.log(JSON.stringify(props) + "NAV")
       if(button.path === '/usuarios'){
        return(
       

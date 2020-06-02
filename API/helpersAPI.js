@@ -24,3 +24,5 @@ export function createUsuario(usuario){
       }).then((response) => console.log(response.status))
         .catch((error) => console.error(error));
 }
+
+

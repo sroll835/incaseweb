@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -420,10 +420,11 @@ const NavBar = props => __jsx("div", {
   __self: undefined,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 7,
+    lineNumber: 9,
     columnNumber: 3
   }
 }, props.navButtons.map(button => {
+  //console.log(JSON.stringify(props) + "NAV")
   if (button.path === '/usuarios') {
     return __jsx(_NavButton__WEBPACK_IMPORTED_MODULE_2__["default"], {
       key: button.path,
@@ -433,7 +434,7 @@ const NavBar = props => __jsx("div", {
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 12,
+        lineNumber: 15,
         columnNumber: 7
       }
     });
@@ -448,7 +449,7 @@ const NavBar = props => __jsx("div", {
       __self: undefined,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24,
+        lineNumber: 27,
         columnNumber: 6
       }
     });
@@ -462,7 +463,7 @@ const NavBar = props => __jsx("div", {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 39,
       columnNumber: 7
     }
   });
@@ -2355,7 +2356,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_CardCurso__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/CardCurso */ "./components/CardCurso.js");
-/* harmony import */ var _API_helpersAPI__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../API/helpersAPI */ "./API/helpersAPI.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _API_helpersAPI__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../API/helpersAPI */ "./API/helpersAPI.js");
 var _jsxFileName = "C:\\Users\\Riano\\Documents\\gocar\\incaseweb\\pages\\cursos\\[id_user].js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
@@ -2364,14 +2367,17 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
 
+
 class UserCursos extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
   constructor(props) {
-    super(props);
-    console.log("User props " + JSON.stringify(this.props)); //const classes = useStyles();
+    super(props); //console.log("User props " + JSON.stringify(this.props));
+    //const classes = useStyles();
   }
 
   render() {
     return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      auth: this.props.auth,
+      userid: this.props.user_id,
       __self: this,
       __source: {
         fileName: _jsxFileName,
@@ -2397,7 +2403,7 @@ UserCursos.getInitialProps = async ({
 }) => {
   console.log(query);
   var id_usuario = query.id_user.split('_')[1];
-  var userwithcursos = await Object(_API_helpersAPI__WEBPACK_IMPORTED_MODULE_4__["getUserwithCursosByUserId"])(id_usuario);
+  var userwithcursos = await Object(_API_helpersAPI__WEBPACK_IMPORTED_MODULE_5__["getUserwithCursosByUserId"])(id_usuario);
   var cursos = userwithcursos[0].cursos; //console.log("Hola " + userwithcursos[0].cursos);
 
   return {
@@ -2406,7 +2412,7 @@ UserCursos.getInitialProps = async ({
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (UserCursos);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(state => state)(UserCursos));
 
 /***/ }),
 
@@ -2520,7 +2526,7 @@ const logout = () => {
 
 /***/ }),
 
-/***/ 6:
+/***/ 5:
 /*!*****************************************!*\
   !*** multi ./pages/cursos/[id_user].js ***!
   \*****************************************/
@@ -2749,6 +2755,17 @@ module.exports = require("react-burger-menu");
 /***/ (function(module, exports) {
 
 module.exports = require("react-is");
+
+/***/ }),
+
+/***/ "react-redux":
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
 
 /***/ }),
 

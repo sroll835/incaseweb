@@ -46,7 +46,7 @@ export default function CardCurso(props) {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Continuar
+          Continuar 
         </Button>
         <Button size="small" color="primary">
           Learn More
