@@ -5,13 +5,14 @@ import { Component } from "react";
 import  Link  from "next/link";
 import fetch from "isomorphic-unfetch";
 import Layout from "../components/layout";
-import { login } from "../api/login";
+
 import { Cookies } from "react-cookie";
 import Router from "next/router";
 import {connect} from "react-redux";
 import Button from "@material-ui/core/Button";
 import { green, purple } from '@material-ui/core/colors';
 import Modal from 'react-modal';
+import { createUsuario } from "../API/helpersAPI";
 
 const customStyles = {
   content : {
@@ -124,28 +125,18 @@ class Login extends Component {
       });
 
       const data = await response.json();
-
-      console.log("Hillipoyas" + JSON.stringify(data));
-      //console.log("status"+data.status)
       if (data.status === 200) {
         const token = data.access_token;
         cookies.set("token", token);
         const action = { type: 'ADD_USER_ID' ,payload: data.user_id }
         this.props.dispatch(action);
-        console.log("Login succesfully");
         Router.push("/");
-        //   const { access_token } = await response.json();
-        //   login({ access_token });
       } else {
-        console.log("Login failed.");
-
-        // https://github.com/developit/unfetch#caveats
         let error = new Error(data.message);
         error.data = data;
         this.setState({
           error: data.message,
         });
-        //  return Promise.reject(error);
       }
     } catch (error) {
       console.error(
@@ -158,28 +149,15 @@ class Login extends Component {
   }
  
 async createUser() {
-  try{
-     let _toinsert =  {"nombre": this.state.nom_reg, "apellido":this.state.apell_reg,"correo": this.state.correo_reg, "clave": this.state.clave_reg};
-     const url = "http://localhost:8080/usuarios";
-     console.log(_toinsert)
-     const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(_toinsert),
-    });
-     console.log("Termine" + response.Status)
-  }
-  catch (error) {
-    console.error(
-      "You have an error in your code or there are Network issues.",
-      error
+  
+     let _toinsert =  {"nombre": this.state.nom_reg, "apellido":this.state.apell_reg,"correo": this.state.correo_reg, "clave": this.state.clave_reg};    
+     createUsuario(_toinsert).then(response => 
+      {
+        console.log(response);
+      }
     );
-
-    throw new Error(error);
-  }
 }
+
   render() {
     
     return (
@@ -193,9 +171,7 @@ async createUser() {
         <Header appTitle={appTitle} />
         <div className="Content">
           <div>
-          <h3>Bienvenido a {appTitle} , Porfavor digite su usuario y contrasena :  </h3>
-
-           
+          <h3>Bienvenido a {appTitle} , Porfavor digite su usuario y contrasena :  </h3>           
           </div>
        
           <div className="login">
