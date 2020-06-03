@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Router from "next/router";
 const useStyles = makeStyles({
     root: {
       maxWidth: 345,
@@ -17,11 +18,17 @@ const useStyles = makeStyles({
   });
 
 export default function CardCurso(props) {
+
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
-  //console.log("Card props" + JSON.stringify(props));
+  //Dispatch curso to our global state container
+  const action = { type: 'ADD_CURSOS' ,payload: props.curso };
+  props.dispatch(action);
   const curso = props.curso;
-  //console.log(curso.titulo)
+  const user_id = props.user_id;
+  function handleSubmit(){
+    Router.push("/cursos/"+user_id+"/"+curso.id_curso);
+  }
   
   return (
     <Card className={classes.root}>
@@ -48,7 +55,7 @@ export default function CardCurso(props) {
         <Button size="small" color="primary">
           Continuar 
         </Button>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={handleSubmit}>
           Learn More
         </Button>
       </CardActions>

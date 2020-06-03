@@ -9,7 +9,7 @@ import { getUserbyid, getUserwithCursosByUserId } from "../../API/helpersAPI";
 class UserCursos extends Component {
   constructor(props) {
     super(props);  
-    //console.log("User props " + JSON.stringify(this.props));
+    console.log("User cursos " + JSON.stringify(this.props));
     //const classes = useStyles();
   }
 
@@ -17,7 +17,7 @@ class UserCursos extends Component {
     return (
       <Layout auth={this.props.auth} userid={this.props.user_id}>
           {  this.props.cursos_usuario.map(curso =>(
-               <CardCurso key={curso.id_curso} curso ={curso}/>
+               <CardCurso key={curso.id_curso} curso ={curso} user_id={this.props.user_id}  dispatch={this.props.dispatch} />
           ))  }
        
       </Layout>
@@ -31,6 +31,7 @@ UserCursos.getInitialProps = async ({ query }) => {
  var id_usuario = query.id_user.split('_')[1];   
  var userwithcursos = await getUserwithCursosByUserId(id_usuario);
  var cursos = userwithcursos[0].cursos;
+
  //console.log("Hola " + userwithcursos[0].cursos);
 
 

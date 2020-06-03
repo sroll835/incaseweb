@@ -8206,9 +8206,11 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var initialState = {
-  user_id: ""
+  user_id: "",
+  curso: {}
 };
 var ADD_USER_ID = 'ADD_USER_ID';
+var ADD_CURSOS = 'ADD_CURSOS';
 
 function AddUserId() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -8219,6 +8221,12 @@ function AddUserId() {
     case ADD_USER_ID:
       nextState = _objectSpread({}, state, {
         user_id: action.payload
+      });
+      return nextState || state;
+
+    case ADD_CURSOS:
+      nextState = _objectSpread({}, state, {
+        curso: action.payload
       });
       return nextState || state;
 

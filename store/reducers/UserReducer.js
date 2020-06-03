@@ -1,7 +1,9 @@
 const initialState = {
-    user_id: ""
+    user_id: "",
+    curso:{}  
 } 
 const ADD_USER_ID  = 'ADD_USER_ID';
+const ADD_CURSOS = 'ADD_CURSOS';
 function AddUserId(state = initialState,action){ 
     let nextState;
     switch(action.type){ 
@@ -11,6 +13,14 @@ function AddUserId(state = initialState,action){
 
         } 
         return nextState || state;
+        case ADD_CURSOS:
+        nextState={ ...state,
+                curso: action.payload 
+    
+        } 
+        return nextState || state;
+            
+      
         
         default: 
         console.log("entre default")
@@ -18,4 +28,6 @@ function AddUserId(state = initialState,action){
     } 
 } 
 
-export default AddUserId
+export default AddUserId;
+
+

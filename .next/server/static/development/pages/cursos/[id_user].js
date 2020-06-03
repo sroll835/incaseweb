@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -155,8 +155,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_9__);
 var _jsxFileName = "C:\\Users\\Riano\\Documents\\gocar\\incaseweb\\components\\CardCurso.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -182,27 +185,37 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 23,
       columnNumber: 16
     }
-  }, "\u2022"); //console.log("Card props" + JSON.stringify(props));
+  }, "\u2022"); //Dispatch curso to our global state container
 
 
-  const curso = props.curso; //console.log(curso.titulo)
+  const action = {
+    type: 'ADD_CURSOS',
+    payload: props.curso
+  };
+  props.dispatch(action);
+  const curso = props.curso;
+  const user_id = props.user_id;
+
+  function handleSubmit() {
+    next_router__WEBPACK_IMPORTED_MODULE_9___default.a.push("/cursos/" + user_id + "/" + curso.id_curso);
+  }
 
   return __jsx(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2___default.a, {
     className: classes.root,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 34,
       columnNumber: 5
     }
   }, __jsx(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3___default.a, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 35,
       columnNumber: 7
     }
   }, __jsx(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6___default.a, {
@@ -212,14 +225,14 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 36,
       columnNumber: 9
     }
   }), __jsx(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5___default.a, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 41,
       columnNumber: 9
     }
   }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -229,7 +242,7 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 42,
       columnNumber: 11
     }
   }, curso.titulo), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -239,21 +252,21 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 45,
       columnNumber: 11
     }
   }, curso.descripcion), __jsx("br", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 48,
       columnNumber: 11
     }
   }), __jsx("br", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 48,
       columnNumber: 16
     }
   }), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -263,14 +276,14 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
+      lineNumber: 49,
       columnNumber: 11
     }
   }, "Duracion:", curso.duracion, "\xA0\xA0\xA0N\xBAClases:", curso.numero_clases))), __jsx(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4___default.a, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 54,
       columnNumber: 7
     }
   }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -279,16 +292,17 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 55,
       columnNumber: 9
     }
   }, "Continuar"), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7___default.a, {
     size: "small",
     color: "primary",
+    onClick: handleSubmit,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 58,
       columnNumber: 9
     }
   }, "Learn More")));
@@ -2370,8 +2384,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 class UserCursos extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
   constructor(props) {
-    super(props); //console.log("User props " + JSON.stringify(this.props));
-    //const classes = useStyles();
+    super(props);
+    console.log("User cursos " + JSON.stringify(this.props)); //const classes = useStyles();
   }
 
   render() {
@@ -2387,6 +2401,8 @@ class UserCursos extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
     }, this.props.cursos_usuario.map(curso => __jsx(_components_CardCurso__WEBPACK_IMPORTED_MODULE_3__["default"], {
       key: curso.id_curso,
       curso: curso,
+      user_id: this.props.user_id,
+      dispatch: this.props.dispatch,
       __self: this,
       __source: {
         fileName: _jsxFileName,
@@ -2526,7 +2542,7 @@ const logout = () => {
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!*****************************************!*\
   !*** multi ./pages/cursos/[id_user].js ***!
   \*****************************************/

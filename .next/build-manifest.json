@@ -26,7 +26,7 @@
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-    "/usuarios/[id_user]": [
+    "/cursos/[id_user]/[id_curso]": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",

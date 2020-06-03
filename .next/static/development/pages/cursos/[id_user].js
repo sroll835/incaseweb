@@ -66,8 +66,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/CardMedia */ "./node_modules/@material-ui/core/esm/CardMedia/index.js");
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_9__);
 var _jsxFileName = "C:\\Users\\Riano\\Documents\\gocar\\incaseweb\\components\\CardCurso.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -93,27 +96,37 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 23,
       columnNumber: 16
     }
-  }, "\u2022"); //console.log("Card props" + JSON.stringify(props));
+  }, "\u2022"); //Dispatch curso to our global state container
 
 
-  var curso = props.curso; //console.log(curso.titulo)
+  var action = {
+    type: 'ADD_CURSOS',
+    payload: props.curso
+  };
+  props.dispatch(action);
+  var curso = props.curso;
+  var user_id = props.user_id;
+
+  function handleSubmit() {
+    next_router__WEBPACK_IMPORTED_MODULE_9___default.a.push("/cursos/" + user_id + "/" + curso.id_curso);
+  }
 
   return __jsx(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: classes.root,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 34,
       columnNumber: 5
     }
   }, __jsx(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 35,
       columnNumber: 7
     }
   }, __jsx(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -123,14 +136,14 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 36,
       columnNumber: 9
     }
   }), __jsx(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 41,
       columnNumber: 9
     }
   }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -140,7 +153,7 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 42,
       columnNumber: 11
     }
   }, curso.titulo), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -150,21 +163,21 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 45,
       columnNumber: 11
     }
   }, curso.descripcion), __jsx("br", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 48,
       columnNumber: 11
     }
   }), __jsx("br", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 48,
       columnNumber: 16
     }
   }), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -174,14 +187,14 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
+      lineNumber: 49,
       columnNumber: 11
     }
   }, "Duracion:", curso.duracion, "\xA0\xA0\xA0N\xBAClases:", curso.numero_clases))), __jsx(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 54,
       columnNumber: 7
     }
   }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -190,16 +203,17 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 55,
       columnNumber: 9
     }
   }, "Continuar"), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
     size: "small",
     color: "primary",
+    onClick: handleSubmit,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 58,
       columnNumber: 9
     }
   }, "Learn More")));
@@ -46783,16 +46797,20 @@ var UserCursos = /*#__PURE__*/function (_Component) {
   var _super = _createSuper(UserCursos);
 
   function UserCursos(props) {
+    var _this;
+
     Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, UserCursos);
 
-    return _super.call(this, props); //console.log("User props " + JSON.stringify(this.props));
-    //const classes = useStyles();
+    _this = _super.call(this, props);
+    console.log("User cursos " + JSON.stringify(_this.props)); //const classes = useStyles();
+
+    return _this;
   }
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(UserCursos, [{
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_6__["default"], {
         auth: this.props.auth,
@@ -46807,7 +46825,9 @@ var UserCursos = /*#__PURE__*/function (_Component) {
         return __jsx(_components_CardCurso__WEBPACK_IMPORTED_MODULE_9__["default"], {
           key: curso.id_curso,
           curso: curso,
-          __self: _this,
+          user_id: _this2.props.user_id,
+          dispatch: _this2.props.dispatch,
+          __self: _this2,
           __source: {
             fileName: _jsxFileName,
             lineNumber: 20,
@@ -47032,7 +47052,7 @@ var logout = function logout() {
 
 /***/ }),
 
-/***/ 13:
+/***/ 14:
 /*!*******************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fcursos%2F%5Bid_user%5D&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Ccursos%5C%5Bid_user%5D.js ***!
   \*******************************************************************************************************************************************************************************/
@@ -47055,5 +47075,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[13,"static/runtime/webpack.js","styles"]]]);
+},[[14,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=[id_user].js.map
