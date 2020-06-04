@@ -535,9 +535,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 const initialState = {
-  user_id: ""
+  user_id: "",
+  curso: {}
 };
 const ADD_USER_ID = 'ADD_USER_ID';
+const ADD_CURSOS = 'ADD_CURSOS';
 
 function AddUserId(state = initialState, action) {
   let nextState;
@@ -546,6 +548,12 @@ function AddUserId(state = initialState, action) {
     case ADD_USER_ID:
       nextState = _objectSpread({}, state, {
         user_id: action.payload
+      });
+      return nextState || state;
+
+    case ADD_CURSOS:
+      nextState = _objectSpread({}, state, {
+        curso: action.payload
       });
       return nextState || state;
 

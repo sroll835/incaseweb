@@ -66,8 +66,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/CardMedia */ "./node_modules/@material-ui/core/esm/CardMedia/index.js");
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
-var _jsxFileName = "C:\\Users\\Riano\\Documents\\gocar\\incaseweb\\components\\CardCurso.js";
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_9__);
+var _jsxFileName = "C:\\Users\\Sebastian\\Desktop\\incaseweb\\components\\CardCurso.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -93,27 +96,37 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 23,
       columnNumber: 16
     }
-  }, "\u2022"); //console.log("Card props" + JSON.stringify(props));
+  }, "\u2022"); //Dispatch curso to our global state container
 
 
-  var curso = props.curso; //console.log(curso.titulo)
+  var action = {
+    type: 'ADD_CURSOS',
+    payload: props.curso
+  };
+  props.dispatch(action);
+  var curso = props.curso;
+  var user_id = props.user_id;
+
+  function handleSubmit() {
+    next_router__WEBPACK_IMPORTED_MODULE_9___default.a.push("/cursos/" + user_id + "/" + curso.id_curso);
+  }
 
   return __jsx(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: classes.root,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 34,
       columnNumber: 5
     }
   }, __jsx(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 35,
       columnNumber: 7
     }
   }, __jsx(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -123,14 +136,14 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 36,
       columnNumber: 9
     }
   }), __jsx(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 41,
       columnNumber: 9
     }
   }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -140,7 +153,7 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 42,
       columnNumber: 11
     }
   }, curso.titulo), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -150,21 +163,21 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 45,
       columnNumber: 11
     }
   }, curso.descripcion), __jsx("br", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 48,
       columnNumber: 11
     }
   }), __jsx("br", {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 48,
       columnNumber: 16
     }
   }), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -174,14 +187,14 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
+      lineNumber: 49,
       columnNumber: 11
     }
   }, "Duracion:", curso.duracion, "\xA0\xA0\xA0N\xBAClases:", curso.numero_clases))), __jsx(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 54,
       columnNumber: 7
     }
   }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -190,16 +203,17 @@ function CardCurso(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 55,
       columnNumber: 9
     }
   }, "Continuar"), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
     size: "small",
     color: "primary",
+    onClick: handleSubmit,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 58,
       columnNumber: 9
     }
   }, "Learn More")));
@@ -348,11 +362,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavBar_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_NavBar_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _NavButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavButton */ "./components/NavButton.js");
 var _this = undefined,
-<<<<<<< HEAD:.next/static/development/pages/login.js
     _jsxFileName = "C:\\Users\\Sebastian\\Desktop\\incaseweb\\components\\NavBar.js";
-=======
-    _jsxFileName = "C:\\Users\\Riano\\Documents\\gocar\\incaseweb\\components\\NavBar.js";
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -366,11 +376,7 @@ var NavBar = function NavBar(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-<<<<<<< HEAD:.next/static/development/pages/login.js
-      lineNumber: 7,
-=======
       lineNumber: 9,
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
       columnNumber: 3
     }
   }, props.navButtons.map(function (button) {
@@ -384,11 +390,6 @@ var NavBar = function NavBar(props) {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-<<<<<<< HEAD:.next/static/development/pages/login.js
-          lineNumber: 12,
-          columnNumber: 7
-        }
-=======
           lineNumber: 15,
           columnNumber: 7
         }
@@ -407,7 +408,6 @@ var NavBar = function NavBar(props) {
           lineNumber: 27,
           columnNumber: 6
         }
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
       });
     }
 
@@ -419,11 +419,7 @@ var NavBar = function NavBar(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-<<<<<<< HEAD:.next/static/development/pages/login.js
-        lineNumber: 22,
-=======
         lineNumber: 39,
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
         columnNumber: 7
       }
     });
@@ -599,11 +595,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-<<<<<<< HEAD:.next/static/development/pages/login.js
 var _jsxFileName = "C:\\Users\\Sebastian\\Desktop\\incaseweb\\config\\buttons.js";
-=======
-var _jsxFileName = "C:\\Users\\Riano\\Documents\\gocar\\incaseweb\\config\\buttons.js";
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 // config/buttons.js
 
@@ -28219,17 +28211,10 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Clogin.js!./":
-/*!***********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Clogin.js ***!
-  \***********************************************************************************************************************************************************************************/
-=======
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcursos%2F%5Bid_user%5D&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Ccursos%5C%5Bid_user%5D.js!./":
-/*!***************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcursos%2F%5Bid_user%5D&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Ccursos%5C%5Bid_user%5D.js ***!
-  \***************************************************************************************************************************************************************************************************************************/
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcursos%2F%5Bid_user%5D&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Ccursos%5C%5Bid_user%5D.js!./":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcursos%2F%5Bid_user%5D&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Ccursos%5C%5Bid_user%5D.js ***!
+  \*********************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -32847,287 +32832,6 @@ module.exports = exports['default'];
 
 /***/ }),
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-/***/ "./node_modules/react-cookie/es6/Cookies.js":
-/*!**************************************************!*\
-  !*** ./node_modules/react-cookie/es6/Cookies.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
-
-/* harmony default export */ __webpack_exports__["default"] = (universal_cookie__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-
-/***/ }),
-
-/***/ "./node_modules/react-cookie/es6/CookiesContext.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/react-cookie/es6/CookiesContext.js ***!
-  \*********************************************************/
-/*! exports provided: Provider, Consumer, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return Provider; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Consumer", function() { return Consumer; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Cookies__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cookies */ "./node_modules/react-cookie/es6/Cookies.js");
-
-
-var CookiesContext = react__WEBPACK_IMPORTED_MODULE_0__["createContext"](new _Cookies__WEBPACK_IMPORTED_MODULE_1__["default"]());
-var Provider = CookiesContext.Provider, Consumer = CookiesContext.Consumer;
-/* harmony default export */ __webpack_exports__["default"] = (CookiesContext);
-
-
-/***/ }),
-
-/***/ "./node_modules/react-cookie/es6/CookiesProvider.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/react-cookie/es6/CookiesProvider.js ***!
-  \**********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var universal_cookie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! universal-cookie */ "./node_modules/universal-cookie/es6/index.js");
-/* harmony import */ var _CookiesContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CookiesContext */ "./node_modules/react-cookie/es6/CookiesContext.js");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-var CookiesProvider = /** @class */ (function (_super) {
-    __extends(CookiesProvider, _super);
-    function CookiesProvider(props) {
-        var _this = _super.call(this, props) || this;
-        if (props.cookies) {
-            _this.cookies = props.cookies;
-        }
-        else {
-            _this.cookies = new universal_cookie__WEBPACK_IMPORTED_MODULE_1__["default"]();
-        }
-        return _this;
-    }
-    CookiesProvider.prototype.render = function () {
-        return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_CookiesContext__WEBPACK_IMPORTED_MODULE_2__["Provider"], { value: this.cookies }, this.props.children);
-    };
-    return CookiesProvider;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
-/* harmony default export */ __webpack_exports__["default"] = (CookiesProvider);
-
-
-/***/ }),
-
-/***/ "./node_modules/react-cookie/es6/index.js":
-/*!************************************************!*\
-  !*** ./node_modules/react-cookie/es6/index.js ***!
-  \************************************************/
-/*! exports provided: Cookies, CookiesProvider, withCookies, useCookies */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Cookies__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cookies */ "./node_modules/react-cookie/es6/Cookies.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Cookies", function() { return _Cookies__WEBPACK_IMPORTED_MODULE_0__["default"]; });
-
-/* harmony import */ var _CookiesProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CookiesProvider */ "./node_modules/react-cookie/es6/CookiesProvider.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CookiesProvider", function() { return _CookiesProvider__WEBPACK_IMPORTED_MODULE_1__["default"]; });
-
-/* harmony import */ var _withCookies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./withCookies */ "./node_modules/react-cookie/es6/withCookies.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "withCookies", function() { return _withCookies__WEBPACK_IMPORTED_MODULE_2__["default"]; });
-
-/* harmony import */ var _useCookies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useCookies */ "./node_modules/react-cookie/es6/useCookies.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useCookies", function() { return _useCookies__WEBPACK_IMPORTED_MODULE_3__["default"]; });
-
-
-
-
-
-
-
-/***/ }),
-
-/***/ "./node_modules/react-cookie/es6/useCookies.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/react-cookie/es6/useCookies.js ***!
-  \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return useCookies; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _CookiesContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CookiesContext */ "./node_modules/react-cookie/es6/CookiesContext.js");
-
-
-function useCookies(dependencies) {
-    var cookies = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_CookiesContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
-    if (!cookies) {
-        throw new Error('Missing <CookiesProvider>');
-    }
-    var initialCookies = cookies.getAll();
-    var _a = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(initialCookies), allCookies = _a[0], setCookies = _a[1];
-    var previousCookiesRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(allCookies);
-    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-        function onChange() {
-            var newCookies = cookies.getAll();
-            if (shouldUpdate(dependencies || null, newCookies, previousCookiesRef.current)) {
-                setCookies(newCookies);
-            }
-            previousCookiesRef.current = newCookies;
-        }
-        cookies.addChangeListener(onChange);
-        return function () {
-            cookies.removeChangeListener(onChange);
-        };
-    }, [cookies]);
-    var setCookie = Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(function () { return cookies.set.bind(cookies); }, [cookies]);
-    var removeCookie = Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(function () { return cookies.remove.bind(cookies); }, [cookies]);
-    return [allCookies, setCookie, removeCookie];
-}
-function shouldUpdate(dependencies, newCookies, oldCookies) {
-    if (!dependencies) {
-        return true;
-    }
-    for (var _i = 0, dependencies_1 = dependencies; _i < dependencies_1.length; _i++) {
-        var dependency = dependencies_1[_i];
-        if (newCookies[dependency] !== oldCookies[dependency]) {
-            return true;
-        }
-    }
-    return false;
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/react-cookie/es6/withCookies.js":
-/*!******************************************************!*\
-  !*** ./node_modules/react-cookie/es6/withCookies.js ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return withCookies; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _CookiesContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CookiesContext */ "./node_modules/react-cookie/es6/CookiesContext.js");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (undefined && undefined.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-
-
-// Only way to make function modules work with both TypeScript and Rollup
-var hoistStatics = __webpack_require__(/*! hoist-non-react-statics */ "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js");
-function withCookies(WrappedComponent) {
-    // @ts-ignore
-    var name = WrappedComponent.displayName || WrappedComponent.name;
-    var CookieWrapper = /** @class */ (function (_super) {
-        __extends(CookieWrapper, _super);
-        function CookieWrapper() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.onChange = function () {
-                // Make sure to update children with new values
-                _this.forceUpdate();
-            };
-            return _this;
-        }
-        CookieWrapper.prototype.listen = function () {
-            this.props.cookies.addChangeListener(this.onChange);
-        };
-        CookieWrapper.prototype.unlisten = function (cookies) {
-            (cookies || this.props.cookies).removeChangeListener(this.onChange);
-        };
-        CookieWrapper.prototype.componentDidMount = function () {
-            this.listen();
-        };
-        CookieWrapper.prototype.componentDidUpdate = function (prevProps) {
-            if (prevProps.cookies !== this.props.cookies) {
-                this.unlisten(prevProps.cookies);
-                this.listen();
-            }
-        };
-        CookieWrapper.prototype.componentWillUnmount = function () {
-            this.unlisten();
-        };
-        CookieWrapper.prototype.render = function () {
-            var _a = this.props, forwardedRef = _a.forwardedRef, cookies = _a.cookies, restProps = __rest(_a, ["forwardedRef", "cookies"]);
-            var allCookies = cookies.getAll();
-            return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](WrappedComponent, __assign({}, restProps, { ref: forwardedRef, cookies: cookies, allCookies: allCookies })));
-        };
-        CookieWrapper.displayName = "withCookies(" + name + ")";
-        CookieWrapper.WrappedComponent = WrappedComponent;
-        return CookieWrapper;
-    }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
-    var ForwardedComponent = react__WEBPACK_IMPORTED_MODULE_0__["forwardRef"](function (props, ref) {
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_CookiesContext__WEBPACK_IMPORTED_MODULE_1__["Consumer"], null, function (cookies) { return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CookieWrapper, __assign({ cookies: cookies }, props, { forwardedRef: ref }))); }));
-    });
-    ForwardedComponent.displayName = CookieWrapper.displayName;
-    ForwardedComponent.WrappedComponent = CookieWrapper.WrappedComponent;
-    return hoistStatics(ForwardedComponent, WrappedComponent);
-}
-
-
-/***/ }),
-
-=======
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
 /***/ "./node_modules/react-dom/index.js":
 /*!***********************************************************************************************!*\
   !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_2adc2403d89adc16ead0 ***!
@@ -35103,32 +34807,9 @@ function typeOf(object) {
   if (typeof object === 'object' && object !== null) {
     var $$typeof = object.$$typeof;
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-function connectAdvanced(
-/*
-  selectorFactory is a func that is responsible for returning the selector function used to
-  compute new props from state, props, and dispatch. For example:
-      export default connectAdvanced((dispatch, options) => (state, props) => ({
-      thing: state.things[props.thingId],
-      saveThing: fields => dispatch(actionCreators.saveThing(props.thingId, fields)),
-    }))(YourComponent)
-    Access to dispatch is provided to the factory so selectorFactories can bind actionCreators
-  outside of their selector as an optimization. Options passed to connectAdvanced are passed to
-  the selectorFactory, along with displayName and WrappedComponent, as the second argument.
-    Note that selectorFactory is responsible for all caching/memoization of inbound and outbound
-  props. Do not use connectAdvanced directly without memoizing results between calls to your
-  selector, otherwise the Connect component will re-render on every state or props change.
-*/
-selectorFactory, // options object:
-_ref) {
-  if (_ref === void 0) {
-    _ref = {};
-  }
-=======
     switch ($$typeof) {
       case REACT_ELEMENT_TYPE:
         var type = object.type;
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
 
         switch (type) {
           case REACT_ASYNC_MODE_TYPE:
@@ -35456,24 +35137,6 @@ function (_React$Component) {
       }
     };
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-/*
-  connect is a facade over connectAdvanced. It turns its args into a compatible
-  selectorFactory, which has the signature:
-
-    (dispatch, options) => (nextState, nextOwnProps) => nextFinalProps
-  
-  connect passes its args to connectAdvanced as options, which will in turn pass them to
-  selectorFactory each time a Connect component instance is instantiated or hot reloaded.
-
-  selectorFactory returns a final props selector from its mapStateToProps,
-  mapStateToPropsFactories, mapDispatchToProps, mapDispatchToPropsFactories, mergeProps,
-  mergePropsFactories, and pure args.
-
-  The resulting final props selector is called by the Connect component instance whenever
-  it receives new props or store state.
- */
-=======
     _this.onExited = function (node) {
       _this.removeClasses(node, 'exit');
 
@@ -35497,7 +35160,6 @@ function (_React$Component) {
         doneClassName: doneClassName
       };
     };
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
 
     return _this;
   }
@@ -35850,16 +35512,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TransitionGroupContext */ "./node_modules/react-transition-group/esm/TransitionGroupContext.js");
 
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-/**
- * Hook factory, which creates a `useDispatch` hook bound to a given context.
- *
- * @param {React.Context} [context=ReactReduxContext] Context passed to your `<Provider>`.
- * @returns {Function} A `useDispatch` hook bound to the specified context.
- */
-=======
 var _leaveRenders, _enterRenders;
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
 
 
 
@@ -35875,32 +35528,9 @@ function areChildrenDifferent(oldChildren, newChildren) {
 
   return true;
 }
-<<<<<<< HEAD:.next/static/development/pages/login.js
-/**
- * A hook to access the redux `dispatch` function.
- *
- * @returns {any|function} redux store's `dispatch` function
- *
- * @example
- *
- * import React, { useCallback } from 'react'
- * import { useDispatch } from 'react-redux'
- *
- * export const CounterComponent = ({ value }) => {
- *   const dispatch = useDispatch()
- *   const increaseCounter = useCallback(() => dispatch({ type: 'increase-counter' }), [])
- *   return (
- *     <div>
- *       <span>{value}</span>
- *       <button onClick={increaseCounter}>Increase counter</button>
- *     </div>
- *   )
- * }
-=======
 /**
  * Enum of modes for SwitchTransition component
  * @enum { string }
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
  */
 
 
@@ -35918,23 +35548,6 @@ var callHook = function callHook(element, name, cb) {
   };
 };
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-/**
- * A hook to access the value of the `ReactReduxContext`. This is a low-level
- * hook that you should usually not need to call directly.
- *
- * @returns {any} the value of the `ReactReduxContext`
- *
- * @example
- *
- * import React from 'react'
- * import { useReduxContext } from 'react-redux'
- *
- * export const CounterComponent = ({ value }) => {
- *   const { store } = useReduxContext()
- *   return <div>{store.getState()}</div>
- * }
-=======
 var leaveRenders = (_leaveRenders = {}, _leaveRenders[modes.out] = function (_ref) {
   var current = _ref.current,
       changeState = _ref.changeState;
@@ -36006,7 +35619,6 @@ var enterRenders = (_enterRenders = {}, _enterRenders[modes.out] = function (_re
  *  )
  * }
  * ```
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
  */
 
 var SwitchTransition =
@@ -36134,23 +35746,6 @@ SwitchTransition.defaultProps = {
 
 /***/ }),
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-    subscription.onStateChange = checkForUpdates;
-    subscription.trySubscribe();
-    checkForUpdates();
-    return function () {
-      return subscription.tryUnsubscribe();
-    };
-  }, [store, subscription]);
-  return selectedState;
-}
-/**
- * Hook factory, which creates a `useSelector` hook bound to a given context.
- *
- * @param {React.Context} [context=ReactReduxContext] Context passed to your `<Provider>`.
- * @returns {Function} A `useSelector` hook bound to the specified context.
- */
-=======
 /***/ "./node_modules/react-transition-group/esm/Transition.js":
 /*!***************************************************************!*\
   !*** ./node_modules/react-transition-group/esm/Transition.js ***!
@@ -36176,102 +35771,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./config */ "./node_modules/react-transition-group/esm/config.js");
 /* harmony import */ var _utils_PropTypes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/PropTypes */ "./node_modules/react-transition-group/esm/utils/PropTypes.js");
 /* harmony import */ var _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./TransitionGroupContext */ "./node_modules/react-transition-group/esm/TransitionGroupContext.js");
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
 
 
 
 
 
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-    return useSelectorWithStoreAndSubscription(selector, equalityFn, store, contextSub);
-  };
-}
-/**
- * A hook to access the redux store's state. This hook takes a selector function
- * as an argument. The selector is called with the store state.
- *
- * This hook takes an optional equality comparison function as the second parameter
- * that allows you to customize the way the selected state is compared to determine
- * whether the component needs to be re-rendered.
- *
- * @param {Function} selector the selector function
- * @param {Function=} equalityFn the function that will be used to determine equality
- *
- * @returns {any} the selected state
- *
- * @example
- *
- * import React from 'react'
- * import { useSelector } from 'react-redux'
- *
- * export const CounterComponent = () => {
- *   const counter = useSelector(state => state.counter)
- *   return <div>{counter}</div>
- * }
- */
-
-var useSelector =
-/*#__PURE__*/
-createSelectorHook();
-
-/***/ }),
-
-/***/ "./node_modules/react-redux/es/hooks/useStore.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/react-redux/es/hooks/useStore.js ***!
-  \*******************************************************/
-/*! exports provided: createStoreHook, useStore */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createStoreHook", function() { return createStoreHook; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useStore", function() { return useStore; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Context */ "./node_modules/react-redux/es/components/Context.js");
-/* harmony import */ var _useReduxContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useReduxContext */ "./node_modules/react-redux/es/hooks/useReduxContext.js");
-
-
-
-/**
- * Hook factory, which creates a `useStore` hook bound to a given context.
- *
- * @param {React.Context} [context=ReactReduxContext] Context passed to your `<Provider>`.
- * @returns {Function} A `useStore` hook bound to the specified context.
- */
-
-function createStoreHook(context) {
-  if (context === void 0) {
-    context = _components_Context__WEBPACK_IMPORTED_MODULE_1__["ReactReduxContext"];
-  }
-
-  var useReduxContext = context === _components_Context__WEBPACK_IMPORTED_MODULE_1__["ReactReduxContext"] ? _useReduxContext__WEBPACK_IMPORTED_MODULE_2__["useReduxContext"] : function () {
-    return Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(context);
-  };
-  return function useStore() {
-    var _useReduxContext = useReduxContext(),
-        store = _useReduxContext.store;
-
-    return store;
-  };
-}
-/**
- * A hook to access the redux store.
- *
- * @returns {any} the redux store
- *
- * @example
- *
- * import React from 'react'
- * import { useStore } from 'react-redux'
- *
- * export const ExampleComponent = () => {
- *   const store = useStore()
- *   return <div>{store.getState()}</div>
- * }
-=======
 
 
 var UNMOUNTED = 'unmounted';
@@ -36369,7 +35874,6 @@ var EXITING = 'exiting';
  *
  * When `in` is `false` the same thing happens except the state moves from
  * `'exiting'` to `'exited'`.
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
  */
 
 var Transition =
@@ -36671,20 +36175,6 @@ function (_React$Component) {
   return Transition;
 }(react__WEBPACK_IMPORTED_MODULE_3___default.a.Component);
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return isPlainObject; });
-/**
- * @param {any} obj The object to inspect.
- * @returns {boolean} True if the argument appears to be a plain object.
- */
-function isPlainObject(obj) {
-  if (typeof obj !== 'object' || obj === null) return false;
-  var proto = Object.getPrototypeOf(obj);
-  if (proto === null) return true;
-  var baseProto = proto;
-=======
 Transition.contextType = _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_7__["default"];
 Transition.propTypes =  true ? {
   /**
@@ -36702,7 +36192,6 @@ Transition.propTypes =  true ? {
    * ```
    */
   children: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired, prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.element.isRequired]).isRequired,
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
 
   /**
    * Show the component; triggers the enter or exit states
@@ -36894,24 +36383,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return warning; });
-/**
- * Prints a warning in the console if it exists.
- *
- * @param {String} message The warning message.
- * @returns {void}
- */
-function warning(message) {
-  /* eslint-disable no-console */
-  if (typeof console !== 'undefined' && typeof console.error === 'function') {
-    console.error(message);
-  }
-  /* eslint-enable no-console */
-=======
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
 
 
 
@@ -38873,271 +38344,6 @@ window.eve = __webpack_require__(/*! eve */ "./node_modules/eve/eve.js")
 //
 // http://www.apache.org/licenses/LICENSE-2.0
 //
-<<<<<<< HEAD:.next/static/development/pages/login.js
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-module.exports = Readable;
-
-/*<replacement>*/
-var isArray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var Duplex;
-/*</replacement>*/
-
-Readable.ReadableState = ReadableState;
-
-/*<replacement>*/
-var EE = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
-
-var EElistenerCount = function (emitter, type) {
-  return emitter.listeners(type).length;
-};
-/*</replacement>*/
-
-/*<replacement>*/
-var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/readable-stream/lib/internal/streams/stream-browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
-var OurUint8Array = global.Uint8Array || function () {};
-function _uint8ArrayToBuffer(chunk) {
-  return Buffer.from(chunk);
-}
-function _isUint8Array(obj) {
-  return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
-}
-
-/*</replacement>*/
-
-/*<replacement>*/
-var util = Object.create(__webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js"));
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 12);
-var debug = void 0;
-if (debugUtil && debugUtil.debuglog) {
-  debug = debugUtil.debuglog('stream');
-} else {
-  debug = function () {};
-}
-/*</replacement>*/
-
-var BufferList = __webpack_require__(/*! ./internal/streams/BufferList */ "./node_modules/readable-stream/lib/internal/streams/BufferList.js");
-var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/readable-stream/lib/internal/streams/destroy.js");
-var StringDecoder;
-
-util.inherits(Readable, Stream);
-
-var kProxyEvents = ['error', 'close', 'destroy', 'pause', 'resume'];
-
-function prependListener(emitter, event, fn) {
-  // Sadly this is not cacheable as some libraries bundle their own
-  // event emitter implementation with them.
-  if (typeof emitter.prependListener === 'function') return emitter.prependListener(event, fn);
-
-  // This is a hack to make sure that our error handler is attached before any
-  // userland ones.  NEVER DO THIS. This is here only because this code needs
-  // to continue to work with older versions of Node.js that do not include
-  // the prependListener() method. The goal is to eventually remove this hack.
-  if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
-}
-
-function ReadableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js");
-
-  options = options || {};
-
-  // Duplex streams are both readable and writable, but share
-  // the same options object.
-  // However, some cases require setting options to different
-  // values for the readable and the writable sides of the duplex stream.
-  // These options can be provided separately as readableXXX and writableXXX.
-  var isDuplex = stream instanceof Duplex;
-
-  // object stream flag. Used to make read(n) ignore n and to
-  // make all the buffer merging and length checks go away
-  this.objectMode = !!options.objectMode;
-
-  if (isDuplex) this.objectMode = this.objectMode || !!options.readableObjectMode;
-
-  // the point at which it stops calling _read() to fill the buffer
-  // Note: 0 is a valid value, means "don't call _read preemptively ever"
-  var hwm = options.highWaterMark;
-  var readableHwm = options.readableHighWaterMark;
-  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
-
-  if (hwm || hwm === 0) this.highWaterMark = hwm;else if (isDuplex && (readableHwm || readableHwm === 0)) this.highWaterMark = readableHwm;else this.highWaterMark = defaultHwm;
-
-  // cast to ints.
-  this.highWaterMark = Math.floor(this.highWaterMark);
-
-  // A linked list is used to store data chunks instead of an array because the
-  // linked list can remove elements from the beginning faster than
-  // array.shift()
-  this.buffer = new BufferList();
-  this.length = 0;
-  this.pipes = null;
-  this.pipesCount = 0;
-  this.flowing = null;
-  this.ended = false;
-  this.endEmitted = false;
-  this.reading = false;
-
-  // a flag to be able to tell if the event 'readable'/'data' is emitted
-  // immediately, or on a later tick.  We set this to true at first, because
-  // any actions that shouldn't happen until "later" should generally also
-  // not happen before the first read call.
-  this.sync = true;
-
-  // whenever we return null, then we set a flag to say
-  // that we're awaiting a 'readable' event emission.
-  this.needReadable = false;
-  this.emittedReadable = false;
-  this.readableListening = false;
-  this.resumeScheduled = false;
-
-  // has it been destroyed
-  this.destroyed = false;
-
-  // Crypto is kind of old and crusty.  Historically, its default string
-  // encoding is 'binary' so we have to make this configurable.
-  // Everything else in the universe uses 'utf8', though.
-  this.defaultEncoding = options.defaultEncoding || 'utf8';
-
-  // the number of writers that are awaiting a drain event in .pipe()s
-  this.awaitDrain = 0;
-
-  // if true, a maybeReadMore has been scheduled
-  this.readingMore = false;
-
-  this.decoder = null;
-  this.encoding = null;
-  if (options.encoding) {
-    if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
-    this.decoder = new StringDecoder(options.encoding);
-    this.encoding = options.encoding;
-  }
-}
-
-function Readable(options) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js");
-
-  if (!(this instanceof Readable)) return new Readable(options);
-
-  this._readableState = new ReadableState(options, this);
-
-  // legacy
-  this.readable = true;
-
-  if (options) {
-    if (typeof options.read === 'function') this._read = options.read;
-
-    if (typeof options.destroy === 'function') this._destroy = options.destroy;
-  }
-
-  Stream.call(this);
-}
-
-Object.defineProperty(Readable.prototype, 'destroyed', {
-  get: function () {
-    if (this._readableState === undefined) {
-      return false;
-    }
-    return this._readableState.destroyed;
-  },
-  set: function (value) {
-    // we ignore the value if the stream
-    // has not been initialized yet
-    if (!this._readableState) {
-      return;
-    }
-
-    // backward compatibility, the user is explicitly
-    // managing destroyed
-    this._readableState.destroyed = value;
-  }
-});
-
-Readable.prototype.destroy = destroyImpl.destroy;
-Readable.prototype._undestroy = destroyImpl.undestroy;
-Readable.prototype._destroy = function (err, cb) {
-  this.push(null);
-  cb(err);
-};
-
-// Manually shove something into the read() buffer.
-// This returns true if the highWaterMark has not been hit yet,
-// similar to how Writable.write() returns true if you should
-// write() some more.
-Readable.prototype.push = function (chunk, encoding) {
-  var state = this._readableState;
-  var skipChunkCheck;
-
-  if (!state.objectMode) {
-    if (typeof chunk === 'string') {
-      encoding = encoding || state.defaultEncoding;
-      if (encoding !== state.encoding) {
-        chunk = Buffer.from(chunk, encoding);
-        encoding = '';
-      }
-      skipChunkCheck = true;
-    }
-  } else {
-    skipChunkCheck = true;
-  }
-
-  return readableAddChunk(this, chunk, encoding, false, skipChunkCheck);
-};
-
-// Unshift should *always* be something directly out of read()
-Readable.prototype.unshift = function (chunk) {
-  return readableAddChunk(this, chunk, null, true, false);
-};
-
-function readableAddChunk(stream, chunk, encoding, addToFront, skipChunkCheck) {
-  var state = stream._readableState;
-  if (chunk === null) {
-    state.reading = false;
-    onEofChunk(stream, state);
-  } else {
-    var er;
-    if (!skipChunkCheck) er = chunkInvalid(state, chunk);
-    if (er) {
-      stream.emit('error', er);
-    } else if (state.objectMode || chunk && chunk.length > 0) {
-      if (typeof chunk !== 'string' && !state.objectMode && Object.getPrototypeOf(chunk) !== Buffer.prototype) {
-        chunk = _uint8ArrayToBuffer(chunk);
-      }
-
-      if (addToFront) {
-        if (state.endEmitted) stream.emit('error', new Error('stream.unshift() after end event'));else addChunk(stream, state, chunk, true);
-      } else if (state.ended) {
-        stream.emit('error', new Error('stream.push() after EOF'));
-      } else {
-        state.reading = false;
-        if (state.decoder && !encoding) {
-          chunk = state.decoder.write(chunk);
-          if (state.objectMode || chunk.length !== 0) addChunk(stream, state, chunk, false);else maybeReadMore(stream, state);
-=======
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -39239,7 +38445,6 @@ var mina = (function (eve) {
                 res[j] = +a.start[j] +
                     (a.end[j] - a.start[j]) * a.easing(a.s);
             }
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
         } else {
             res = +a.start + (a.end - a.start) * a.easing(a.s);
         }
@@ -40404,265 +39609,6 @@ Snap.rgb2hsb = function (r, g, b) {
     g = b[1];
     b = b[2];
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 13);
-
-function copyBuffer(src, target, offset) {
-  src.copy(target, offset);
-}
-
-module.exports = function () {
-  function BufferList() {
-    _classCallCheck(this, BufferList);
-
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
-  }
-
-  BufferList.prototype.push = function push(v) {
-    var entry = { data: v, next: null };
-    if (this.length > 0) this.tail.next = entry;else this.head = entry;
-    this.tail = entry;
-    ++this.length;
-  };
-
-  BufferList.prototype.unshift = function unshift(v) {
-    var entry = { data: v, next: this.head };
-    if (this.length === 0) this.tail = entry;
-    this.head = entry;
-    ++this.length;
-  };
-
-  BufferList.prototype.shift = function shift() {
-    if (this.length === 0) return;
-    var ret = this.head.data;
-    if (this.length === 1) this.head = this.tail = null;else this.head = this.head.next;
-    --this.length;
-    return ret;
-  };
-
-  BufferList.prototype.clear = function clear() {
-    this.head = this.tail = null;
-    this.length = 0;
-  };
-
-  BufferList.prototype.join = function join(s) {
-    if (this.length === 0) return '';
-    var p = this.head;
-    var ret = '' + p.data;
-    while (p = p.next) {
-      ret += s + p.data;
-    }return ret;
-  };
-
-  BufferList.prototype.concat = function concat(n) {
-    if (this.length === 0) return Buffer.alloc(0);
-    if (this.length === 1) return this.head.data;
-    var ret = Buffer.allocUnsafe(n >>> 0);
-    var p = this.head;
-    var i = 0;
-    while (p) {
-      copyBuffer(p.data, ret, i);
-      i += p.data.length;
-      p = p.next;
-    }
-    return ret;
-  };
-
-  return BufferList;
-}();
-
-if (util && util.inspect && util.inspect.custom) {
-  module.exports.prototype[util.inspect.custom] = function () {
-    var obj = util.inspect({ length: this.length });
-    return this.constructor.name + ' ' + obj;
-  };
-}
-
-/***/ }),
-
-/***/ "./node_modules/readable-stream/lib/internal/streams/destroy.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/readable-stream/lib/internal/streams/destroy.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-// undocumented cb() API, needed for core, not for public API
-function destroy(err, cb) {
-  var _this = this;
-
-  var readableDestroyed = this._readableState && this._readableState.destroyed;
-  var writableDestroyed = this._writableState && this._writableState.destroyed;
-
-  if (readableDestroyed || writableDestroyed) {
-    if (cb) {
-      cb(err);
-    } else if (err && (!this._writableState || !this._writableState.errorEmitted)) {
-      pna.nextTick(emitErrorNT, this, err);
-    }
-    return this;
-  }
-
-  // we set destroyed to true before firing error callbacks in order
-  // to make it re-entrance safe in case destroy() is called within callbacks
-
-  if (this._readableState) {
-    this._readableState.destroyed = true;
-  }
-
-  // if this is a duplex stream mark the writable part as destroyed as well
-  if (this._writableState) {
-    this._writableState.destroyed = true;
-  }
-
-  this._destroy(err || null, function (err) {
-    if (!cb && err) {
-      pna.nextTick(emitErrorNT, _this, err);
-      if (_this._writableState) {
-        _this._writableState.errorEmitted = true;
-      }
-    } else if (cb) {
-      cb(err);
-    }
-  });
-
-  return this;
-}
-
-function undestroy() {
-  if (this._readableState) {
-    this._readableState.destroyed = false;
-    this._readableState.reading = false;
-    this._readableState.ended = false;
-    this._readableState.endEmitted = false;
-  }
-
-  if (this._writableState) {
-    this._writableState.destroyed = false;
-    this._writableState.ended = false;
-    this._writableState.ending = false;
-    this._writableState.finished = false;
-    this._writableState.errorEmitted = false;
-  }
-}
-
-function emitErrorNT(self, err) {
-  self.emit('error', err);
-}
-
-module.exports = {
-  destroy: destroy,
-  undestroy: undestroy
-};
-
-/***/ }),
-
-/***/ "./node_modules/readable-stream/lib/internal/streams/stream-browser.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/readable-stream/lib/internal/streams/stream-browser.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
-
-
-/***/ }),
-
-/***/ "./node_modules/readable-stream/passthrough.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/readable-stream/passthrough.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./readable */ "./node_modules/readable-stream/readable-browser.js").PassThrough
-
-
-/***/ }),
-
-/***/ "./node_modules/readable-stream/readable-browser.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/readable-stream/readable-browser.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ./lib/_stream_readable.js */ "./node_modules/readable-stream/lib/_stream_readable.js");
-exports.Stream = exports;
-exports.Readable = exports;
-exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ "./node_modules/readable-stream/lib/_stream_writable.js");
-exports.Duplex = __webpack_require__(/*! ./lib/_stream_duplex.js */ "./node_modules/readable-stream/lib/_stream_duplex.js");
-exports.Transform = __webpack_require__(/*! ./lib/_stream_transform.js */ "./node_modules/readable-stream/lib/_stream_transform.js");
-exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ "./node_modules/readable-stream/lib/_stream_passthrough.js");
-
-
-/***/ }),
-
-/***/ "./node_modules/readable-stream/transform.js":
-/*!***************************************************!*\
-  !*** ./node_modules/readable-stream/transform.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./readable */ "./node_modules/readable-stream/readable-browser.js").Transform
-
-
-/***/ }),
-
-/***/ "./node_modules/readable-stream/writable-browser.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/readable-stream/writable-browser.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./lib/_stream_writable.js */ "./node_modules/readable-stream/lib/_stream_writable.js");
-
-
-/***/ }),
-
-/***/ "./node_modules/redux/es/redux.js":
-/*!****************************************!*\
-  !*** ./node_modules/redux/es/redux.js ***!
-  \****************************************/
-/*! exports provided: __DO_NOT_USE__ActionTypes, applyMiddleware, bindActionCreators, combineReducers, compose, createStore */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__DO_NOT_USE__ActionTypes", function() { return ActionTypes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "applyMiddleware", function() { return applyMiddleware; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bindActionCreators", function() { return bindActionCreators; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "combineReducers", function() { return combineReducers; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compose", function() { return compose; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return createStore; });
-/* harmony import */ var symbol_observable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! symbol-observable */ "./node_modules/symbol-observable/es/index.js");
-
-
-/**
- * These are private action types reserved by Redux.
- * For any unknown actions, you must return the current state.
- * If the current state is undefined, you must return the initial state.
- * Do not reference these action types directly in your code.
- */
-var randomString = function randomString() {
-  return Math.random().toString(36).substring(7).split('').join('.');
-=======
     var H, S, V, C;
     V = mmax(r, g, b);
     C = V - mmin(r, g, b);
@@ -40673,7 +39619,6 @@ var randomString = function randomString() {
     H = (H + 360) % 6 * 60 / 360;
     S = C == 0 ? 0 : C / V;
     return {h: H, s: S, b: V, toString: hsbtoString};
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
 };
 /*\
  * Snap.rgb2hsl
@@ -47910,13 +46855,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-var _jsxFileName = "C:\\Users\\Sebastian\\Desktop\\incaseweb\\pages\\login.js";
-
-
-=======
-var _jsxFileName = "C:\\Users\\Riano\\Documents\\gocar\\incaseweb\\pages\\cursos\\[id_user].js";
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
+var _jsxFileName = "C:\\Users\\Sebastian\\Desktop\\incaseweb\\pages\\cursos\\[id_user].js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
 
 function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
@@ -47936,16 +46875,20 @@ var UserCursos = /*#__PURE__*/function (_Component) {
   var _super = _createSuper(UserCursos);
 
   function UserCursos(props) {
+    var _this;
+
     Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, UserCursos);
 
-    return _super.call(this, props); //console.log("User props " + JSON.stringify(this.props));
-    //const classes = useStyles();
+    _this = _super.call(this, props);
+    console.log("User cursos " + JSON.stringify(_this.props)); //const classes = useStyles();
+
+    return _this;
   }
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(UserCursos, [{
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_6__["default"], {
         auth: this.props.auth,
@@ -47956,369 +46899,13 @@ var UserCursos = /*#__PURE__*/function (_Component) {
           lineNumber: 18,
           columnNumber: 7
         }
-<<<<<<< HEAD:.next/static/development/pages/login.js
-      }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_9___default.a, {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 187,
-          columnNumber: 9
-        }
-      }, __jsx("title", {
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 188,
-          columnNumber: 11
-        }
-      }, "WHATABYTE"), __jsx("meta", {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1",
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 189,
-          columnNumber: 11
-        }
-      }), __jsx("meta", {
-        charSet: "utf-8",
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 190,
-          columnNumber: 11
-        }
-      })), __jsx(_components_Header__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        appTitle: appTitle,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 193,
-          columnNumber: 9
-        }
-      }), __jsx("div", {
-        className: "jsx-1104402198" + " " + "Content",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 194,
-          columnNumber: 9
-        }
-      }, __jsx("div", {
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 195,
-          columnNumber: 11
-        }
-      }, __jsx("h3", {
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 196,
-          columnNumber: 11
-        }
-      }, "Bienvenido a ", appTitle, " , Porfavor digite su usuario y contrasena :  ")), __jsx("div", {
-        className: "jsx-1104402198" + " " + "login",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 201,
-          columnNumber: 11
-        }
-      }, __jsx("form", {
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 202,
-          columnNumber: 13
-        }
-      }, __jsx("label", {
-        htmlFor: "correo",
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 203,
-          columnNumber: 15
-        }
-      }, "Usuario"), __jsx("input", {
-        type: "text",
-        id: "correo",
-        name: "correo",
-        value: this.state.correo,
-        onChange: this.handleChange,
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 205,
-          columnNumber: 15
-        }
-      }), __jsx("label", {
-        htmlFor: "clave",
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 212,
-          columnNumber: 15
-        }
-      }, "Contrase\xF1a"), __jsx("input", {
-        type: "text",
-        id: "clave",
-        name: "clave",
-        value: this.state.clave,
-        onChange: this.handleChangePassword,
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 213,
-          columnNumber: 15
-        }
-      }), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_18__["default"], {
-        variant: "contained",
-        color: "primary",
-        onClick: this.handleSubmit,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 221,
-          columnNumber: 15
-        }
-      }, "Iniciar Sesion"), __jsx("label", {
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 225,
-          columnNumber: 16
-        }
-      }, "o"), __jsx("a", {
-        onClick: this.openModal,
-        className: "jsx-1104402198" + " " + "registertext",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 227,
-          columnNumber: 16
-        }
-      }, "Registrate"), __jsx("p", {
-        className: "jsx-1104402198" + " " + "error ".concat(this.state.error && "show"),
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 229,
-          columnNumber: 17
-        }
-      }, this.state.error && "Error: ".concat(this.state.error)))), __jsx("div", {
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 234,
-          columnNumber: 11
-        }
-      }, __jsx(react_modal__WEBPACK_IMPORTED_MODULE_20___default.a, {
-        isOpen: this.state.modalIsOpen,
-        onAfterOpen: this.afterOpenModal,
-        onRequestClose: this.closeModal,
-        style: customStyles,
-        contentLabel: "Example Modal",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 235,
-          columnNumber: 13
-        }
-      }, __jsx("div", {
-        className: "jsx-1104402198" + " " + "headermodal",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 243,
-          columnNumber: 15
-        }
-      }, "\xA1 Reg\xEDstrate y comienza a aprender \xA0!", __jsx("button", {
-        "aria-label": "Cerrar",
-        type: "button",
-        onClick: this.closeModal,
-        className: "jsx-1104402198" + " " + "modalclose",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 245,
-          columnNumber: 15
-        }
-      }, __jsx("span", {
-        "aria-hidden": "true",
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 245,
-          columnNumber: 106
-        }
-      }, "\xD7"))), __jsx("div", {
-        className: "jsx-1104402198" + " " + "contentmodal",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 248,
-          columnNumber: 16
-        }
-      }, __jsx("form", {
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 250,
-          columnNumber: 15
-        }
-      }, __jsx("label", {
-        htmlFor: "nombre",
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 251,
-          columnNumber: 17
-        }
-      }, "Nombre"), __jsx("input", {
-        type: "text",
-        id: "nombre_reg",
-        name: "nombre_reg",
-        value: this.state.nom_reg,
-        onChange: this.handleChangeNomReg,
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 253,
-          columnNumber: 17
-        }
-      }), __jsx("label", {
-        htmlFor: "apellido",
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 260,
-          columnNumber: 17
-        }
-      }, "Apellido"), __jsx("input", {
-        type: "text",
-        id: "apellido_reg",
-        name: "apellido_reg",
-        value: this.state.apell_reg,
-        onChange: this.handleChangeApellReg,
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 261,
-          columnNumber: 17
-        }
-      }), __jsx("label", {
-        htmlFor: "correo",
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 268,
-          columnNumber: 18
-        }
-      }, "Correo"), __jsx("input", {
-        type: "text",
-        id: "correo_reg",
-        name: "correo_reg",
-        value: this.state.correo_reg,
-        onChange: this.handleChangeCorreoReg,
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 269,
-          columnNumber: 17
-        }
-      }), __jsx("label", {
-        htmlFor: "clave",
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 276,
-          columnNumber: 18
-        }
-      }, "Contrase\xF1a"), __jsx("input", {
-        type: "text",
-        id: "clave_reg",
-        name: "clave_reg",
-        value: this.state.clave_reg,
-        onChange: this.handleChangePasswordReg,
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 277,
-          columnNumber: 17
-        }
-      }), __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_18__["default"], {
-        variant: "contained",
-        color: "secondary",
-        className: "buttonregister",
-        onClick: this.createUser,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 284,
-          columnNumber: 18
-        }
-      }, "Registrarse")), __jsx("div", {
-        className: "jsx-1104402198" + " " + "secondarytext",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 290,
-          columnNumber: 15
-        }
-      }, "Al registrarse, acepta nuestras", __jsx("a", {
-        href: "/terms/",
-        target: "_blank",
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 292,
-          columnNumber: 16
-        }
-      }, "condiciones generales de uso"), "y ", __jsx("a", {
-        href: "/terms/privacy/",
-        target: "_blank",
-        className: "jsx-1104402198",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 293,
-          columnNumber: 18
-        }
-      }, "nuestra pol\xEDtica de privacidad"), "."))))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_7___default.a, {
-        id: "1104402198",
-        __self: this
-      }, ".login.jsx-1104402198{max-width:340px;margin:0 auto;padding:1rem;border:1px solid #ccc;border-radius:4px;text-align:center;}form.jsx-1104402198{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:column;-ms-flex-flow:column;flex-flow:column;}label.jsx-1104402198{font-weight:600;}input.jsx-1104402198{padding:8px;margin:0.2rem 0 1rem;border:1px solid #ccc;border-radius:4px;}.error.jsx-1104402198{margin:0.5rem 0 0;display:none;color:brown;}.error.show.jsx-1104402198{display:block;}.headermodal.jsx-1104402198{border-bottom:solid 1px #dedfe0;border-top-left-radius:6px;border-top-right-radius:6px;color:#29303b;display:block;font-weight:700;font-size:15px;padding:24px 64px 24px 24px;}.buttonregister.jsx-1104402198{font-size:16px;font-weight:700;height:48px;margin-bottom:16px;width:100%;}.contentmodal.jsx-1104402198{padding:24px 24px 16px;}.modalclose.jsx-1104402198{color:#686f7a;font-size:36px;font-weight:400;opacity:1;position:relative;z-index:3;padding:0 8px;background-color:white;border:none;overflow:hidden;margin-bottom:0;margin-top:-8px;position:absolute;right:24px;top:24px;}.secondarytext.jsx-1104402198{margin:0 0 16px;margin-top:10px;font-size:10px;text-align:center;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkM6XFxVc2Vyc1xcU2ViYXN0aWFuXFxEZXNrdG9wXFxpbmNhc2V3ZWJcXHBhZ2VzXFxsb2dpbi5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUEwU29CLEFBRzZCLEFBUUgsQUFJRyxBQUdKLEFBTU0sQUFLSixBQUdrQixBQVVqQixBQU9RLEFBR1QsQUFpQkUsWUFsREssRUFXdkIsQUF1QmlCLENBVkMsQ0F2Q0YsQUFZaEIsQUFzRGtCLEVBN0NILEtBeUJmLE1BSWtCLENBakRILENBcUJELEFBa0JBLENBWGUsQUFzQ1osQ0FuRE8sVUFkQSxBQXFCeEIsQUFrQnFCLEVBVVQsRUFpQlEsUUFuREEsQUFtQ0EsSUF0QlUsR0FZakIsR0F2Q08sQUFrRXBCLFFBbkRBLEFBeUJBLEFBVVksQ0E3Q08sU0FKQyxBQWtESixJQXZCQSxVQXdCUyxJQWxEekIsQUEyQmdCLGNBQ0UsS0F1QkosV0F0QkcsQ0F1QkMsS0FoRGxCLFNBMEI4QixFQXVCWixnQkFDQSxVQXZCbEIsTUF3Qm9CLGtCQUNQLFdBQ0YsU0FDWCIsImZpbGUiOiJDOlxcVXNlcnNcXFNlYmFzdGlhblxcRGVza3RvcFxcaW5jYXNld2ViXFxwYWdlc1xcbG9naW4uanMiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuaW1wb3J0IEhlYWQgZnJvbSBcIm5leHQvaGVhZFwiO1xyXG5pbXBvcnQgSGVhZGVyIGZyb20gXCIuLi9jb21wb25lbnRzL0hlYWRlclwiO1xyXG5pbXBvcnQgeyBDb21wb25lbnQgfSBmcm9tIFwicmVhY3RcIjtcclxuaW1wb3J0ICBMaW5rICBmcm9tIFwibmV4dC9saW5rXCI7XHJcbmltcG9ydCBmZXRjaCBmcm9tIFwiaXNvbW9ycGhpYy11bmZldGNoXCI7XHJcbmltcG9ydCBMYXlvdXQgZnJvbSBcIi4uL2NvbXBvbmVudHMvbGF5b3V0XCI7XHJcbmltcG9ydCB7IGxvZ2luIH0gZnJvbSBcIi4uL2FwaS9sb2dpblwiO1xyXG5pbXBvcnQgeyBDb29raWVzIH0gZnJvbSBcInJlYWN0LWNvb2tpZVwiO1xyXG5pbXBvcnQgUm91dGVyIGZyb20gXCJuZXh0L3JvdXRlclwiO1xyXG5pbXBvcnQge2Nvbm5lY3R9IGZyb20gXCJyZWFjdC1yZWR1eFwiO1xyXG5pbXBvcnQgQnV0dG9uIGZyb20gXCJAbWF0ZXJpYWwtdWkvY29yZS9CdXR0b25cIjtcclxuaW1wb3J0IHsgZ3JlZW4sIHB1cnBsZSB9IGZyb20gJ0BtYXRlcmlhbC11aS9jb3JlL2NvbG9ycyc7XHJcbmltcG9ydCBNb2RhbCBmcm9tICdyZWFjdC1tb2RhbCc7XHJcblxyXG5jb25zdCBjdXN0b21TdHlsZXMgPSB7XHJcbiAgY29udGVudCA6IHtcclxuICAgIHRvcCAgICAgICAgICAgICAgICAgICA6ICc1MCUnLFxyXG4gICAgbGVmdCAgICAgICAgICAgICAgICAgIDogJzUwJScsXHJcbiAgICByaWdodCAgICAgICAgICAgICAgICAgOiAnYXV0bycsXHJcbiAgICBib3R0b20gICAgICAgICAgICAgICAgOiAnYXV0bycsXHJcbiAgICBtYXJnaW5SaWdodCAgICAgICAgICAgOiAnLTUwJScsXHJcbiAgICB0cmFuc2Zvcm0gICAgICAgICAgICAgOiAndHJhbnNsYXRlKC01MCUsIC01MCUpJ1xyXG4gIH1cclxufTtcclxuIFxyXG5jb25zdCBhcHBUaXRsZSA9IGBXSEFUQUJZVEVgO1xyXG5jb25zdCBjb29raWVzID0gbmV3IENvb2tpZXMoKTtcclxudmFyIHN1YnRpdGxlID0gXCJkZGRkXCIgO1xyXG5jbGFzcyBMb2dpbiBleHRlbmRzIENvbXBvbmVudCB7XHJcblxyXG4gIHN0YXRpYyBnZXRJbml0aWFsUHJvcHMoeyBzdG9yZSxyZXEgfSkge1xyXG4gICAgY29uc29sZS5sb2coXCJsYSBzdG9yZTpcIitzdG9yZSlcclxuXHJcbiAgICBjb25zdCBhcGlVcmwgPSBcImh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9hdXRoL2xvZ2luXCI7XHJcbiAgICBcclxuICAgIHJldHVybiB7IGFwaVVybCB9O1xyXG4gIH1cclxuIFxyXG4gIGNvbnN0cnVjdG9yKHByb3BzKSB7XHJcbiAgICBzdXBlcihwcm9wcyk7XHJcbiAgICBjb25zdCB7IHNlbmQgfSA9IHJlcXVpcmUoXCJtaWNyb1wiKTtcclxuIFxyXG4gICAgdGhpcy5zdGF0ZSA9IHtcclxuICAgICAgY29ycmVvOiBcIlwiLFxyXG4gICAgICBjbGF2ZTogXCJcIixcclxuICAgICAgZXJyb3I6IFwiXCIsXHJcbiAgICAgIHRva2VuOiBjb29raWVzLmdldChcInRva2VuXCIpIHx8IG51bGwsXHJcbiAgICAgIG1vZGFsSXNPcGVuOiBmYWxzZSxcclxuICAgICAgbm9tX3JlZyA6IFwiXCIsXHJcbiAgICAgIGFwZWxsX3JlZzpcIlwiLFxyXG4gICAgICBjb3JyZW9fcmVnOlwiXCIsXHJcbiAgICAgIGNsYXZlX3JlZzpcIlwiXHJcblxyXG4gICAgfTtcclxuICAgIFxyXG4gICAgdGhpcy5oYW5kbGVDaGFuZ2UgPSB0aGlzLmhhbmRsZUNoYW5nZS5iaW5kKHRoaXMpO1xyXG4gICAgdGhpcy5oYW5kbGVTdWJtaXQgPSB0aGlzLmhhbmRsZVN1Ym1pdC5iaW5kKHRoaXMpO1xyXG4gICAgdGhpcy5oYW5kbGVDaGFuZ2VQYXNzd29yZCA9IHRoaXMuaGFuZGxlQ2hhbmdlUGFzc3dvcmQuYmluZCh0aGlzKTtcclxuICAgIHRoaXMuaGFuZGxlQ2hhbmdlTm9tUmVnICA9IHRoaXMuaGFuZGxlQ2hhbmdlTm9tUmVnLmJpbmQodGhpcyk7XHJcbiAgICB0aGlzLmhhbmRsZUNoYW5nZUFwZWxsUmVnID0gdGhpcy5oYW5kbGVDaGFuZ2VBcGVsbFJlZy5iaW5kKHRoaXMpO1xyXG4gICAgdGhpcy5oYW5kbGVDaGFuZ2VDb3JyZW9SZWcgID0gdGhpcy5oYW5kbGVDaGFuZ2VDb3JyZW9SZWcuYmluZCh0aGlzKTtcclxuICAgIHRoaXMuaGFuZGxlQ2hhbmdlUGFzc3dvcmRSZWcgPSB0aGlzLmhhbmRsZUNoYW5nZVBhc3N3b3JkUmVnLmJpbmQodGhpcyk7XHJcbiAgICB0aGlzLmNyZWF0ZVVzZXIgPSB0aGlzLmNyZWF0ZVVzZXIuYmluZCh0aGlzKTtcclxuICAgIHRoaXMub3Blbk1vZGFsID0gdGhpcy5vcGVuTW9kYWwuYmluZCh0aGlzKTtcclxuICAgIHRoaXMuY2xvc2VNb2RhbCA9IHRoaXMuY2xvc2VNb2RhbC5iaW5kKHRoaXMpO1xyXG4gICAgTW9kYWwuc2V0QXBwRWxlbWVudCgnYm9keScpO1xyXG4gIH0gXHJcblxyXG4gIC8vIE1PREFMIEZVTkNUSU9OU1xyXG5cclxuICBvcGVuTW9kYWwoKSB7XHJcbiAgICB0aGlzLnNldFN0YXRlKHsgbW9kYWxJc09wZW46IHRydWUgfSk7XHJcbiAgfVxyXG4gIFxyXG4gICBhZnRlck9wZW5Nb2RhbCgpIHtcclxuICAgIC8vIHJlZmVyZW5jZXMgYXJlIG5vdyBzeW5jJ2QgYW5kIGNhbiBiZSBhY2Nlc3NlZC5cclxuICAgLy8gc3VidGl0bGUuc3R5bGUuY29sb3IgPSAnI2YwMCc7XHJcbiAgfVxyXG4gXHJcbiAgIGNsb3NlTW9kYWwoKXtcclxuICAgIHRoaXMuc2V0U3RhdGUoeyBtb2RhbElzT3BlbjogZmFsc2UgfSk7XHJcbiAgfVxyXG5cclxuICAvLyBIQU5ETEUgRVZFTlQgVE8gQ0hBTkdFIFRIRSBTVEFURSBWQUxVRSBcclxuXHJcbiAgaGFuZGxlQ2hhbmdlKGV2ZW50KSB7XHJcbiAgICB0aGlzLnNldFN0YXRlKHsgY29ycmVvOiBldmVudC50YXJnZXQudmFsdWUgfSk7XHJcbiAgfVxyXG5cclxuICBoYW5kbGVDaGFuZ2VQYXNzd29yZChldmVudCkge1xyXG4gICAgdGhpcy5zZXRTdGF0ZSh7IGNsYXZlOiBldmVudC50YXJnZXQudmFsdWUgfSk7XHJcbiAgfVxyXG4gIGhhbmRsZUNoYW5nZU5vbVJlZyhldmVudCkge1xyXG4gICAgdGhpcy5zZXRTdGF0ZSh7IG5vbV9yZWc6IGV2ZW50LnRhcmdldC52YWx1ZSB9KTtcclxuICB9XHJcbiAgIFxyXG4gIGhhbmRsZUNoYW5nZUFwZWxsUmVnKGV2ZW50KXtcclxuICAgIHRoaXMuc2V0U3RhdGUoeyBhcGVsbF9yZWc6IGV2ZW50LnRhcmdldC52YWx1ZSB9KTtcclxuICB9XHJcbiAgaGFuZGxlQ2hhbmdlQ29ycmVvUmVnKGV2ZW50KXtcclxuICAgIHRoaXMuc2V0U3RhdGUoeyBjb3JyZW9fcmVnOiBldmVudC50YXJnZXQudmFsdWUgfSk7XHJcbiAgfVxyXG4gIGhhbmRsZUNoYW5nZVBhc3N3b3JkUmVnKGV2ZW50KXtcclxuICAgIHRoaXMuc2V0U3RhdGUoeyBjbGF2ZV9yZWc6IGV2ZW50LnRhcmdldC52YWx1ZSB9KTtcclxuICB9XHJcbiAgXHJcbiAgLy8gIFdFQiBTRVJWSUNFUyBGVU5DVElPTlMgXHJcblxyXG4gIGFzeW5jIGhhbmRsZVN1Ym1pdChldmVudCkge1xyXG4gICAgZXZlbnQucHJldmVudERlZmF1bHQoKTtcclxuXHJcbiAgICB0cnkge1xyXG4gICAgICBjb25zdCBfY29ycmVvID0gdGhpcy5zdGF0ZS5jb3JyZW87XHJcbiAgICAgIGNvbnN0IF9jbGF2ZSA9IHRoaXMuc3RhdGUuY2xhdmU7XHJcbiAgICAgIGNvbnN0IHVybCA9IHRoaXMucHJvcHMuYXBpVXJsO1xyXG4gICAgICBjb25zdCBib2R5ID0geyBjb3JyZW86IF9jb3JyZW8sIGNsYXZlOiBfY2xhdmUgfTtcclxuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaCh1cmwsIHtcclxuICAgICAgICBtZXRob2Q6IFwiUE9TVFwiLFxyXG4gICAgICAgIGhlYWRlcnM6IHtcclxuICAgICAgICAgIFwiQ29udGVudC1UeXBlXCI6IFwiYXBwbGljYXRpb24vanNvblwiLFxyXG4gICAgICAgIH0sXHJcbiAgICAgICAgYm9keTogSlNPTi5zdHJpbmdpZnkoYm9keSksXHJcbiAgICAgIH0pO1xyXG5cclxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcclxuXHJcbiAgICAgIGNvbnNvbGUubG9nKFwiSGlsbGlwb3lhc1wiICsgSlNPTi5zdHJpbmdpZnkoZGF0YSkpO1xyXG4gICAgICAvL2NvbnNvbGUubG9nKFwic3RhdHVzXCIrZGF0YS5zdGF0dXMpXHJcbiAgICAgIGlmIChkYXRhLnN0YXR1cyA9PT0gMjAwKSB7XHJcbiAgICAgICAgY29uc3QgdG9rZW4gPSBkYXRhLmFjY2Vzc190b2tlbjtcclxuICAgICAgICBjb29raWVzLnNldChcInRva2VuXCIsIHRva2VuKTtcclxuICAgICAgICBjb25zdCBhY3Rpb24gPSB7IHR5cGU6ICdBRERfVVNFUl9JRCcgLHBheWxvYWQ6IGRhdGEudXNlcl9pZCB9XHJcbiAgICAgICAgdGhpcy5wcm9wcy5kaXNwYXRjaChhY3Rpb24pO1xyXG4gICAgICAgIGNvbnNvbGUubG9nKFwiTG9naW4gc3VjY2VzZnVsbHlcIik7XHJcbiAgICAgICAgUm91dGVyLnB1c2goXCIvXCIpO1xyXG4gICAgICAgIC8vICAgY29uc3QgeyBhY2Nlc3NfdG9rZW4gfSA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcclxuICAgICAgICAvLyAgIGxvZ2luKHsgYWNjZXNzX3Rva2VuIH0pO1xyXG4gICAgICB9IGVsc2Uge1xyXG4gICAgICAgIGNvbnNvbGUubG9nKFwiTG9naW4gZmFpbGVkLlwiKTtcclxuXHJcbiAgICAgICAgLy8gaHR0cHM6Ly9naXRodWIuY29tL2RldmVsb3BpdC91bmZldGNoI2NhdmVhdHNcclxuICAgICAgICBsZXQgZXJyb3IgPSBuZXcgRXJyb3IoZGF0YS5tZXNzYWdlKTtcclxuICAgICAgICBlcnJvci5kYXRhID0gZGF0YTtcclxuICAgICAgICB0aGlzLnNldFN0YXRlKHtcclxuICAgICAgICAgIGVycm9yOiBkYXRhLm1lc3NhZ2UsXHJcbiAgICAgICAgfSk7XHJcbiAgICAgICAgLy8gIHJldHVybiBQcm9taXNlLnJlamVjdChlcnJvcik7XHJcbiAgICAgIH1cclxuICAgIH0gY2F0Y2ggKGVycm9yKSB7XHJcbiAgICAgIGNvbnNvbGUuZXJyb3IoXHJcbiAgICAgICAgXCJZb3UgaGF2ZSBhbiBlcnJvciBpbiB5b3VyIGNvZGUgb3IgdGhlcmUgYXJlIE5ldHdvcmsgaXNzdWVzLlwiLFxyXG4gICAgICAgIGVycm9yXHJcbiAgICAgICk7XHJcblxyXG4gICAgICB0aHJvdyBuZXcgRXJyb3IoZXJyb3IpO1xyXG4gICAgfVxyXG4gIH1cclxuIFxyXG5hc3luYyBjcmVhdGVVc2VyKCkge1xyXG4gIHRyeXtcclxuICAgICBsZXQgX3RvaW5zZXJ0ID0gIHtcIm5vbWJyZVwiOiB0aGlzLnN0YXRlLm5vbV9yZWcsIFwiYXBlbGxpZG9cIjp0aGlzLnN0YXRlLmFwZWxsX3JlZyxcImNvcnJlb1wiOiB0aGlzLnN0YXRlLmNvcnJlb19yZWcsIFwiY2xhdmVcIjogdGhpcy5zdGF0ZS5jbGF2ZV9yZWd9O1xyXG4gICAgIGNvbnN0IHVybCA9IFwiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3VzdWFyaW9zXCI7XHJcbiAgICAgY29uc29sZS5sb2coX3RvaW5zZXJ0KVxyXG4gICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2godXJsLCB7XHJcbiAgICAgIG1ldGhvZDogXCJQT1NUXCIsXHJcbiAgICAgIGhlYWRlcnM6IHtcclxuICAgICAgICBcIkNvbnRlbnQtVHlwZVwiOiBcImFwcGxpY2F0aW9uL2pzb25cIixcclxuICAgICAgfSxcclxuICAgICAgYm9keTogSlNPTi5zdHJpbmdpZnkoX3RvaW5zZXJ0KSxcclxuICAgIH0pO1xyXG4gICAgIGNvbnNvbGUubG9nKFwiVGVybWluZVwiICsgcmVzcG9uc2UuU3RhdHVzKVxyXG4gIH1cclxuICBjYXRjaCAoZXJyb3IpIHtcclxuICAgIGNvbnNvbGUuZXJyb3IoXHJcbiAgICAgIFwiWW91IGhhdmUgYW4gZXJyb3IgaW4geW91ciBjb2RlIG9yIHRoZXJlIGFyZSBOZXR3b3JrIGlzc3Vlcy5cIixcclxuICAgICAgZXJyb3JcclxuICAgICk7XHJcblxyXG4gICAgdGhyb3cgbmV3IEVycm9yKGVycm9yKTtcclxuICB9XHJcbn1cclxuICByZW5kZXIoKSB7XHJcbiAgICBcclxuICAgIHJldHVybiAoXHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiTGF5b3V0XCI+XHJcbiAgICAgICAgPEhlYWQ+XHJcbiAgICAgICAgICA8dGl0bGU+V0hBVEFCWVRFPC90aXRsZT5cclxuICAgICAgICAgIDxtZXRhIG5hbWU9XCJ2aWV3cG9ydFwiIGNvbnRlbnQ9XCJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MVwiIC8+XHJcbiAgICAgICAgICA8bWV0YSBjaGFyU2V0PVwidXRmLThcIiAvPlxyXG4gICAgICAgIDwvSGVhZD5cclxuXHJcbiAgICAgICAgPEhlYWRlciBhcHBUaXRsZT17YXBwVGl0bGV9IC8+XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJDb250ZW50XCI+XHJcbiAgICAgICAgICA8ZGl2PlxyXG4gICAgICAgICAgPGgzPkJpZW52ZW5pZG8gYSB7YXBwVGl0bGV9ICwgUG9yZmF2b3IgZGlnaXRlIHN1IHVzdWFyaW8geSBjb250cmFzZW5hIDogIDwvaDM+XHJcblxyXG4gICAgICAgICAgIFxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICBcclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibG9naW5cIj5cclxuICAgICAgICAgICAgPGZvcm0+XHJcbiAgICAgICAgICAgICAgPGxhYmVsIGh0bWxGb3I9XCJjb3JyZW9cIj5Vc3VhcmlvPC9sYWJlbD5cclxuXHJcbiAgICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgICB0eXBlPVwidGV4dFwiXHJcbiAgICAgICAgICAgICAgICBpZD1cImNvcnJlb1wiXHJcbiAgICAgICAgICAgICAgICBuYW1lPVwiY29ycmVvXCJcclxuICAgICAgICAgICAgICAgIHZhbHVlPXt0aGlzLnN0YXRlLmNvcnJlb31cclxuICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXt0aGlzLmhhbmRsZUNoYW5nZX1cclxuICAgICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICAgIDxsYWJlbCBodG1sRm9yPVwiY2xhdmVcIj5Db250cmFzZcOxYTwvbGFiZWw+XHJcbiAgICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgICB0eXBlPVwidGV4dFwiXHJcbiAgICAgICAgICAgICAgICBpZD1cImNsYXZlXCJcclxuICAgICAgICAgICAgICAgIG5hbWU9XCJjbGF2ZVwiXHJcbiAgICAgICAgICAgICAgICB2YWx1ZT17dGhpcy5zdGF0ZS5jbGF2ZX1cclxuICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXt0aGlzLmhhbmRsZUNoYW5nZVBhc3N3b3JkfVxyXG4gICAgICAgICAgICAgIC8+XHJcblxyXG4gICAgICAgICAgICAgIDxCdXR0b24gdmFyaWFudD1cImNvbnRhaW5lZFwiIGNvbG9yPVwicHJpbWFyeVwiIG9uQ2xpY2s9e3RoaXMuaGFuZGxlU3VibWl0fT5cclxuICAgICAgICAgICAgICAgIEluaWNpYXIgU2VzaW9uXHJcbiAgICAgICAgICAgICAgPC9CdXR0b24+XHJcbiAgICAgICAgICAgICAgXHJcbiAgICAgICAgICAgICAgIDxsYWJlbD5vPC9sYWJlbD5cclxuICAgICAgICAgXHJcbiAgICAgICAgICAgICAgIDxhIGNsYXNzTmFtZT1cInJlZ2lzdGVydGV4dFwiIG9uQ2xpY2s9e3RoaXMub3Blbk1vZGFsfT5SZWdpc3RyYXRlPC9hPlxyXG4gICAgICAgICAgICAgIFxyXG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPXtgZXJyb3IgJHt0aGlzLnN0YXRlLmVycm9yICYmIFwic2hvd1wifWB9PlxyXG4gICAgICAgICAgICAgICAge3RoaXMuc3RhdGUuZXJyb3IgJiYgYEVycm9yOiAke3RoaXMuc3RhdGUuZXJyb3J9YH1cclxuICAgICAgICAgICAgICA8L3A+XHJcbiAgICAgICAgICAgIDwvZm9ybT5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPGRpdj5cclxuICAgICAgICAgICAgPE1vZGFsXHJcbiAgICAgICAgICAgICAgaXNPcGVuPXt0aGlzLnN0YXRlLm1vZGFsSXNPcGVufVxyXG4gICAgICAgICAgICAgIG9uQWZ0ZXJPcGVuPXt0aGlzLmFmdGVyT3Blbk1vZGFsfVxyXG4gICAgICAgICAgICAgIG9uUmVxdWVzdENsb3NlPXt0aGlzLmNsb3NlTW9kYWx9XHJcbiAgICAgICAgICAgICAgc3R5bGU9e2N1c3RvbVN0eWxlc31cclxuICAgICAgICAgICAgICBjb250ZW50TGFiZWw9XCJFeGFtcGxlIE1vZGFsXCJcclxuICAgICAgICAgICAgPlxyXG5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImhlYWRlcm1vZGFsXCI+XHJcbiAgICAgICAgICAgICAgwqEgUmVnw61zdHJhdGUgeSBjb21pZW56YSBhIGFwcmVuZGVyICZuYnNwOyFcclxuICAgICAgICAgICAgICA8YnV0dG9uIGFyaWEtbGFiZWw9XCJDZXJyYXJcIiB0eXBlPVwiYnV0dG9uXCIgY2xhc3NOYW1lPVwibW9kYWxjbG9zZVwiIG9uQ2xpY2s9e3RoaXMuY2xvc2VNb2RhbH0+PHNwYW4gYXJpYS1oaWRkZW49XCJ0cnVlXCI+w5c8L3NwYW4+PC9idXR0b24+XHJcblxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbnRlbnRtb2RhbFwiPlxyXG4gICAgICAgICAgICBcclxuICAgICAgICAgICAgICA8Zm9ybT5cclxuICAgICAgICAgICAgICAgIDxsYWJlbCBodG1sRm9yPVwibm9tYnJlXCI+Tm9tYnJlPC9sYWJlbD5cclxuXHJcbiAgICAgICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxyXG4gICAgICAgICAgICAgICAgICBpZD1cIm5vbWJyZV9yZWdcIlxyXG4gICAgICAgICAgICAgICAgICBuYW1lPVwibm9tYnJlX3JlZ1wiXHJcbiAgICAgICAgICAgICAgICAgIHZhbHVlPXt0aGlzLnN0YXRlLm5vbV9yZWd9XHJcbiAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXt0aGlzLmhhbmRsZUNoYW5nZU5vbVJlZ31cclxuICAgICAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICAgICAgICA8bGFiZWwgaHRtbEZvcj1cImFwZWxsaWRvXCI+QXBlbGxpZG88L2xhYmVsPlxyXG4gICAgICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgICAgIHR5cGU9XCJ0ZXh0XCJcclxuICAgICAgICAgICAgICAgICAgaWQ9XCJhcGVsbGlkb19yZWdcIlxyXG4gICAgICAgICAgICAgICAgICBuYW1lPVwiYXBlbGxpZG9fcmVnXCJcclxuICAgICAgICAgICAgICAgICAgdmFsdWU9e3RoaXMuc3RhdGUuYXBlbGxfcmVnfVxyXG4gICAgICAgICAgICAgICAgICBvbkNoYW5nZT17dGhpcy5oYW5kbGVDaGFuZ2VBcGVsbFJlZ31cclxuICAgICAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICAgICAgICAgPGxhYmVsIGh0bWxGb3I9XCJjb3JyZW9cIj5Db3JyZW88L2xhYmVsPlxyXG4gICAgICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgICAgIHR5cGU9XCJ0ZXh0XCJcclxuICAgICAgICAgICAgICAgICAgaWQ9XCJjb3JyZW9fcmVnXCJcclxuICAgICAgICAgICAgICAgICAgbmFtZT1cImNvcnJlb19yZWdcIlxyXG4gICAgICAgICAgICAgICAgICB2YWx1ZT17dGhpcy5zdGF0ZS5jb3JyZW9fcmVnfVxyXG4gICAgICAgICAgICAgICAgICBvbkNoYW5nZT17dGhpcy5oYW5kbGVDaGFuZ2VDb3JyZW9SZWd9XHJcbiAgICAgICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICAgICAgIDxsYWJlbCBodG1sRm9yPVwiY2xhdmVcIj5Db250cmFzZcOxYTwvbGFiZWw+XHJcbiAgICAgICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxyXG4gICAgICAgICAgICAgICAgICBpZD1cImNsYXZlX3JlZ1wiXHJcbiAgICAgICAgICAgICAgICAgIG5hbWU9XCJjbGF2ZV9yZWdcIlxyXG4gICAgICAgICAgICAgICAgICB2YWx1ZT17dGhpcy5zdGF0ZS5jbGF2ZV9yZWd9XHJcbiAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXt0aGlzLmhhbmRsZUNoYW5nZVBhc3N3b3JkUmVnfVxyXG4gICAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICAgICA8QnV0dG9uIHZhcmlhbnQ9XCJjb250YWluZWRcIiBjb2xvcj1cInNlY29uZGFyeVwiIGNsYXNzTmFtZT1cImJ1dHRvbnJlZ2lzdGVyXCIgb25DbGljaz17dGhpcy5jcmVhdGVVc2VyfT5cclxuICAgICAgICAgICAgICAgIFJlZ2lzdHJhcnNlXHJcbiAgICAgICAgICAgICAgPC9CdXR0b24+XHJcbiAgICAgICAgICAgICAgXHJcblxyXG4gICAgICAgICAgICAgIDwvZm9ybT5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNlY29uZGFyeXRleHRcIj5cclxuICAgICAgICAgICAgICBBbCByZWdpc3RyYXJzZSwgYWNlcHRhIG51ZXN0cmFzIFxyXG4gICAgICAgICAgICAgICA8YSBocmVmPVwiL3Rlcm1zL1wiIHRhcmdldD1cIl9ibGFua1wiPmNvbmRpY2lvbmVzIGdlbmVyYWxlcyBkZSB1c288L2E+XHJcbiAgICAgICAgICAgICAgIHkgPGEgaHJlZj1cIi90ZXJtcy9wcml2YWN5L1wiIHRhcmdldD1cIl9ibGFua1wiPm51ZXN0cmEgcG9sw610aWNhIGRlIHByaXZhY2lkYWQ8L2E+LlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICA8L01vZGFsPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPHN0eWxlIGpzeD57YFxyXG4gICAgICAgICAgLmxvZ2luIHtcclxuICAgICAgICAgICAgbWF4LXdpZHRoOiAzNDBweDtcclxuICAgICAgICAgICAgbWFyZ2luOiAwIGF1dG87XHJcbiAgICAgICAgICAgIHBhZGRpbmc6IDFyZW07XHJcbiAgICAgICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICNjY2M7XHJcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxuICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgZm9ybSB7XHJcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgICAgIGZsZXgtZmxvdzogY29sdW1uO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgbGFiZWwge1xyXG4gICAgICAgICAgICBmb250LXdlaWdodDogNjAwO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgaW5wdXQge1xyXG4gICAgICAgICAgICBwYWRkaW5nOiA4cHg7XHJcbiAgICAgICAgICAgIG1hcmdpbjogMC4ycmVtIDAgMXJlbTtcclxuICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI2NjYztcclxuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgLmVycm9yIHtcclxuICAgICAgICAgICAgbWFyZ2luOiAwLjVyZW0gMCAwO1xyXG4gICAgICAgICAgICBkaXNwbGF5OiBub25lO1xyXG4gICAgICAgICAgICBjb2xvcjogYnJvd247XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICAuZXJyb3Iuc2hvdyB7XHJcbiAgICAgICAgICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgLmhlYWRlcm1vZGFse1xyXG4gICAgICAgICAgICBib3JkZXItYm90dG9tOiBzb2xpZCAxcHggI2RlZGZlMDtcclxuICAgICAgICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogNnB4O1xyXG4gICAgICAgICAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogNnB4O1xyXG4gICAgICAgICAgICBjb2xvcjogIzI5MzAzYjtcclxuICAgICAgICAgICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTVweDtcclxuICAgICAgICAgICAgcGFkZGluZzogMjRweCA2NHB4IDI0cHggMjRweDsgXHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgICAuYnV0dG9ucmVnaXN0ZXJ7XHJcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgICAgICAgICAgZm9udC13ZWlnaHQ6IDcwMDtcclxuICAgICAgICAgICAgaGVpZ2h0OiA0OHB4O1xyXG4gICAgICAgICAgICBtYXJnaW4tYm90dG9tOiAxNnB4O1xyXG4gICAgICAgICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgICAgIH1cclxuICAgICAgICAgIC5jb250ZW50bW9kYWx7XHJcbiAgICAgICAgICAgIHBhZGRpbmc6IDI0cHggMjRweCAxNnB4O1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgICAgLm1vZGFsY2xvc2V7XHJcbiAgICAgICAgICAgIGNvbG9yOiAjNjg2ZjdhO1xyXG4gICAgICAgICAgICBmb250LXNpemU6IDM2cHg7XHJcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiA0MDA7XHJcbiAgICAgICAgICAgIG9wYWNpdHk6IDE7XHJcbiAgICAgICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgICAgICAgICAgei1pbmRleDogMztcclxuICAgICAgICAgICAgcGFkZGluZzogMCA4cHg7XHJcbiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgICAgICAgICBib3JkZXI6IG5vbmU7XHJcbiAgICAgICAgICAgIG92ZXJmbG93OiBoaWRkZW47XHJcbiAgICAgICAgICAgIG1hcmdpbi1ib3R0b206IDA7XHJcbiAgICAgICAgICAgIG1hcmdpbi10b3A6IC04cHg7XHJcbiAgICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgICAgICAgICAgcmlnaHQ6IDI0cHg7XHJcbiAgICAgICAgICAgIHRvcDogMjRweDtcclxuICAgICAgICAgIH1cclxuICAgICAgICAgIC5zZWNvbmRhcnl0ZXh0e1xyXG4gICAgICAgICAgICBtYXJnaW46IDAgMCAxNnB4O1xyXG4gICAgICAgICAgICBtYXJnaW4tdG9wOiAxMHB4O1xyXG4gICAgICAgICAgICBmb250LXNpemU6IDEwcHg7XHJcbiAgICAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgICAgICAgIH1cclxuICAgICAgICBgfTwvc3R5bGU+XHJcbiAgICAgIDwvZGl2PlxyXG4gICAgKTtcclxuICB9XHJcbn1cclxuXHJcbmV4cG9ydCBkZWZhdWx0IGNvbm5lY3QoXHJcbiAgKHN0YXRlKSA9PiBzdGF0ZSxcclxuXHJcbikoTG9naW4pO1xyXG4iXX0= */\n/*@ sourceURL=C:\\\\Users\\\\Sebastian\\\\Desktop\\\\incaseweb\\\\pages\\\\login.js */"));
-=======
       }, this.props.cursos_usuario.map(function (curso) {
         return __jsx(_components_CardCurso__WEBPACK_IMPORTED_MODULE_9__["default"], {
           key: curso.id_curso,
           curso: curso,
-          __self: _this,
+          user_id: _this2.props.user_id,
+          dispatch: _this2.props.dispatch,
+          __self: _this2,
           __source: {
             fileName: _jsxFileName,
             lineNumber: 20,
@@ -48326,7 +46913,6 @@ var UserCursos = /*#__PURE__*/function (_Component) {
           }
         });
       }));
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
     }
   }]);
 
@@ -48544,48 +47130,15 @@ var logout = function logout() {
 
 /***/ }),
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-/***/ 11:
-/*!***************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Clogin.js ***!
-  \***************************************************************************************************************************************/
+/***/ 14:
+/*!*************************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fcursos%2F%5Bid_user%5D&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Ccursos%5C%5Bid_user%5D.js ***!
+  \*************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Clogin.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flogin&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Clogin.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fcursos%2F%5Bid_user%5D&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Ccursos%5C%5Bid_user%5D.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcursos%2F%5Bid_user%5D&absolutePagePath=C%3A%5CUsers%5CSebastian%5CDesktop%5Cincaseweb%5Cpages%5Ccursos%5C%5Bid_user%5D.js!./");
 
-
-/***/ }),
-
-/***/ 12:
-/*!**********************!*\
-  !*** util (ignored) ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 13:
-/*!**********************!*\
-  !*** util (ignored) ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-=======
-/***/ 13:
-/*!*******************************************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fcursos%2F%5Bid_user%5D&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Ccursos%5C%5Bid_user%5D.js ***!
-  \*******************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fcursos%2F%5Bid_user%5D&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Ccursos%5C%5Bid_user%5D.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcursos%2F%5Bid_user%5D&absolutePagePath=C%3A%5CUsers%5CRiano%5CDocuments%5Cgocar%5Cincaseweb%5Cpages%5Ccursos%5C%5Bid_user%5D.js!./");
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
-
-/* (ignored) */
 
 /***/ }),
 
@@ -48600,10 +47153,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-<<<<<<< HEAD:.next/static/development/pages/login.js
-},[[11,"static/runtime/webpack.js","styles"]]]);
-//# sourceMappingURL=login.js.map
-=======
-},[[13,"static/runtime/webpack.js","styles"]]]);
+},[[14,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=[id_user].js.map
->>>>>>> 14eef1412d1f89d047017e2e49cf589324637e49:.next/static/development/pages/cursos/[id_user].js
