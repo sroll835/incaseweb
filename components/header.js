@@ -38,7 +38,7 @@ class Header extends Component {
    
        </div>;
     }
-    return <div className="Header"> Whatabyte</div>;
+    return <div className="Header"> Harvard</div>;
   }
 }
 

@@ -4,8 +4,8 @@ import Header from "../components/Header";
 import { Component } from "react";
 import  Link  from "next/link";
 import fetch from "isomorphic-unfetch";
-import Layout from "../components/layout";
-
+//import "../components/Login.scss";
+import Layout from "../components/layout"
 import { Cookies } from "react-cookie";
 import Router from "next/router";
 import {connect} from "react-redux";
@@ -15,19 +15,24 @@ import Modal from 'react-modal';
 import { createUsuario } from "../API/helpersAPI";
 
 const customStyles = {
+
   content : {
     top                   : '50%',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+
   }
 };
  
 const appTitle = `WHATABYTE`;
 const cookies = new Cookies();
 var subtitle = "dddd" ;
+
+    
+
 class Login extends Component {
 
   static getInitialProps({ store,req }) {
@@ -161,7 +166,7 @@ async createUser() {
   render() {
     
     return (
-      <div className="Layout">
+      <div className="LayoutLogin">
         <Head>
           <title>WHATABYTE</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />

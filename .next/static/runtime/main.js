@@ -942,7 +942,11 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
+<<<<<<< HEAD
       (0, _sourceMapSupport.rewriteStacktrace)(error, "C:\\Users\\Sebastian\\Desktop\\incaseweb\\.next");
+=======
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "C:\\Users\\Riano\\Documents\\Manuel Felipe Documentos\\MyProjects\\ECO2\\incaseweb\\.next");
+>>>>>>> d7fd501b680c463add6c5d48f78044268817df56
       return error;
     }
   };
