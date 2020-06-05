@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2228,21 +2228,110 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__);
 var _jsxFileName = "C:\\Users\\Sebastian\\Desktop\\incaseweb\\pages\\usuarios\\[id_user].js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
 
+
+const stylebutton = {
+  background: "linear-gradient(45deg, #409946 30%, #66BB6A 90%)",
+  borderRadius: 3,
+  border: 0,
+  color: "white",
+  width: "100%",
+  height: 48,
+  padding: "0 10px",
+  boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+  // marginLeft: 20,
+  marginTop: 5 // marginRight: 20
+
+};
+const textinput = {
+  background: "linear-gradient(45deg, #fafafa 30%, #f5f5f5 90%)",
+  borderRadius: 3,
+  fontSize: 18,
+  fontFamily: "Garamond",
+  color: "black",
+  height: 35,
+  padding: "0 10px",
+  boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)"
+};
+const textinputdisabled = {
+  background: "#e0e0e0",
+  borderRadius: 3,
+  fontSize: 18,
+  fontFamily: "Garamond",
+  color: "black",
+  height: 35,
+  padding: "0 20px"
+};
+
 class UserProfile extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(props) {
     super(props);
     this.state = {
+      disable: true,
       nombre: this.props.dataUsuario[0].nombre,
       apellido: this.props.dataUsuario[0].apellido,
       correo: this.props.dataUsuario[0].correo,
+      imagen: this.props.dataUsuario[0].imagen,
       clave: this.props.dataUsuario[0].clave
     };
+    this.handleNombreChange = this.handleNombreChange.bind(this);
+    this.handleApellidoChange = this.handleApellidoChange.bind(this);
+    this.handleCorreoChange = this.handleCorreoChange.bind(this);
+    this.handleClaveChange = this.handleClaveChange.bind(this);
+  }
+
+  handleNombreChange(event) {
+    this.setState({
+      nombre: event.target.value
+    });
+  }
+
+  handleApellidoChange(event) {
+    this.setState({
+      apellido: event.target.value
+    });
+  }
+
+  handleCorreoChange(event) {
+    this.setState({
+      correo: event.target.value
+    });
+  }
+
+  handleClaveChange(event) {
+    this.setState({
+      clave: event.target.value
+    });
+  }
+
+  handleUpdateUser() {
+    if (this.state.disable) {
+      this.setState({
+        disable: !this.state.disable
+      });
+    }
+  }
+
+  handleSaveUser() {
+    var _userupdt = [{
+      nombre: this.state.nombre,
+      apellido: this.state.apellido,
+      correo: this.state.correo,
+      clave: this.state.clave
+    }];
+    console.log("toupdate" + _userupdt);
+    this.setState({
+      disable: true
+    });
   }
 
   render() {
@@ -2250,17 +2339,164 @@ class UserProfile extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 19,
+        lineNumber: 102,
         columnNumber: 7
       }
-    }, __jsx("h1", {
+    }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__["Box"], {
+      className: "containerDataUser",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20,
+        lineNumber: 103,
         columnNumber: 9
       }
-    }, "hola soy el usuario: ", this.state.nombre));
+    }, __jsx("table", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 104,
+        columnNumber: 11
+      }
+    }, __jsx("tbody", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 105,
+        columnNumber: 13
+      }
+    }, __jsx("tr", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 106,
+        columnNumber: 15
+      }
+    }, __jsx("th", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 107,
+        columnNumber: 17
+      }
+    }, "Nombre"), __jsx("th", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 108,
+        columnNumber: 17
+      }
+    }, __jsx("input", {
+      type: "text",
+      style: this.state.disable ? textinputdisabled : textinput,
+      disabled: this.state.disable ? "disabled" : "",
+      value: this.state.nombre,
+      onChange: this.handleNombreChange,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 109,
+        columnNumber: 19
+      }
+    }))), __jsx("tr", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 118,
+        columnNumber: 15
+      }
+    }, __jsx("th", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 119,
+        columnNumber: 17
+      }
+    }, "Apellido"), __jsx("th", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 120,
+        columnNumber: 17
+      }
+    }, __jsx("input", {
+      type: "text",
+      style: this.state.disable ? textinputdisabled : textinput,
+      disabled: this.state.disable ? "disabled" : "",
+      value: this.state.apellido,
+      onChange: this.handleApellidoChange,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 121,
+        columnNumber: 19
+      }
+    }))), __jsx("tr", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 130,
+        columnNumber: 15
+      }
+    }, __jsx("th", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 131,
+        columnNumber: 17
+      }
+    }, "E-mail"), __jsx("th", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 132,
+        columnNumber: 17
+      }
+    }, __jsx("input", {
+      type: "email",
+      style: this.state.disable ? textinputdisabled : textinput,
+      disabled: this.state.disable ? "disabled" : "",
+      value: this.state.correo,
+      onChange: this.handleCorreoChange,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 133,
+        columnNumber: 19
+      }
+    }))), __jsx("tr", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 143,
+        columnNumber: 15
+      }
+    }, __jsx("th", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 144,
+        columnNumber: 17
+      }
+    }, "Clave"), __jsx("th", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 145,
+        columnNumber: 17
+      }
+    }, __jsx("input", {
+      type: "password",
+      style: this.state.disable ? textinputdisabled : textinput,
+      disabled: this.state.disable ? "disabled" : "",
+      value: this.state.clave,
+      onChange: this.handleClaveChange,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 146,
+        columnNumber: 19
+      }
+    })))))));
   }
 
 }
@@ -2390,7 +2626,7 @@ const logout = () => {
 
 /***/ }),
 
-/***/ 7:
+/***/ 4:
 /*!*******************************************!*\
   !*** multi ./pages/usuarios/[id_user].js ***!
   \*******************************************/
@@ -2421,6 +2657,17 @@ module.exports = require("@fortawesome/free-solid-svg-icons");
 /***/ (function(module, exports) {
 
 module.exports = require("@fortawesome/react-fontawesome");
+
+/***/ }),
+
+/***/ "@material-ui/core":
+/*!************************************!*\
+  !*** external "@material-ui/core" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core");
 
 /***/ }),
 
