@@ -9,7 +9,7 @@ import { getUserbyid, getUserwithCursosByUserId } from "../../API/helpersAPI";
 class UserCursos extends Component {
   constructor(props) {
     super(props);  
-    console.log("User cursos " + JSON.stringify(this.props));
+    console.log("User props " + JSON.stringify(this.props));
     //const classes = useStyles();
   }
 

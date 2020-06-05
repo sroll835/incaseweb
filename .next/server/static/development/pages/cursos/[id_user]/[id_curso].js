@@ -88,10 +88,49 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./API/helpersAPI.js":
+/*!***************************!*\
+  !*** ./API/helpersAPI.js ***!
+  \***************************/
+/*! exports provided: getUserbyid, getUserwithCursosByUserId, getCursowithClassesByIdCurso, createUsuario */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUserbyid", function() { return getUserbyid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUserwithCursosByUserId", function() { return getUserwithCursosByUserId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCursowithClassesByIdCurso", function() { return getCursowithClassesByIdCurso; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createUsuario", function() { return createUsuario; });
+function getUserbyid(id_user) {
+  const url = "http://localhost:8080/usuarios/" + id_user;
+  return fetch(url).then(response => response.json()).catch(error => console.error(error));
+}
+function getUserwithCursosByUserId(id_user) {
+  const url = "http://localhost:8080/usuarios/cursos/" + id_user;
+  return fetch(url).then(response => response.json()).catch(error => console.error(error));
+}
+function getCursowithClassesByIdCurso(id_curso) {
+  const url = "http://localhost:8080/cursos/" + id_curso;
+  return fetch(url).then(response => response.json()).catch(error => console.error(error));
+}
+function createUsuario(usuario) {
+  console.log(usuario);
+  const url = "http://localhost:8080/usuarios";
+  return fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(usuario)
+  }).then(response => console.log(response.status)).catch(error => console.error(error));
+}
+
+/***/ }),
 
 /***/ "./components/Header.js":
 /*!******************************!*\
@@ -113,6 +152,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+var _jsxFileName = "C:\\Users\\Riano\\Documents\\Manuel Felipe Documentos\\MyProjects\\ECO2\\incaseweb\\components\\Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
 
 
@@ -145,22 +185,46 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_5__["Component"] {
 
     if (this.props.candoAction) {
       return __jsx("div", {
-        className: "Header"
+        className: "Header",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 31,
+          columnNumber: 14
+        }
       }, "Whatabyte", __jsx("div", {
         style: {
           float: 'right',
           margin: 10
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33,
+          columnNumber: 7
         }
       }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
         onClick: this.handleLogout,
         variant: "contained",
-        color: "secondary"
+        color: "secondary",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34,
+          columnNumber: 7
+        }
       }, "Cerrar Sesion")));
     }
 
     return __jsx("div", {
-      className: "Header"
-    }, " Whatabyte");
+      className: "Header",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 41,
+        columnNumber: 12
+      }
+    }, " Harvard");
   }
 
 }
@@ -191,6 +255,169 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_5__["Component"] {
 
 /***/ }),
 
+/***/ "./components/ListItem.js":
+/*!********************************!*\
+  !*** ./components/ListItem.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AlignItemsList; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_List__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/List */ "@material-ui/core/List");
+/* harmony import */ var _material_ui_core_List__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_List__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/ListItem */ "@material-ui/core/ListItem");
+/* harmony import */ var _material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Divider */ "@material-ui/core/Divider");
+/* harmony import */ var _material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/ListItemText */ "@material-ui/core/ListItemText");
+/* harmony import */ var _material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_core_ListItemAvatar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/ListItemAvatar */ "@material-ui/core/ListItemAvatar");
+/* harmony import */ var _material_ui_core_ListItemAvatar__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_ListItemAvatar__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Avatar */ "@material-ui/core/Avatar");
+/* harmony import */ var _material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _material_ui_core_ListItemSecondaryAction__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/ListItemSecondaryAction */ "@material-ui/core/ListItemSecondaryAction");
+/* harmony import */ var _material_ui_core_ListItemSecondaryAction__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_ListItemSecondaryAction__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/IconButton */ "@material-ui/core/IconButton");
+/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/icons/Delete */ "@material-ui/icons/Delete");
+/* harmony import */ var _material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/icons/ArrowForward */ "@material-ui/icons/ArrowForward");
+/* harmony import */ var _material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_12__);
+var _jsxFileName = "C:\\Users\\Riano\\Documents\\Manuel Felipe Documentos\\MyProjects\\ECO2\\incaseweb\\components\\ListItem.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+
+
+
+
+
+
+
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => ({
+  root: {
+    width: '100%',
+    maxWidth: '36ch',
+    backgroundColor: theme.palette.background.paper
+  },
+  inline: {
+    display: 'inline'
+  }
+}));
+function AlignItemsList(props) {
+  const classes = useStyles();
+  console.log("Mis List pro" + JSON.stringify(props));
+  return __jsx(_material_ui_core_List__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: classes.root,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 5
+    }
+  }, props.clases.map(clase => __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_material_ui_core_ListItem__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    key: clase.id_clase,
+    alignItems: "flex-start",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 11
+    }
+  }, __jsx(_material_ui_core_ListItemAvatar__WEBPACK_IMPORTED_MODULE_6___default.a, {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 11
+    }
+  }, __jsx(_material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_7___default.a, {
+    alt: clase.area,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 13
+    }
+  }, clase.id_clase)), __jsx(_material_ui_core_ListItemText__WEBPACK_IMPORTED_MODULE_5___default.a, {
+    primary: __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39,
+        columnNumber: 24
+      }
+    }, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8___default.a, {
+      variant: "subtitle1",
+      color: "secondary",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 40,
+        columnNumber: 20
+      }
+    }, clase.titulo)) //   secondary={
+    //     <React.Fragment>
+    //       {clase.descripcion} 
+    //   <br/><br/>
+    //     Area: {clase.area}&nbsp;&nbsp;Duracion: {clase.duracion}h
+    //   </React.Fragment>
+    //   }
+    ,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 11
+    }
+  }), __jsx(_material_ui_core_ListItemSecondaryAction__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59,
+      columnNumber: 7
+    }
+  }, __jsx(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_10___default.a, {
+    edge: "end",
+    "aria-label": "Go",
+    color: "secondary",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 60,
+      columnNumber: 21
+    }
+  }, __jsx(_material_ui_icons_ArrowForward__WEBPACK_IMPORTED_MODULE_12___default.a, {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 23
+    }
+  })))), __jsx(_material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65,
+      columnNumber: 10
+    }
+  }))));
+}
+
+/***/ }),
+
 /***/ "./components/NavBar.js":
 /*!******************************!*\
   !*** ./components/NavBar.js ***!
@@ -205,7 +432,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavBar_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavBar.scss */ "./components/NavBar.scss");
 /* harmony import */ var _NavBar_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_NavBar_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _NavButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavButton */ "./components/NavButton.js");
-var _jsxFileName = "C:\\Users\\Riano\\Documents\\gocar\\incaseweb\\components\\NavBar.js";
+var _jsxFileName = "C:\\Users\\Riano\\Documents\\Manuel Felipe Documentos\\MyProjects\\ECO2\\incaseweb\\components\\NavBar.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 // components/NavBar.js
@@ -300,6 +527,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _NavButton_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavButton.scss */ "./components/NavButton.scss");
 /* harmony import */ var _NavButton_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_NavButton_scss__WEBPACK_IMPORTED_MODULE_4__);
+var _jsxFileName = "C:\\Users\\Riano\\Documents\\Manuel Felipe Documentos\\MyProjects\\ECO2\\incaseweb\\components\\NavButton.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 // components/NavButton.js
@@ -309,13 +537,37 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const NavButton = props => __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-  href: props.path
+  href: props.path,
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 9,
+    columnNumber: 3
+  }
 }, __jsx("div", {
-  className: `NavButton ${props.router.pathname === props.path ? "active" : ""}`
+  className: `NavButton ${props.router.pathname === props.path ? "active" : ""}`,
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 10,
+    columnNumber: 5
+  }
 }, __jsx("div", {
-  className: "Icon"
+  className: "Icon",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 15,
+    columnNumber: 7
+  }
 }, props.icon), __jsx("span", {
-  className: "Label"
+  className: "Label",
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 16,
+    columnNumber: 7
+  }
 }, props.label)));
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(NavButton));
@@ -364,6 +616,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./components/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _config_buttons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../config/buttons */ "./config/buttons.js");
+var _jsxFileName = "C:\\Users\\Riano\\Documents\\Manuel Felipe Documentos\\MyProjects\\ECO2\\incaseweb\\components\\layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -380,20 +633,70 @@ const Layout = props => {
   const appTitle = `> WHATABYTE`; //console.log("lAYOTU :" + JSON.stringify(props));
 
   return __jsx("div", {
-    className: "Layout"
-  }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("title", null, "WHATABYTE"), __jsx("meta", {
+    className: "Layout",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 5
+    }
+  }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 7
+    }
+  }, __jsx("title", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 9
+    }
+  }, "WHATABYTE"), __jsx("meta", {
     name: "viewport",
-    content: "width=device-width, initial-scale=1"
+    content: "width=device-width, initial-scale=1",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22,
+      columnNumber: 9
+    }
   }), __jsx("meta", {
-    charSet: "utf-8"
+    charSet: "utf-8",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 9
+    }
   })), __jsx(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
     appTitle: appTitle,
-    candoAction: candoAction
+    candoAction: candoAction,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26,
+      columnNumber: 7
+    }
   }), __jsx("div", {
-    className: "Content"
+    className: "Content",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27,
+      columnNumber: 7
+    }
   }, props.children), __jsx(_NavBar__WEBPACK_IMPORTED_MODULE_3__["default"], {
     navButtons: _config_buttons__WEBPACK_IMPORTED_MODULE_6__["default"],
-    userid: props.userid
+    userid: props.userid,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 7
+    }
   }));
 };
 
@@ -416,7 +719,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "C:\\Users\\Riano\\Documents\\gocar\\incaseweb\\config\\buttons.js";
+var _jsxFileName = "C:\\Users\\Riano\\Documents\\Manuel Felipe Documentos\\MyProjects\\ECO2\\incaseweb\\config\\buttons.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 // config/buttons.js
 
@@ -2152,27 +2455,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/layout */ "./components/layout.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "C:\\Users\\Riano\\Documents\\gocar\\incaseweb\\pages\\cursos\\[id_user]\\[id_curso].js";
+/* harmony import */ var _API_helpersAPI__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../API/helpersAPI */ "./API/helpersAPI.js");
+/* harmony import */ var _components_ListItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../components/ListItem */ "./components/ListItem.js");
+var _jsxFileName = "C:\\Users\\Riano\\Documents\\Manuel Felipe Documentos\\MyProjects\\ECO2\\incaseweb\\pages\\cursos\\[id_user]\\[id_curso].js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
 
 
 
 
 class CursoComponent extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
-    super(props);
-    console.log("cursor props " + JSON.stringify(this.props)); //const classes = useStyles();
+    super(props); //console.log("cursor props " + JSON.stringify(this.props));
+    //const classes = useStyles();
   }
 
   render() {
     return __jsx(_components_layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      auth: this.props.auth,
+      userid: this.props.user_id,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 12,
+        lineNumber: 14,
         columnNumber: 7
       }
-    }, "curso content");
+    }, __jsx(_components_ListItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      clases: this.props.clases,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15,
+        columnNumber: 8
+      }
+    }));
   }
 
 }
@@ -2181,12 +2498,13 @@ CursoComponent.getInitialProps = async ({
   query
 }) => {
   console.log(query);
-  var id_usuario = query.id_user.split('_')[1]; //var userwithcursos = await getUserwithCursosByUserId(id_usuario);
-  //var cursos = userwithcursos[0].cursos;
-  //console.log("Hola " + userwithcursos[0].cursos);
+  console.log(query.id_curso + "Luna");
+  var id_curso = query.id_curso;
+  var cursoswithclasses = await Object(_API_helpersAPI__WEBPACK_IMPORTED_MODULE_3__["getCursowithClassesByIdCurso"])(id_curso);
+  var clasesret = cursoswithclasses[0].clases; // console.log("Hola " + JSON.stringify(clases));
 
   return {
-    queryby: query.id_user
+    clases: clasesret
   };
 };
 
@@ -2214,8 +2532,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_cookies__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_cookies__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! js-cookie */ "js-cookie");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_3__);
+var _jsxFileName = "C:\\Users\\Riano\\Documents\\Manuel Felipe Documentos\\MyProjects\\ECO2\\incaseweb\\utils\\auth.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -2289,7 +2610,14 @@ const withAuthSync = WrappedComponent => {
     }
 
     render() {
-      return __jsx(WrappedComponent, this.props);
+      return __jsx(WrappedComponent, _extends({}, this.props, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 68,
+          columnNumber: 14
+        }
+      }));
     }
 
   }, _defineProperty(_class, "displayName", `withAuthSync(${getDisplayName(WrappedComponent)})`), _temp;
@@ -2304,14 +2632,14 @@ const logout = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 6:
 /*!****************************************************!*\
   !*** multi ./pages/cursos/[id_user]/[id_curso].js ***!
   \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Riano\Documents\gocar\incaseweb\pages\cursos\[id_user]\[id_curso].js */"./pages/cursos/[id_user]/[id_curso].js");
+module.exports = __webpack_require__(/*! C:\Users\Riano\Documents\Manuel Felipe Documentos\MyProjects\ECO2\incaseweb\pages\cursos\[id_user]\[id_curso].js */"./pages/cursos/[id_user]/[id_curso].js");
 
 
 /***/ }),
@@ -2338,6 +2666,17 @@ module.exports = require("@fortawesome/react-fontawesome");
 
 /***/ }),
 
+/***/ "@material-ui/core/Avatar":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/Avatar" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Avatar");
+
+/***/ }),
+
 /***/ "@material-ui/core/Button":
 /*!*******************************************!*\
   !*** external "@material-ui/core/Button" ***!
@@ -2346,6 +2685,127 @@ module.exports = require("@fortawesome/react-fontawesome");
 /***/ (function(module, exports) {
 
 module.exports = require("@material-ui/core/Button");
+
+/***/ }),
+
+/***/ "@material-ui/core/Divider":
+/*!********************************************!*\
+  !*** external "@material-ui/core/Divider" ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Divider");
+
+/***/ }),
+
+/***/ "@material-ui/core/IconButton":
+/*!***********************************************!*\
+  !*** external "@material-ui/core/IconButton" ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/IconButton");
+
+/***/ }),
+
+/***/ "@material-ui/core/List":
+/*!*****************************************!*\
+  !*** external "@material-ui/core/List" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/List");
+
+/***/ }),
+
+/***/ "@material-ui/core/ListItem":
+/*!*********************************************!*\
+  !*** external "@material-ui/core/ListItem" ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/ListItem");
+
+/***/ }),
+
+/***/ "@material-ui/core/ListItemAvatar":
+/*!***************************************************!*\
+  !*** external "@material-ui/core/ListItemAvatar" ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/ListItemAvatar");
+
+/***/ }),
+
+/***/ "@material-ui/core/ListItemSecondaryAction":
+/*!************************************************************!*\
+  !*** external "@material-ui/core/ListItemSecondaryAction" ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/ListItemSecondaryAction");
+
+/***/ }),
+
+/***/ "@material-ui/core/ListItemText":
+/*!*************************************************!*\
+  !*** external "@material-ui/core/ListItemText" ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/ListItemText");
+
+/***/ }),
+
+/***/ "@material-ui/core/Typography":
+/*!***********************************************!*\
+  !*** external "@material-ui/core/Typography" ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Typography");
+
+/***/ }),
+
+/***/ "@material-ui/core/styles":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/styles" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+
+/***/ "@material-ui/icons/ArrowForward":
+/*!**************************************************!*\
+  !*** external "@material-ui/icons/ArrowForward" ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/icons/ArrowForward");
+
+/***/ }),
+
+/***/ "@material-ui/icons/Delete":
+/*!********************************************!*\
+  !*** external "@material-ui/icons/Delete" ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/icons/Delete");
 
 /***/ }),
 

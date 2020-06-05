@@ -21,9 +21,10 @@ export default function CardCurso(props) {
 
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
-  //Dispatch curso to our global state container
+  //Dispatching CURSO to our global state container
   const action = { type: 'ADD_CURSOS' ,payload: props.curso };
   props.dispatch(action);
+
   const curso = props.curso;
   const user_id = props.user_id;
   function handleSubmit(){

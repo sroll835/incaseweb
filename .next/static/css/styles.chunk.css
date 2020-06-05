@@ -81,7 +81,7 @@
   font-weight: bold;
   color: #fff;
   text-transform: uppercase;
-  background: linear-gradient(45deg, #68B2A0 90%, #CDE0C9 30%);
+  background: linear-gradient(45deg, #c32030 90%, #eee 30%);
   cursor: pointer;
 }
 .NavBar {
@@ -91,7 +91,7 @@
   height: 60px;
   width: 100%;
   padding: 5px 0;
-  background: #68B2A0;
+  background: #c32030;
   font-family: "Merriweather Sans", sans-serif;
   font-size: 22px;
   color: #ffffff;
@@ -136,11 +136,41 @@
   padding-left: 5%;
   padding-right: 5%;
   width: 100%;
-  background: #2a3747;
+  background: #eee;
   color: #fff;
   font-family: "Merriweather Sans", sans-serif;
 }
 .Layout .Content a {
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.LayoutLogin {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.LayoutLogin .Content {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 100%;
+  background-image: url("/static/Comp1.gif");
+  background-position: "center";
+  background-size: "cover";
+  background-repeat: "no-repeat";
+  color: #fff;
+  font-family: "Merriweather Sans", sans-serif;
+}
+.LayoutLogin .Content a {
   color: inherit;
   text-decoration: underline;
   cursor: pointer;

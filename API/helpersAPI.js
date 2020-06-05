@@ -11,7 +11,12 @@ export function getUserwithCursosByUserId(id_user){
   .then((response) => response.json())
   .catch((error) => console.error(error));
 }
-
+export function getCursowithClassesByIdCurso(id_curso){
+  const url = "http://localhost:8080/cursos/"+id_curso;
+  return fetch(url)
+  .then((response) => response.json())
+  .catch((error) => console.error(error));
+}
 export function createUsuario(usuario){
     console.log(usuario);
     const url = "http://localhost:8080/usuarios";
