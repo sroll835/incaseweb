@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"/_app":"static/development/pages/_app.js","/_document":"static/development/pages/_document.js","/_error":"static/development/pages/_error.js","/usuarios/[id_user]":"static/development/pages/usuarios/[id_user].js"}
-=======
-{"/_app":"static/development/pages/_app.js","/_document":"static/development/pages/_document.js","/_error":"static/development/pages/_error.js","/cursos/[id_user]":"static/development/pages/cursos/[id_user].js","/cursos/[id_user]/[id_curso]":"static/development/pages/cursos/[id_user]/[id_curso].js","/login":"static/development/pages/login.js","/usuarios/[id_user]":"static/development/pages/usuarios/[id_user].js"}
->>>>>>> d7fd501b680c463add6c5d48f78044268817df56
+{"/_app":"static/development/pages/_app.js","/_document":"static/development/pages/_document.js","/_error":"static/development/pages/_error.js","/cursos/[id_user]":"static/development/pages/cursos/[id_user].js","/index":"static/development/pages/index.js","/login":"static/development/pages/login.js","/next/dist/pages/_error":"static/development/pages/next/dist/pages/_error.js","/usuarios/[id_user]":"static/development/pages/usuarios/[id_user].js","/":"static/development/pages/index.js"}

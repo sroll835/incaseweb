@@ -29,11 +29,7 @@
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
-<<<<<<< HEAD
-            injectCss(link, link.href.split("?")[0] + "?unix=1591329251080");
-=======
-            injectCss(link, link.href.split("?")[0] + "?unix=1591325118883");
->>>>>>> d7fd501b680c463add6c5d48f78044268817df56
+            injectCss(link, link.href.split("?")[0] + "?unix=1591366590100");
           });
       }
     }
@@ -70,11 +66,7 @@
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
-<<<<<<< HEAD
-            injectCss(link, link.href.split("?")[0] + "?unix=1591329251076");
-=======
-            injectCss(link, link.href.split("?")[0] + "?unix=1591327561759");
->>>>>>> d7fd501b680c463add6c5d48f78044268817df56
+            injectCss(link, link.href.split("?")[0] + "?unix=1591366590093");
           });
       }
     }
@@ -111,11 +103,7 @@
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
-<<<<<<< HEAD
-            injectCss(link, link.href.split("?")[0] + "?unix=1591329251072");
-=======
-            injectCss(link, link.href.split("?")[0] + "?unix=1591325118874");
->>>>>>> d7fd501b680c463add6c5d48f78044268817df56
+            injectCss(link, link.href.split("?")[0] + "?unix=1591366590085");
           });
       }
     }
@@ -152,11 +140,7 @@
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
-<<<<<<< HEAD
-            injectCss(link, link.href.split("?")[0] + "?unix=1591329250301");
-=======
-            injectCss(link, link.href.split("?")[0] + "?unix=1591325118113");
->>>>>>> d7fd501b680c463add6c5d48f78044268817df56
+            injectCss(link, link.href.split("?")[0] + "?unix=1591366588681");
           });
       }
     }
@@ -193,11 +177,7 @@
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
-<<<<<<< HEAD
-            injectCss(link, link.href.split("?")[0] + "?unix=1591329250229");
-=======
-            injectCss(link, link.href.split("?")[0] + "?unix=1591325118013");
->>>>>>> d7fd501b680c463add6c5d48f78044268817df56
+            injectCss(link, link.href.split("?")[0] + "?unix=1591366588359");
           });
       }
     }
