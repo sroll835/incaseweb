@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import { Button, Container, Box } from "@material-ui/core";
 import { updateUsuario } from "../../api/helpersAPI";
-
+import {connect} from "react-redux";
 const stylebutton = {
   background: "linear-gradient(45deg, #409946 30%, #66BB6A 90%)",
   borderRadius: 3,
@@ -100,7 +100,7 @@ class UserProfile extends Component {
 
   render() {
     return (
-      <Layout>
+      <Layout auth={this.props.auth} userid={this.props.user_id}>
         <Box className="containerDataUser">
           <table>
             <tbody>
@@ -182,4 +182,4 @@ UserProfile.getInitialProps = async ({ query }) => {
   return { dataUsuario: resJSON, id_usuario: usuario };
 };
 
-export default UserProfile;
+export default connect((state) => state)(UserProfile);

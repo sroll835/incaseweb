@@ -32,6 +32,18 @@
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
+    "/cursos/[id_user]/[id_curso]": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
+    ],
+    "/cursos/[id_user]/[id_curso]/[id_clase]": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
+    ],
     "/index": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
@@ -39,16 +51,6 @@
       "static/runtime/main.js"
     ],
     "/login": [
-      "static/runtime/webpack.js",
-      "static/css/styles.chunk.css",
-      "static/chunks/styles.js",
-      "static/runtime/main.js"
-    ],
-    "/next/dist/pages/_error": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/usuarios/[id_user]": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",

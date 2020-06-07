@@ -36,10 +36,12 @@
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-modal": "^3.11.2",
+    "react-prism": "^4.3.2",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
-    "sass": "^1.26.3"
+    "sass": "^1.26.3",
+    "video-react": "^0.14.1"
   },
   "devDependencies": {
     "http-proxy": "^1.18.0",
